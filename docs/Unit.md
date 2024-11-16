@@ -8,7 +8,7 @@
 | **active** | **Boolean** | Indicates if the property is active or inactive. | [optional] |
 | **address** | [**Address**](Address.md) |  | [optional] |
 | **amenities** | [**Array&lt;Amenity&gt;**](Amenity.md) | Property amenities list. | [optional] |
-| **area_units** | **String** | Property total area units. | [optional] |
+| **area_units** | **String** | Property total area units. | [optional][default to &#39;Sq Ft&#39;] |
 | **building_id** | **Integer** | Id of the building associated with this unit. | [optional] |
 | **category** | **String** | Property category. | [optional] |
 | **county** | **String** | Property region of a state. | [optional] |

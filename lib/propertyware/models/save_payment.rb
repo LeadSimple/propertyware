@@ -207,7 +207,7 @@ module Propertyware
       return false if @destination_account_id.nil?
       return false if @lease_id.nil?
       return false if @payment_type.nil?
-      payment_type_validator = EnumAttributeValidator.new('String', ["CHECK", "CHECK21", "CASHIERS_CHECK", "CREDIT_CARD", "CASH", "MONEY_ORDER", "OTHER", "CLICKPAY", "SECTION8", "EPAY", "ECHECK", "NACHA", "RENTMONEY", "PUBLIC_ASSISTANCE"])
+      payment_type_validator = EnumAttributeValidator.new('String', ["CHECK", "CHECK21", "CASHIERS_CHECK", "CREDIT_CARD", "CASH", "MONEY_ORDER", "OTHER", "CLICKPAY", "SECTION8", "EPAY", "ECHECK", "NACHA", "RENTMONEY", "PUBLIC_ASSISTANCE", "PAYMENT_TYPE_NA"])
       return false unless payment_type_validator.valid?(@payment_type)
       return false if @ref_no.nil?
       true
@@ -216,7 +216,7 @@ module Propertyware
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] payment_type Object to be assigned
     def payment_type=(payment_type)
-      validator = EnumAttributeValidator.new('String', ["CHECK", "CHECK21", "CASHIERS_CHECK", "CREDIT_CARD", "CASH", "MONEY_ORDER", "OTHER", "CLICKPAY", "SECTION8", "EPAY", "ECHECK", "NACHA", "RENTMONEY", "PUBLIC_ASSISTANCE"])
+      validator = EnumAttributeValidator.new('String', ["CHECK", "CHECK21", "CASHIERS_CHECK", "CREDIT_CARD", "CASH", "MONEY_ORDER", "OTHER", "CLICKPAY", "SECTION8", "EPAY", "ECHECK", "NACHA", "RENTMONEY", "PUBLIC_ASSISTANCE", "PAYMENT_TYPE_NA"])
       unless validator.valid?(payment_type)
         fail ArgumentError, "invalid value #{ payment_type.inspect } for \"payment_type\", must be one of #{validator.allowable_values}."
       end

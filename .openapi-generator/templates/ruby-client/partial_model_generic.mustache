@@ -278,7 +278,12 @@
     def {{{name}}}=({{{name}}})
       validator = EnumAttributeValidator.new('{{{dataType}}}', [{{#allowableValues}}{{#enumVars}}{{{value}}}{{^-last}}, {{/-last}}{{/enumVars}}{{/allowableValues}}])
       unless validator.valid?({{{name}}})
+        {{#defaultValue}}
+        {{{name}}} = {{{defaultValue}}}
+        {{/defaultValue}}
+        {{^defaultValue}}
         fail ArgumentError, "invalid value #{ {{{name}}}.inspect } for \"{{{name}}}\", must be one of #{validator.allowable_values}."
+        {{/defaultValue}}
       end
       @{{{name}}} = {{{name}}}
     end
