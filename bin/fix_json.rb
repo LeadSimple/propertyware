@@ -55,5 +55,20 @@ data['components']['securitySchemes'] = {
 # Guarantee we automatically set HTTPS as the schema
 data['servers'][0] = { "url": "https://api.propertyware.com/pw/api/rest/v1" } unless data['servers'].first['url'].start_with?("https://")
 
+data['components']['schemas'].each do |schema_name, schema|
+  next unless schema['properties']
+  
+  # Ensure all paymentType enums include PAYMENT_TYPE_NA
+  if schema['properties']['paymentType']&.dig('enum')
+    payment_types = schema['properties']['paymentType']['enum']
+    payment_types << 'PAYMENT_TYPE_NA' unless payment_types.include?('PAYMENT_TYPE_NA')
+  end
+
+  # make sure that every area_units key has a default value
+  if schema['properties']['areaUnits']
+    schema['properties']['areaUnits']['default'] = 'Sq Ft'
+  end
+end
+
 # Save it back to the file
-File.write('bin/propertyware.json', data.to_json)
+File.write('bin/propertyware.json', JSON.pretty_generate(data))

@@ -94,7 +94,7 @@ describe Propertyware::Check do
   describe 'test attribute "payment_type"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["CHECK", "CHECK21", "CASHIERS_CHECK", "CREDIT_CARD", "CASH", "MONEY_ORDER", "OTHER", "CLICKPAY", "SECTION8", "EPAY", "ECHECK", "NACHA", "RENTMONEY", "PUBLIC_ASSISTANCE"])
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["CHECK", "CHECK21", "CASHIERS_CHECK", "CREDIT_CARD", "CASH", "MONEY_ORDER", "OTHER", "CLICKPAY", "SECTION8", "EPAY", "ECHECK", "NACHA", "RENTMONEY", "PUBLIC_ASSISTANCE", "PAYMENT_TYPE_NA"])
       # validator.allowable_values.each do |value|
       #   expect { instance.payment_type = value }.not_to raise_error
       # end

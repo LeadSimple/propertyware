@@ -9,7 +9,7 @@
 | **address** | [**Address**](Address.md) |  | [optional] |
 | **amenities** | [**Array&lt;Amenity&gt;**](Amenity.md) | Property amenities list. | [optional] |
 | **application_fee_rule** | **String** | Application fee rule | [optional] |
-| **area_units** | **String** | Property total area units. | [optional] |
+| **area_units** | **String** | Property total area units. | [optional][default to &#39;Sq Ft&#39;] |
 | **category** | **String** | Property category. | [optional] |
 | **count_unit** | **Integer** | Number of units in the building. | [optional] |
 | **county** | **String** | Property region of a state. | [optional] |

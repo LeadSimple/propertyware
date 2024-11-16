@@ -293,6 +293,8 @@ module Propertyware
 
       if attributes.key?(:'area_units')
         self.area_units = attributes[:'area_units']
+      else
+        self.area_units = 'Sq Ft'
       end
 
       if attributes.key?(:'building_id')
@@ -466,8 +468,7 @@ module Propertyware
     def area_units=(area_units)
       validator = EnumAttributeValidator.new('String', ["Sq Ft", "Sq M"])
       unless validator.valid?(area_units)
-        # fail ArgumentError, "invalid value #{ area_units.inspect } for \"area_units\", must be one of #{validator.allowable_values}."
-        area_units = "Sq Ft"
+        area_units = 'Sq Ft'
       end
       @area_units = area_units
     end

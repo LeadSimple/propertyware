@@ -325,7 +325,7 @@ gem build propertyware.gemspec
 Then either install the gem locally:
 
 ```shell
-gem install ./propertyware-1.3.0.gem
+gem install ./propertyware-1.3.2.gem
 ```
 
 (for development, run `gem install --dev ./propertyware-1.3.1.gem` to install the development dependencies)
