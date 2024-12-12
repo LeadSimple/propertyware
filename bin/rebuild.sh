@@ -30,5 +30,8 @@ rm .travis.yml
 rm .gitlab-ci.yml
 rm git_push.sh
 
+# Remove script tag comments from generated files
+find lib/ spec/ -type f -exec sed -i '/<script type/d' {} \;
+
 # Make sure everything is properly installed
 bundle install

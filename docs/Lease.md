@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **active** | **Boolean** | Indicates if lease is Active. | [optional] |
 | **addendums** | [**Array&lt;LeaseClause&gt;**](LeaseClause.md) | Lease addendum(s). | [optional] |
+| **ar_balance** | **Float** | Lease Accounts Receivable Balance | [optional] |
 | **base_rent** | **Float** | Property base rent. | [optional] |
 | **building_id** | **Integer** | Id of the building associated with this lease. | [optional] |
 | **comments** | **String** | Description of the lease. | [optional] |
@@ -46,6 +47,7 @@ require 'propertyware'
 instance = Propertyware::Lease.new(
   active: false,
   addendums: null,
+  ar_balance: null,
   base_rent: null,
   building_id: null,
   comments: null,

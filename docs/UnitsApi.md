@@ -4,8 +4,8 @@ All URIs are relative to *https://api.propertyware.com/pw/api/rest/v1*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**create_contacts_using_post4**](UnitsApi.md#create_contacts_using_post4) | **POST** /units/bulk | Create units in bulk (BETA) |
-| [**create_unit**](UnitsApi.md#create_unit) | **POST** /units | Create a unit (BETA) |
+| [**create_unit**](UnitsApi.md#create_unit) | **POST** /units | Create a unit |
+| [**create_units**](UnitsApi.md#create_units) | **POST** /units/bulk | Create units in bulk |
 | [**delete_unit**](UnitsApi.md#delete_unit) | **DELETE** /units/{unitID} | Delete a unit (BETA) |
 | [**delete_unit_conversation**](UnitsApi.md#delete_unit_conversation) | **DELETE** /units/{unitID}/conversations/{conversationID} | Delete a unit conversation (BETA) |
 | [**get_lease_custom_fields_using_get1**](UnitsApi.md#get_lease_custom_fields_using_get1) | **GET** /units/{unitID}/customFields | Retrieve all unit custom fields |
@@ -13,97 +13,17 @@ All URIs are relative to *https://api.propertyware.com/pw/api/rest/v1*
 | [**get_unit_conversation**](UnitsApi.md#get_unit_conversation) | **GET** /units/{unitID}/conversations/{conversationID} | Retrieve a unit conversation |
 | [**get_unit_conversations**](UnitsApi.md#get_unit_conversations) | **GET** /units/{unitID}/conversations | Retrieve all unit conversations |
 | [**get_units**](UnitsApi.md#get_units) | **GET** /units | Retrieve all units |
-| [**update_unit**](UnitsApi.md#update_unit) | **PUT** /units/{unitID} | Update a unit (BETA) |
-
-
-## create_contacts_using_post4
-
-> <Array<RESTAPIBulkSuccessResponse>> create_contacts_using_post4(save_unit)
-
-Create units in bulk (BETA)
-
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Creates units in bulk.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">BUILDINGS</span> - <code>Write</code> 
-
-### Examples
-
-```ruby
-require 'time'
-require 'propertyware'
-# setup authorization
-Propertyware.configure do |config|
-  # Configure API key authorization: organizationId
-  config.api_key['organizationId'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['organizationId'] = 'Bearer'
-
-  # Configure API key authorization: clientId
-  config.api_key['clientId'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['clientId'] = 'Bearer'
-
-  # Configure API key authorization: clientSecret
-  config.api_key['clientSecret'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['clientSecret'] = 'Bearer'
-end
-
-api_instance = Propertyware::UnitsApi.new
-save_unit = [Propertyware::SaveUnit.new({abbreviation: 'abbreviation_example', building_id: 3.56, category: 'RESIDENTIAL', name: 'name_example', portfolio_id: 3.56, type: 'type_example'})] # Array<SaveUnit> | saveUnit
-
-begin
-  # Create units in bulk (BETA)
-  result = api_instance.create_contacts_using_post4(save_unit)
-  p result
-rescue Propertyware::ApiError => e
-  puts "Error when calling UnitsApi->create_contacts_using_post4: #{e}"
-end
-```
-
-#### Using the create_contacts_using_post4_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<Array<RESTAPIBulkSuccessResponse>>, Integer, Hash)> create_contacts_using_post4_with_http_info(save_unit)
-
-```ruby
-begin
-  # Create units in bulk (BETA)
-  data, status_code, headers = api_instance.create_contacts_using_post4_with_http_info(save_unit)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <Array<RESTAPIBulkSuccessResponse>>
-rescue Propertyware::ApiError => e
-  puts "Error when calling UnitsApi->create_contacts_using_post4_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **save_unit** | [**Array&lt;SaveUnit&gt;**](SaveUnit.md) | saveUnit |  |
-
-### Return type
-
-[**Array&lt;RESTAPIBulkSuccessResponse&gt;**](RESTAPIBulkSuccessResponse.md)
-
-### Authorization
-
-[organizationId](../README.md#organizationId), [clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
+| [**update_unit**](UnitsApi.md#update_unit) | **PUT** /units/customfields | Update a unit custom fields (BETA) |
+| [**update_unit_using_put1**](UnitsApi.md#update_unit_using_put1) | **PUT** /units/{unitID} | Update a unit |
 
 
 ## create_unit
 
 > <Unit> create_unit(save_unit)
 
-Create a unit (BETA)
+Create a unit
 
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Creates a unit.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">UNITS</span> - <code>Write</code> 
+Creates a unit.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">UNITS</span> - <code>Write</code> 
 
 ### Examples
 
@@ -132,7 +52,7 @@ api_instance = Propertyware::UnitsApi.new
 save_unit = Propertyware::SaveUnit.new({abbreviation: 'abbreviation_example', building_id: 3.56, category: 'RESIDENTIAL', name: 'name_example', portfolio_id: 3.56, type: 'type_example'}) # SaveUnit | saveUnit
 
 begin
-  # Create a unit (BETA)
+  # Create a unit
   result = api_instance.create_unit(save_unit)
   p result
 rescue Propertyware::ApiError => e
@@ -148,7 +68,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create a unit (BETA)
+  # Create a unit
   data, status_code, headers = api_instance.create_unit_with_http_info(save_unit)
   p status_code # => 2xx
   p headers # => { ... }
@@ -167,6 +87,87 @@ end
 ### Return type
 
 [**Unit**](Unit.md)
+
+### Authorization
+
+[organizationId](../README.md#organizationId), [clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_units
+
+> <Array<RESTAPIBulkSuccessResponse>> create_units(save_unit)
+
+Create units in bulk
+
+Creates units in bulk.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">BUILDINGS</span> - <code>Write</code> 
+
+### Examples
+
+```ruby
+require 'time'
+require 'propertyware'
+# setup authorization
+Propertyware.configure do |config|
+  # Configure API key authorization: organizationId
+  config.api_key['organizationId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['organizationId'] = 'Bearer'
+
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Propertyware::UnitsApi.new
+save_unit = [Propertyware::SaveUnit.new({abbreviation: 'abbreviation_example', building_id: 3.56, category: 'RESIDENTIAL', name: 'name_example', portfolio_id: 3.56, type: 'type_example'})] # Array<SaveUnit> | saveUnit
+
+begin
+  # Create units in bulk
+  result = api_instance.create_units(save_unit)
+  p result
+rescue Propertyware::ApiError => e
+  puts "Error when calling UnitsApi->create_units: #{e}"
+end
+```
+
+#### Using the create_units_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<RESTAPIBulkSuccessResponse>>, Integer, Hash)> create_units_with_http_info(save_unit)
+
+```ruby
+begin
+  # Create units in bulk
+  data, status_code, headers = api_instance.create_units_with_http_info(save_unit)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<RESTAPIBulkSuccessResponse>>
+rescue Propertyware::ApiError => e
+  puts "Error when calling UnitsApi->create_units_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **save_unit** | [**Array&lt;SaveUnit&gt;**](SaveUnit.md) | saveUnit |  |
+
+### Return type
+
+[**Array&lt;RESTAPIBulkSuccessResponse&gt;**](RESTAPIBulkSuccessResponse.md)
 
 ### Authorization
 
@@ -793,11 +794,92 @@ end
 
 ## update_unit
 
-> <Unit> update_unit(unit_id, save_unit)
+> <ResponseEntity> update_unit(save_custom_field)
 
-Update a unit (BETA)
+Update a unit custom fields (BETA)
 
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Update as unit.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">UNITS</span> - <code>Write</code> 
+<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Updates an existing unit custom fields<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">UNITS</span> - <code>Write</code> 
+
+### Examples
+
+```ruby
+require 'time'
+require 'propertyware'
+# setup authorization
+Propertyware.configure do |config|
+  # Configure API key authorization: organizationId
+  config.api_key['organizationId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['organizationId'] = 'Bearer'
+
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Propertyware::UnitsApi.new
+save_custom_field = Propertyware::SaveCustomField.new({entity_id: 3.56, field_set: [Propertyware::CustomFieldSet.new({name: 'name_example', value: 'value_example'})]}) # SaveCustomField | saveCustomField
+
+begin
+  # Update a unit custom fields (BETA)
+  result = api_instance.update_unit(save_custom_field)
+  p result
+rescue Propertyware::ApiError => e
+  puts "Error when calling UnitsApi->update_unit: #{e}"
+end
+```
+
+#### Using the update_unit_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ResponseEntity>, Integer, Hash)> update_unit_with_http_info(save_custom_field)
+
+```ruby
+begin
+  # Update a unit custom fields (BETA)
+  data, status_code, headers = api_instance.update_unit_with_http_info(save_custom_field)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ResponseEntity>
+rescue Propertyware::ApiError => e
+  puts "Error when calling UnitsApi->update_unit_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **save_custom_field** | [**SaveCustomField**](SaveCustomField.md) | saveCustomField |  |
+
+### Return type
+
+[**ResponseEntity**](ResponseEntity.md)
+
+### Authorization
+
+[organizationId](../README.md#organizationId), [clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_unit_using_put1
+
+> <Unit> update_unit_using_put1(unit_id, save_unit)
+
+Update a unit
+
+Update as unit.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">UNITS</span> - <code>Write</code> 
 
 ### Examples
 
@@ -827,29 +909,29 @@ unit_id = 789 # Integer | Unit ID
 save_unit = Propertyware::SaveUnit.new({abbreviation: 'abbreviation_example', building_id: 3.56, category: 'RESIDENTIAL', name: 'name_example', portfolio_id: 3.56, type: 'type_example'}) # SaveUnit | saveUnit
 
 begin
-  # Update a unit (BETA)
-  result = api_instance.update_unit(unit_id, save_unit)
+  # Update a unit
+  result = api_instance.update_unit_using_put1(unit_id, save_unit)
   p result
 rescue Propertyware::ApiError => e
-  puts "Error when calling UnitsApi->update_unit: #{e}"
+  puts "Error when calling UnitsApi->update_unit_using_put1: #{e}"
 end
 ```
 
-#### Using the update_unit_with_http_info variant
+#### Using the update_unit_using_put1_with_http_info variant
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Unit>, Integer, Hash)> update_unit_with_http_info(unit_id, save_unit)
+> <Array(<Unit>, Integer, Hash)> update_unit_using_put1_with_http_info(unit_id, save_unit)
 
 ```ruby
 begin
-  # Update a unit (BETA)
-  data, status_code, headers = api_instance.update_unit_with_http_info(unit_id, save_unit)
+  # Update a unit
+  data, status_code, headers = api_instance.update_unit_using_put1_with_http_info(unit_id, save_unit)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Unit>
 rescue Propertyware::ApiError => e
-  puts "Error when calling UnitsApi->update_unit_with_http_info: #{e}"
+  puts "Error when calling UnitsApi->update_unit_using_put1_with_http_info: #{e}"
 end
 ```
 

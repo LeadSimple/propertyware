@@ -259,6 +259,169 @@ The Propertyware API supports standard HTTP status codes.
 If you are unable to resolve your issue after reviewing the API documentation our support team can assist you.
 
 # Changelog
+
+### 2024-12-11
+
+* New API introduced to add comments to existing task in workorder.<br/>
+  URL : /workorders//{workOrderId}/tasks/{taskId}/comments (POST) <br/>
+  Access Permissions : WorkOrder - Write
+*  New fields \"baseYear\",\"baseYearOperatingExpenses\",\"baseYearPropertyInsurance\",\"baseYearPropertyTaxes\" are added to  Building request/response for Below End Points<br/>
+    *  Get Building (Get - /buildings/{buildingID})
+    *  Create Building (Post - /buildings)
+    *  Update Building (Put - /buildings/{buildingID})
+    *  Get All Buildings (Get - /buildings)
+*  New fields \"syndicate\" ,\"moveInDays\", \"featuredForRent\" are added to Building request/response for Below End Points<br/>
+    *  Create Building (Post - /buildings)
+    *  moveInDays field must be with in these days given here \"1 to 30,45,60,75,90\" added validation.
+
+
+
+
+### 2024-11-13
+* New fields \"reasonForLeaving\",\"noticeGivenDate\",\"paymentRestriction\"  is added to response of<br/>
+  (1) Create a Lease - POST /leases<br/>
+  (2) Update a Lease - GET /leases/{leaseID}
+* New field \"chargeAmountPaid\" is added to lease charges payments entity. indicates the amount paid for current charge.<br/>
+  (1) Get a Lease - GET /leases/charges (charge.payments.chargeAmountPaid)<br/>
+
+### 2024-09-25
+* New API introduced to close existing workorder.<br/>
+    URL : /workorders/closeworkorder/{workorderID} (PUT) <br/>
+    Access Permissions : WorkOrder - Write
+* A new fields \"managementContractStartDate\" and \"managementContractEndDate\" are added to update Building request/response for below end points
+   * Update Building ( PUT - buildings/{buildingID} ) 
+    
+### 2024-09-11
+* A new field \"unitIDs\"(Unit ID list associated to a Work Order) is added to response of<br/>
+  (1) Retrieve a Work Order - GET /workorders/{workorderID}<br/>
+  (2) Retrieve All Work Orders - GET /workorders
+
+### 2024-06-09
+* A new field \"unitID\" is added to response of<br/>
+  (1) Retrieve a Work Order - GET /workorders/{workorderID}<br/>
+  (2) Retrieve All Work Orders - GET /workorders
+* Building and Unit targetDeposit data type changed from double to String and the impacted end points are all POST/GET/PUT. 
+
+### 2024-05-22
+* API documentation is corrected to show 'file' field in request body for 'Upload a Document' API.
+
+### 2024-05-12
+* A new filed \"arBalance\" is added to Lease response for below end points
+  * Retrieve a lease ( GET - /leases/{leaseID} - set query parameter \"includeOtherBalances = true\" to include lease arBalance)
+  * Retrieve all leases ( GET - /leases )
+  * Create a lease (POST - /leases)
+  * Update a lease (PUT - /leases/{leaseID})
+
+### 2024-04-23
+* Beta has been removed to facilitate Update an owner draw ( PUT - /accounting/ownerdraws/{drawID} )
+
+### 2024-04-10
+
+* Beta has been removed to facilitate Update a Credit ( PUT - /bills/credit/{creditID} )
+* Beta has been removed to facilitate Update a Bill ( PUT - /bills/{billId} )
+* Beta has been removed to facilitate Create word orders in bulk. ( POST - /workorders/bulk )
+* A new field \"amount\" is added to Bill response for below end points
+  * Retrieve a bill ( GET - /bills/{billID} )
+  * Retrieve all bills ( GET - /bills/ )
+  * Create a Bill ( POST - /bills/ )
+  * Update Bill ( PUT - /bills/{billId} )
+  * Create a Credit ( POST - /bills/credit )
+  * Update a Credit ( PUT - /bills/credit/{creditID} )
+* Update a Contact ( PUT - /contacts/{contactID} ) is allowed to update any Contact Type
+* A new field \"managementFeesType\" is added to CREATE building(POST), UPDATE building(PUT), GET buildings(GET) end points. Existing \"managementFeeType\" is deprecated and should not be used.
+* Few fields from CREATE building are not updating with a POST request. Resolved the issue and impacted fields are targetDeposit, targetRentUnits.
+* Few fields from UPDATE building are not updating with a PUT request. Resolved the issue and impacted fields are numberOfBathrooms, numberOfBedRooms, targetRent, targetDeposit, targetRentUnits, marketingName, managementFlatFee, managementFeeType, petsAllowed, postingTitle, shortDescription, yearBuilt.
+* The 'account' field has been removed, and the data type for the 'dueDay' field has been changed 
+from String to Integer in the response for the ( POST - /leases/autocharges ) endpoint.
+* Fixed the issue - date field value getting saved as today date for Create Lease Charge, Update Lease Charge, Create Bulk Charges, Create a Lease Payment, Update a Lease Payment, Create a Lease Refund APs.
+* Work order id validation is implemented for Create Bill, Update Bill, Create Credit, Update Credit APIs.
+
+### 2024-03-24
+
+* New API introduced to update existing workorder custom fields.<br/>
+  URL : /workorders/customfields (PUT) <br/>
+  Access Permissions : WorkOrder - Write
+* A new field \"role\" is added to GET lease contacts end point (/leases/{leaseID}/contacts) 
+* A new field \"role\" is added to \"contact\" in GET lease end point (/leases/{leaseID})
+* A new field \"role\" is added to \"contact\" in GET All leases end point (/leases)
+
+### 2024-03-11
+
+* New API introduced to update existing contact custom fields.<br/>
+  URL : /contacts/customfields (PUT) <br/>
+  Access Permissions : Contacts - Write
+* Beta has been removed to facilitate create a bank deposit, create an owner contribution, create an owner draw requests.
+* New API introduced to update existing portfolio custom fields.<br/>
+  URL : /portfolios/customfields (PUT) <br/>
+  Access Permissions : Portfolio - Write
+* New API introduced to update existing vendor custom fields.<br/>
+  URL : /vendors/customfields (PUT) <br/>
+  Access Permissions : Vendor - Write
+* Beta has been removed to facilitate 'Create a bill', 'Create bills in bulk', 'Create a credit' Rest API's.
+
+### 2024-02-25
+* Beta has been removed to facilitate 'Retrieve all bills','Retrieve all bill payments','Retrieve a bill payment','Retrieve all vendor checks' and 'Retrieve a bill'.
+* Create/update/Retrieve VendorCheck endpoint change from bills/vendorChecks to bills/vendorChecks.
+* A new API has been introduced to enable adding multiple automatic charges to leases.
+  </br>URL : /leases/autocharges (POST)
+* General ledger GET end point('/accounting/generalledger') is updated to filter only 7 days duration of transactions earlier it is 30 days.
+* New field added \"referenceNumber\" in \"rentAutoCharge\" of create lease request.
+* New API introduced to update unit custom fields
+  </br>URL : /units/customfields (PUT)
+  </br>Access Permissions : Unit - Write
+
+* New API introduced to update building custom fields
+  </br>URL : /buildings/customfields (PUT)
+  </br>Access Permissions : Building - Write
+
+### 2024-02-11
+
+* Beta has been removed to facilitate Retrieves a list of owner draws,Retrieves a list of owner contributions,Retrieves a list of general ledger accounts  and Retrieves a general ledger account.
+* New filed \"description\" is added in General ledger account(accounting/glaccounts - GET & accounting/glaccounts/{glAccountID} - GET) endpoint response.
+* New field \"specificLocation\" is added in Workorder create/update request.
+* New field \"requiredMaterials\" is added in Workorder create/update request.
+* New field \"publishToTenantPortal\" is added in Workorder create/update request.
+* New field \"publishToOwnerPortal\" is added in Workorder create/update request.
+* New field \"publishToTenantPortal\" is added in Workorder GET response.
+* New field \"publishToOwnerPortal\" is added in Workorder GET response.
+* New API introduced to update lease custom fields 
+  </br>URL : /leases/customfields (PUT)
+  </br>Access Permissions : Lease - Write (An additional permission is required \"Custom Field - write\" will be introduced with 2024-02-25 release)
+* New API introduced to update prospect custom fields
+  </br>URL : /prospects/customfields (PUT)
+  </br>Access Permissions : prospect - Write (An additional permission is required \"Custom Field - write\" will be introduced with 2024-02-25 release)
+
+### 2024-01-24
+
+* Beta has been removed to facilitate WorkOrder task update.
+* Beta has been removed to facilitate retrieve vendor general ledger account.
+* New field \"source\" is added in Workorder create/update request.
+* Beta has been removed to facilitate Unit update.
+
+### 2024-01-09
+
+* An additional property , 'ready' (indicating ready to lease), has been added to create the building API. However, the 'unitCount' property value is incorrect when using the create building API.
+
+* Beta has been removed to facilitate building updates and creation in bulk for Building APi.
+  
+* \"Retrieve all lease journal entries\". this is an extension for existing endpoint. leaseID will be part of the request params in new endpoint.
+<br/>existing url: https://api.propertyware.com/pw/api/rest/v1/leases/journalentries/{leaseID} (Will be discontinued in future once new URL is being used)
+<br/>New url: https://api.propertyware.com/pw/api/rest/v1/leases/journalentries
+  (leaseID can be sent as a request parameters)
+
+* \"Retrieve all lease auto charges\". this is an extension for existing endpoint. leaseID will be part of the request params in new endpoint.
+  <br/>existing url: https://api.propertyware.com/pw/api/rest/v1/{leaseID}/autocharges (Will be discontinued in future once new URL is being used)
+  <br/>New url: https://api.propertyware.com/pw/api/rest/v1/leases/autocharges
+  (leaseID can be sent as a request parameters)
+  
+* New field \"publishedForRent\" is added in Building and Unit responses.
+* New field \"role\" is added in prospect contact response.
+* Beta has been removed to facilitate Contact update.
+* Allowed GET Lease charges/payments/refunds/creditmemos/adjustments, filtered by \"glAccountId\"
+
+### 2023-10-24
+* Retrieve a General Ledger Account
+
 ### 2023-08-28
 * Update a document
 
@@ -306,10 +469,11 @@ If you are unable to resolve your issue after reviewing the API documentation ou
 
 * API Read operations available 
 
+
 This SDK is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
 - API version: 1.0
-- Package version: 1.3.1
+- Package version: 1.3.3
 - Build package: org.openapitools.codegen.languages.RubyClientCodegen
 
 ## Installation
@@ -325,16 +489,16 @@ gem build propertyware.gemspec
 Then either install the gem locally:
 
 ```shell
-gem install ./propertyware-1.3.2.gem
+gem install ./propertyware-1.3.3.gem
 ```
 
-(for development, run `gem install --dev ./propertyware-1.3.1.gem` to install the development dependencies)
+(for development, run `gem install --dev ./propertyware-1.3.3.gem` to install the development dependencies)
 
 or publish the gem to a gem hosting service, e.g. [RubyGems](https://rubygems.org/).
 
 Finally add this to the Gemfile:
 
-    gem 'propertyware', '~> 1.3.1'
+    gem 'propertyware', '~> 1.3.3'
 
 ### Install from Git
 
@@ -383,10 +547,10 @@ Propertyware.configure do |config|
 end
 
 api_instance = Propertyware::AccountingApi.new
-save_bank_deposit = Propertyware::SaveBankDeposit.new({bank_gl_account_id: 3.56, list_of_tx_ids: 'list_of_tx_ids_example'}) # SaveBankDeposit | saveBankDeposit
+save_bank_deposit = Propertyware::SaveBankDeposit.new({bank_gl_account_id: 3.56, date_opened: Date.today, list_of_tx_ids: 'list_of_tx_ids_example'}) # SaveBankDeposit | saveBankDeposit
 
 begin
-  #Create a bank deposit (BETA)
+  #Create a bank deposit
   result = api_instance.create_bank_deposit(save_bank_deposit)
   p result
 rescue Propertyware::ApiError => e
@@ -401,50 +565,52 @@ All URIs are relative to *https://api.propertyware.com/pw/api/rest/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*Propertyware::AccountingApi* | [**create_bank_deposit**](docs/AccountingApi.md#create_bank_deposit) | **POST** /accounting/bankdeposits | Create a bank deposit (BETA)
+*Propertyware::AccountingApi* | [**create_bank_deposit**](docs/AccountingApi.md#create_bank_deposit) | **POST** /accounting/bankdeposits | Create a bank deposit
 *Propertyware::AccountingApi* | [**create_bill_payments**](docs/AccountingApi.md#create_bill_payments) | **POST** /accounting/glaccounts/bulk | Create general ledger accounts in bulk (BETA)
 *Propertyware::AccountingApi* | [**create_gl_account**](docs/AccountingApi.md#create_gl_account) | **POST** /accounting/glaccounts | Create a general ledger account (BETA)
-*Propertyware::AccountingApi* | [**create_owner_contribution**](docs/AccountingApi.md#create_owner_contribution) | **POST** /accounting/ownercontributions | Create an owner contribution (BETA)
-*Propertyware::AccountingApi* | [**create_owner_draw**](docs/AccountingApi.md#create_owner_draw) | **POST** /accounting/ownerdraws | Create an owner draw (BETA)
+*Propertyware::AccountingApi* | [**create_owner_contribution**](docs/AccountingApi.md#create_owner_contribution) | **POST** /accounting/ownercontributions | Create an owner contribution
+*Propertyware::AccountingApi* | [**create_owner_draw**](docs/AccountingApi.md#create_owner_draw) | **POST** /accounting/ownerdraws | Create an owner draw
 *Propertyware::AccountingApi* | [**delete_bank_deposit**](docs/AccountingApi.md#delete_bank_deposit) | **DELETE** /accounting/bankdeposits/{bankDepositID} | Delete a Bank Deposit (BETA)
 *Propertyware::AccountingApi* | [**delete_gl_account**](docs/AccountingApi.md#delete_gl_account) | **DELETE** /accounting/glaccounts/{glAccount} | Delete a general ledger account (BETA)
 *Propertyware::AccountingApi* | [**delete_owner_contribution**](docs/AccountingApi.md#delete_owner_contribution) | **DELETE** /accounting/ownercontributions/{ownerContributionID} | Delete Owner Contribution (BETA)
-*Propertyware::AccountingApi* | [**get_accounts**](docs/AccountingApi.md#get_accounts) | **GET** /accounting/glaccounts | Retrieve all the general ledger accounts (BETA)
+*Propertyware::AccountingApi* | [**get_account**](docs/AccountingApi.md#get_account) | **GET** /accounting/glaccounts/{glAccountID} | Retrieve a general ledger account
+*Propertyware::AccountingApi* | [**get_accounts**](docs/AccountingApi.md#get_accounts) | **GET** /accounting/glaccounts | Retrieve all the general ledger accounts
 *Propertyware::AccountingApi* | [**get_general_ledger_transactions**](docs/AccountingApi.md#get_general_ledger_transactions) | **GET** /accounting/generalledger | Retrieve all general ledger transactions (BETA)
-*Propertyware::AccountingApi* | [**get_owner_contributions**](docs/AccountingApi.md#get_owner_contributions) | **GET** /accounting/ownercontributions | Retrieve all the owner contributions (BETA)
-*Propertyware::AccountingApi* | [**get_owner_draws**](docs/AccountingApi.md#get_owner_draws) | **GET** /accounting/ownerdraws | Retrieve all the owner draws (BETA)
+*Propertyware::AccountingApi* | [**get_owner_contributions**](docs/AccountingApi.md#get_owner_contributions) | **GET** /accounting/ownercontributions | Retrieve all the owner contributions
+*Propertyware::AccountingApi* | [**get_owner_draws**](docs/AccountingApi.md#get_owner_draws) | **GET** /accounting/ownerdraws | Retrieve all the owner draws
 *Propertyware::AccountingApi* | [**update_gl_account**](docs/AccountingApi.md#update_gl_account) | **PUT** /accounting/glaccounts/{glAccountID} | Update a general ledger account (BETA)
-*Propertyware::AccountingApi* | [**update_owner_draw**](docs/AccountingApi.md#update_owner_draw) | **PUT** /accounting/ownerdraws/{drawID} | Update an owner draw (BETA)
-*Propertyware::BillsApi* | [**create_bill**](docs/BillsApi.md#create_bill) | **POST** /bills | Create a bill (BETA)
-*Propertyware::BillsApi* | [**create_bill_payment**](docs/BillsApi.md#create_bill_payment) | **POST** /bills/payment | Creates Bill Payment (BETA)
+*Propertyware::AccountingApi* | [**update_owner_draw**](docs/AccountingApi.md#update_owner_draw) | **PUT** /accounting/ownerdraws/{drawID} | Update an owner draw
+*Propertyware::BillsApi* | [**create_bill**](docs/BillsApi.md#create_bill) | **POST** /bills | Create a bill
+*Propertyware::BillsApi* | [**create_bill_payment**](docs/BillsApi.md#create_bill_payment) | **POST** /bills/payment | Create a Bill Payment (BETA)
 *Propertyware::BillsApi* | [**create_bill_payments_using_post1**](docs/BillsApi.md#create_bill_payments_using_post1) | **POST** /bills/payments/bulk | Create bill payments in bulk (BETA)
-*Propertyware::BillsApi* | [**create_bills**](docs/BillsApi.md#create_bills) | **POST** /bills/bulk | Create bills in bulk (BETA)
-*Propertyware::BillsApi* | [**create_credit**](docs/BillsApi.md#create_credit) | **POST** /bills/credit | Create a credit (BETA)
-*Propertyware::BillsApi* | [**create_vendor_check**](docs/BillsApi.md#create_vendor_check) | **POST** /bills/vendorChecks | Create a Vendor check (BETA)
+*Propertyware::BillsApi* | [**create_bills**](docs/BillsApi.md#create_bills) | **POST** /bills/bulk | Create bills in bulk
+*Propertyware::BillsApi* | [**create_credit**](docs/BillsApi.md#create_credit) | **POST** /bills/credit | Create a credit
+*Propertyware::BillsApi* | [**create_vendor_check**](docs/BillsApi.md#create_vendor_check) | **POST** /bills/vendorchecks | Create a Vendor check (BETA)
 *Propertyware::BillsApi* | [**delete_bill**](docs/BillsApi.md#delete_bill) | **DELETE** /bills/{billID} | Delete a Bill (BETA)
-*Propertyware::BillsApi* | [**get_bill**](docs/BillsApi.md#get_bill) | **GET** /bills/{billID} | Retrieve a bill (BETA)
-*Propertyware::BillsApi* | [**get_bill_payment**](docs/BillsApi.md#get_bill_payment) | **GET** /bills/payments/{billPaymentID} | Retrieve a bill payment (BETA)
-*Propertyware::BillsApi* | [**get_bill_payments**](docs/BillsApi.md#get_bill_payments) | **GET** /bills/payments | Retrieve all bill payments (BETA)
-*Propertyware::BillsApi* | [**get_bills**](docs/BillsApi.md#get_bills) | **GET** /bills | Retrieve all bills (BETA)
-*Propertyware::BillsApi* | [**get_vendor_checks**](docs/BillsApi.md#get_vendor_checks) | **GET** /bills/vendorChecks | Retrieve all Vendor checks (BETA)
-*Propertyware::BillsApi* | [**update_bill**](docs/BillsApi.md#update_bill) | **PUT** /bills/{billId} | Update a Bill (BETA)
+*Propertyware::BillsApi* | [**get_bill**](docs/BillsApi.md#get_bill) | **GET** /bills/{billID} | Retrieve a bill
+*Propertyware::BillsApi* | [**get_bill_payment**](docs/BillsApi.md#get_bill_payment) | **GET** /bills/payments/{billPaymentID} | Retrieve a bill payment
+*Propertyware::BillsApi* | [**get_bill_payments**](docs/BillsApi.md#get_bill_payments) | **GET** /bills/payments | Retrieve all bill payments
+*Propertyware::BillsApi* | [**get_bills**](docs/BillsApi.md#get_bills) | **GET** /bills | Retrieve all bills
+*Propertyware::BillsApi* | [**get_vendor_checks**](docs/BillsApi.md#get_vendor_checks) | **GET** /bills/vendorchecks | Retrieve all Vendor checks (BETA)
+*Propertyware::BillsApi* | [**update_bill**](docs/BillsApi.md#update_bill) | **PUT** /bills/{billId} | Update a Bill
 *Propertyware::BillsApi* | [**update_bill_payment**](docs/BillsApi.md#update_bill_payment) | **PUT** /bills/payment/{billPaymentID} | Update a Bill Payment (BETA)
-*Propertyware::BillsApi* | [**update_credit**](docs/BillsApi.md#update_credit) | **PUT** /bills/credit/{creditID} | Update a Credit (BETA)
-*Propertyware::BillsApi* | [**update_vendor_check**](docs/BillsApi.md#update_vendor_check) | **PUT** /bills/vendorChecks/{vendorCheckID} | Update a Vendor check (BETA)
-*Propertyware::BuildingsApi* | [**create_building**](docs/BuildingsApi.md#create_building) | **POST** /buildings | Create a building (BETA)
-*Propertyware::BuildingsApi* | [**create_contacts**](docs/BuildingsApi.md#create_contacts) | **POST** /buildings/bulk | Create buildings in bulk (BETA)
+*Propertyware::BillsApi* | [**update_credit**](docs/BillsApi.md#update_credit) | **PUT** /bills/credit/{creditID} | Update a Credit
+*Propertyware::BillsApi* | [**update_vendor_check**](docs/BillsApi.md#update_vendor_check) | **PUT** /bills/vendorchecks/{vendorCheckID} | Update a Vendor check (BETA)
+*Propertyware::BuildingsApi* | [**create_building**](docs/BuildingsApi.md#create_building) | **POST** /buildings | Create a building
+*Propertyware::BuildingsApi* | [**create_contacts**](docs/BuildingsApi.md#create_contacts) | **POST** /buildings/bulk | Create buildings in bulk
 *Propertyware::BuildingsApi* | [**delete_building**](docs/BuildingsApi.md#delete_building) | **DELETE** /buildings/{buildingID} | Delete a building (BETA)
 *Propertyware::BuildingsApi* | [**delete_building_conversation**](docs/BuildingsApi.md#delete_building_conversation) | **DELETE** /buildings/{buildingID}/conversations/{conversationID} | Delete a building conversation (BETA)
 *Propertyware::BuildingsApi* | [**get_building**](docs/BuildingsApi.md#get_building) | **GET** /buildings/{buildingID} | Retrieve a building
 *Propertyware::BuildingsApi* | [**get_building_conversation**](docs/BuildingsApi.md#get_building_conversation) | **GET** /buildings/{buildingID}/conversations/{conversationID} | Retrieve a building conversation
 *Propertyware::BuildingsApi* | [**get_building_conversations**](docs/BuildingsApi.md#get_building_conversations) | **GET** /buildings/{buildingID}/conversations | Retrieve all building conversations
-*Propertyware::BuildingsApi* | [**get_building_management_fee**](docs/BuildingsApi.md#get_building_management_fee) | **GET** /buildings/{buildingID}/managementfees | Retrieve all building management fees (BETA)
-*Propertyware::BuildingsApi* | [**get_building_managers**](docs/BuildingsApi.md#get_building_managers) | **GET** /buildings/{buildingID}/managers | Retrieve all building property managers
-*Propertyware::BuildingsApi* | [**get_building_notes**](docs/BuildingsApi.md#get_building_notes) | **GET** /buildings/{buildingID}/notes | Retrieve all building notes
+*Propertyware::BuildingsApi* | [**get_building_management_fee**](docs/BuildingsApi.md#get_building_management_fee) | **GET** /buildings/{buildingID}/managementfees | Retrieves all the management fee rules of a building. (BETA)
+*Propertyware::BuildingsApi* | [**get_building_managers**](docs/BuildingsApi.md#get_building_managers) | **GET** /buildings/{buildingID}/managers | Retrieves all the property managers of a building
+*Propertyware::BuildingsApi* | [**get_building_notes**](docs/BuildingsApi.md#get_building_notes) | **GET** /buildings/{buildingID}/notes | Retrieves all the notes of a building.
 *Propertyware::BuildingsApi* | [**get_buildings**](docs/BuildingsApi.md#get_buildings) | **GET** /buildings | Retrieve all buildings
-*Propertyware::BuildingsApi* | [**update_building**](docs/BuildingsApi.md#update_building) | **PUT** /buildings/{buildingID} | Update a building (BETA)
-*Propertyware::ContactsApi* | [**create_contact**](docs/ContactsApi.md#create_contact) | **POST** /contacts | Create a contact (BETA)
-*Propertyware::ContactsApi* | [**create_contacts_using_post1**](docs/ContactsApi.md#create_contacts_using_post1) | **POST** /contacts/bulk | Create contacts in bulk (BETA)
+*Propertyware::BuildingsApi* | [**update_building**](docs/BuildingsApi.md#update_building) | **PUT** /buildings/customfields | Update a building custom fields (BETA)
+*Propertyware::BuildingsApi* | [**update_building_using_put1**](docs/BuildingsApi.md#update_building_using_put1) | **PUT** /buildings/{buildingID} | Update a building
+*Propertyware::ContactsApi* | [**create_contact**](docs/ContactsApi.md#create_contact) | **POST** /contacts | Create a contact
+*Propertyware::ContactsApi* | [**create_contacts_using_post1**](docs/ContactsApi.md#create_contacts_using_post1) | **POST** /contacts/bulk | Create contacts in bulk
 *Propertyware::ContactsApi* | [**delete_contact**](docs/ContactsApi.md#delete_contact) | **DELETE** /contacts/{contactID} | Delete a contact (BETA)
 *Propertyware::ContactsApi* | [**delete_contact_conversation**](docs/ContactsApi.md#delete_contact_conversation) | **DELETE** /contacts/{contactID}/conversations/{conversationID} | Delete a contact conversation (BETA)
 *Propertyware::ContactsApi* | [**get_contact**](docs/ContactsApi.md#get_contact) | **GET** /contacts/{contactID} | Retrieve a contact
@@ -452,33 +618,37 @@ Class | Method | HTTP request | Description
 *Propertyware::ContactsApi* | [**get_contact_conversation**](docs/ContactsApi.md#get_contact_conversation) | **GET** /contacts/{contactID}/conversations/{conversationID} | Retrieve a contact conversation
 *Propertyware::ContactsApi* | [**get_contact_conversations**](docs/ContactsApi.md#get_contact_conversations) | **GET** /contacts/{contactID}/conversations | Retrieve all contact conversations
 *Propertyware::ContactsApi* | [**get_contacts**](docs/ContactsApi.md#get_contacts) | **GET** /contacts | Retrieve all contacts
-*Propertyware::ContactsApi* | [**update_contact**](docs/ContactsApi.md#update_contact) | **PUT** /contacts/{contactID} | Update a contact (BETA)
-*Propertyware::CustomFieldFieldsApi* | [**retrieve_custom_field_definitions**](docs/CustomFieldFieldsApi.md#retrieve_custom_field_definitions) | **GET** /customfields/{entityType}/definitions | Retrieve list of custom field definitions.
+*Propertyware::ContactsApi* | [**update_contact**](docs/ContactsApi.md#update_contact) | **PUT** /contacts/customfields | Update a contact custom fields (BETA)
+*Propertyware::ContactsApi* | [**update_contact_using_put1**](docs/ContactsApi.md#update_contact_using_put1) | **PUT** /contacts/{contactID} | Update a contact
+*Propertyware::CustomFieldDefinitionsApi* | [**retrieve_custom_field_definitions**](docs/CustomFieldDefinitionsApi.md#retrieve_custom_field_definitions) | **GET** /customfields/{entityType}/definitions | Retrieve list of custom field definitions.
 *Propertyware::DocumentsApi* | [**delete_document**](docs/DocumentsApi.md#delete_document) | **DELETE** /docs/{documentId} | Delete a document (BETA)
 *Propertyware::DocumentsApi* | [**download_document**](docs/DocumentsApi.md#download_document) | **GET** /docs/{documentId}/download | Download a document
 *Propertyware::DocumentsApi* | [**retrieve_all_documents**](docs/DocumentsApi.md#retrieve_all_documents) | **GET** /docs | Retrieve all documents
 *Propertyware::DocumentsApi* | [**retrieve_document**](docs/DocumentsApi.md#retrieve_document) | **GET** /docs/{documentId} | Retrieve a document
-*Propertyware::DocumentsApi* | [**update_document**](docs/DocumentsApi.md#update_document) | **PUT** /docs/{documentId} | Update a document (BETA)
-*Propertyware::DocumentsApi* | [**upload_document**](docs/DocumentsApi.md#upload_document) | **POST** /docs | Upload a document (BETA)
+*Propertyware::DocumentsApi* | [**update_document**](docs/DocumentsApi.md#update_document) | **PUT** /docs/{documentId} | Update a document
+*Propertyware::DocumentsApi* | [**upload_document**](docs/DocumentsApi.md#upload_document) | **POST** /docs | Upload a document
 *Propertyware::HealthCheckApi* | [**health**](docs/HealthCheckApi.md#health) | **GET** /health | Health check
 *Propertyware::InspectionsApi* | [**get_inspection**](docs/InspectionsApi.md#get_inspection) | **GET** /inspections/{inspectionId} | Retrieve a inspection
 *Propertyware::InspectionsApi* | [**get_inspections**](docs/InspectionsApi.md#get_inspections) | **GET** /inspections | Retrieve all inspections
-*Propertyware::LeasesApi* | [**add_comment_to_lease_conversation**](docs/LeasesApi.md#add_comment_to_lease_conversation) | **POST** /leases/{leaseID}/conversations/{conversationID}/comments | Add comment to a lease conversation (BETA)
+*Propertyware::LeasesApi* | [**add_comment_to_lease_conversation**](docs/LeasesApi.md#add_comment_to_lease_conversation) | **POST** /leases/{leaseID}/conversations/{conversationID}/comments | Add comment to a lease conversation
 *Propertyware::LeasesApi* | [**create_journal_entry**](docs/LeasesApi.md#create_journal_entry) | **POST** /leases/journalentries | Create a lease journal entry (BETA)
-*Propertyware::LeasesApi* | [**create_lease**](docs/LeasesApi.md#create_lease) | **POST** /leases | Create a lease (BETA)
+*Propertyware::LeasesApi* | [**create_lease**](docs/LeasesApi.md#create_lease) | **POST** /leases | Create a lease
 *Propertyware::LeasesApi* | [**create_lease_adjustment**](docs/LeasesApi.md#create_lease_adjustment) | **POST** /leases/adjustments | Create a lease adjustment (BETA)
+*Propertyware::LeasesApi* | [**create_lease_auto_charges**](docs/LeasesApi.md#create_lease_auto_charges) | **POST** /leases/autocharges | Create lease auto charges (BETA)
 *Propertyware::LeasesApi* | [**create_lease_charge**](docs/LeasesApi.md#create_lease_charge) | **POST** /leases/charges | Create a lease charge (BETA)
 *Propertyware::LeasesApi* | [**create_lease_charges**](docs/LeasesApi.md#create_lease_charges) | **POST** /leases/charges/bulk | Create lease charges in bulk (BETA)
-*Propertyware::LeasesApi* | [**create_lease_conversation**](docs/LeasesApi.md#create_lease_conversation) | **POST** /leases/{leaseID}/conversations | Create a lease conversation (BETA)
+*Propertyware::LeasesApi* | [**create_lease_conversation**](docs/LeasesApi.md#create_lease_conversation) | **POST** /leases/{leaseID}/conversations | Create a lease conversation
 *Propertyware::LeasesApi* | [**create_lease_discount**](docs/LeasesApi.md#create_lease_discount) | **POST** /leases/discounts | Create a lease discount (BETA)
 *Propertyware::LeasesApi* | [**create_lease_payment**](docs/LeasesApi.md#create_lease_payment) | **POST** /leases/payments | Create a lease payment (BETA)
 *Propertyware::LeasesApi* | [**create_lease_refund**](docs/LeasesApi.md#create_lease_refund) | **POST** /leases/refunds | Create a lease refund (BETA)
 *Propertyware::LeasesApi* | [**delete_lease**](docs/LeasesApi.md#delete_lease) | **DELETE** /leases/{leaseID} | Delete a lease (BETA)
+*Propertyware::LeasesApi* | [**delete_lease_charge**](docs/LeasesApi.md#delete_lease_charge) | **DELETE** /leases/charges/{chargeID} | Delete a lease charge (BETA)
 *Propertyware::LeasesApi* | [**delete_lease_conversation**](docs/LeasesApi.md#delete_lease_conversation) | **DELETE** /leases/{leaseID}/conversations/{conversationID} | Delete a lease conversation (BETA)
 *Propertyware::LeasesApi* | [**get_all_lease_statuses**](docs/LeasesApi.md#get_all_lease_statuses) | **GET** /leases/statuses | Retrieve all lease statuses (BETA)
 *Propertyware::LeasesApi* | [**get_lease**](docs/LeasesApi.md#get_lease) | **GET** /leases/{leaseId} | Retrieve a lease
 *Propertyware::LeasesApi* | [**get_lease_adjustments**](docs/LeasesApi.md#get_lease_adjustments) | **GET** /leases/adjustments | Retrieve all the adjustments
-*Propertyware::LeasesApi* | [**get_lease_auto_charges**](docs/LeasesApi.md#get_lease_auto_charges) | **GET** /leases/{leaseId}/autocharges | Retrieve all lease auto charges
+*Propertyware::LeasesApi* | [**get_lease_auto_charges**](docs/LeasesApi.md#get_lease_auto_charges) | **GET** /leases/autocharges | Retrieve all lease auto charges (New)
+*Propertyware::LeasesApi* | [**get_lease_auto_charges_using_get1**](docs/LeasesApi.md#get_lease_auto_charges_using_get1) | **GET** /leases/{leaseId}/autocharges | Retrieve all lease auto charges
 *Propertyware::LeasesApi* | [**get_lease_auto_e_payments**](docs/LeasesApi.md#get_lease_auto_e_payments) | **GET** /leases/{leaseId}/autoepayments | Retrieve all lease auto ePayments (BETA)
 *Propertyware::LeasesApi* | [**get_lease_auto_journal_entries**](docs/LeasesApi.md#get_lease_auto_journal_entries) | **GET** /leases/{leaseId}/autojournalentries | Retrieve all lease auto journal entries (BETA)
 *Propertyware::LeasesApi* | [**get_lease_charges**](docs/LeasesApi.md#get_lease_charges) | **GET** /leases/charges | Retrieve all the lease charges
@@ -490,39 +660,43 @@ Class | Method | HTTP request | Description
 *Propertyware::LeasesApi* | [**get_lease_discounts**](docs/LeasesApi.md#get_lease_discounts) | **GET** /leases/discounts | Retrieve all the lease discounts
 *Propertyware::LeasesApi* | [**get_lease_documents**](docs/LeasesApi.md#get_lease_documents) | **GET** /leases/{leaseId}/document | Retrieve all lease documents
 *Propertyware::LeasesApi* | [**get_lease_journal_entry**](docs/LeasesApi.md#get_lease_journal_entry) | **GET** /leases/journalentries/{leaseID} | Retrieve all lease journal entries 
+*Propertyware::LeasesApi* | [**get_lease_journal_entry_using_get1**](docs/LeasesApi.md#get_lease_journal_entry_using_get1) | **GET** /leases/journalentries | Retrieve all lease journal entries (New)
 *Propertyware::LeasesApi* | [**get_lease_late_fee**](docs/LeasesApi.md#get_lease_late_fee) | **GET** /leases/{leaseId}/latefeerule | Retrieve the lease late fee rule
 *Propertyware::LeasesApi* | [**get_lease_notes**](docs/LeasesApi.md#get_lease_notes) | **GET** /leases/{leaseId}/notes | Retrieve all lease notes
 *Propertyware::LeasesApi* | [**get_lease_payments**](docs/LeasesApi.md#get_lease_payments) | **GET** /leases/payments | Retrieve all the lease payments
 *Propertyware::LeasesApi* | [**get_lease_refunds**](docs/LeasesApi.md#get_lease_refunds) | **GET** /leases/refunds | Retrieve all the tenant refunds
 *Propertyware::LeasesApi* | [**get_lease_work_orders**](docs/LeasesApi.md#get_lease_work_orders) | **GET** /leases/{leaseId}/workorders | Retrieve all lease work orders
 *Propertyware::LeasesApi* | [**get_leases**](docs/LeasesApi.md#get_leases) | **GET** /leases | Retrieve all leases
-*Propertyware::LeasesApi* | [**update_lease**](docs/LeasesApi.md#update_lease) | **PUT** /leases/{leaseId} | Update a lease (BETA)
+*Propertyware::LeasesApi* | [**update_lease**](docs/LeasesApi.md#update_lease) | **PUT** /leases/customfields | Update a lease custom fields (BETA)
 *Propertyware::LeasesApi* | [**update_lease_adjustment**](docs/LeasesApi.md#update_lease_adjustment) | **PUT** /leases/adjustments/{adjustmentID} | Update a lease adjustment (BETA)
 *Propertyware::LeasesApi* | [**update_lease_charge**](docs/LeasesApi.md#update_lease_charge) | **PUT** /leases/charges/{chargeID} | Update a lease charge (BETA)
 *Propertyware::LeasesApi* | [**update_lease_discount**](docs/LeasesApi.md#update_lease_discount) | **PUT** /leases/discounts/{discountID} | Updates a lease Discount (BETA)
 *Propertyware::LeasesApi* | [**update_lease_journal_entry**](docs/LeasesApi.md#update_lease_journal_entry) | **PUT** /leases/journalentries/{journalentryID} | Update a lease journal entry (BETA)
 *Propertyware::LeasesApi* | [**update_lease_payment**](docs/LeasesApi.md#update_lease_payment) | **PUT** /leases/payments/{entityID} | Update a lease payment (BETA)
 *Propertyware::LeasesApi* | [**update_lease_refund**](docs/LeasesApi.md#update_lease_refund) | **PUT** /leases/refunds/{refundID} | Update a lease refund (BETA)
-*Propertyware::PortfoliosApi* | [**create_contacts_using_post2**](docs/PortfoliosApi.md#create_contacts_using_post2) | **POST** /portfolios/bulk | Create Portfolios in bulk (BETA)
-*Propertyware::PortfoliosApi* | [**create_portfolio**](docs/PortfoliosApi.md#create_portfolio) | **POST** /portfolios | Create a portfolio (BETA)
+*Propertyware::LeasesApi* | [**update_lease_using_put1**](docs/LeasesApi.md#update_lease_using_put1) | **PUT** /leases/{leaseId} | Update a lease
+*Propertyware::PortfoliosApi* | [**create_portfolio**](docs/PortfoliosApi.md#create_portfolio) | **POST** /portfolios | Create a portfolio
+*Propertyware::PortfoliosApi* | [**create_portfolios**](docs/PortfoliosApi.md#create_portfolios) | **POST** /portfolios/bulk | Create Portfolios in bulk
 *Propertyware::PortfoliosApi* | [**delete_portfolio_conversation**](docs/PortfoliosApi.md#delete_portfolio_conversation) | **DELETE** /portfolios/{portfolioID}/conversations/{conversationID} | Delete a portfolio conversation (BETA)
 *Propertyware::PortfoliosApi* | [**get_portfolio**](docs/PortfoliosApi.md#get_portfolio) | **GET** /portfolios/{portfolioID} | Retrieve a portfolio
 *Propertyware::PortfoliosApi* | [**get_portfolio_conversation**](docs/PortfoliosApi.md#get_portfolio_conversation) | **GET** /portfolios/{portfolioID}/conversations/{conversationID} | Retrieve a portfolio conversation
 *Propertyware::PortfoliosApi* | [**get_portfolio_conversations**](docs/PortfoliosApi.md#get_portfolio_conversations) | **GET** /portfolios/{portfolioID}/conversations | Retrieve all portfolio conversations
 *Propertyware::PortfoliosApi* | [**get_portfolios**](docs/PortfoliosApi.md#get_portfolios) | **GET** /portfolios | Retrieve all portfolios
-*Propertyware::PortfoliosApi* | [**update_portfolio**](docs/PortfoliosApi.md#update_portfolio) | **PUT** /portfolios/{portfolioID} | Update a portfolio (BETA)
-*Propertyware::ProspectsApi* | [**create_contacts_using_post3**](docs/ProspectsApi.md#create_contacts_using_post3) | **POST** /prospects/bulk | Create prospects in bulk (BETA)
-*Propertyware::ProspectsApi* | [**create_prospect**](docs/ProspectsApi.md#create_prospect) | **POST** /prospects | Create a prospect (BETA)
-*Propertyware::ProspectsApi* | [**create_prospect_conversation**](docs/ProspectsApi.md#create_prospect_conversation) | **POST** /prospects/{prospectID}/conversations | Create a prospect conversation (BETA)
+*Propertyware::PortfoliosApi* | [**update_portfolio**](docs/PortfoliosApi.md#update_portfolio) | **PUT** /portfolios/customfields | Update a portfolio custom fields (BETA)
+*Propertyware::PortfoliosApi* | [**update_portfolio_using_put1**](docs/PortfoliosApi.md#update_portfolio_using_put1) | **PUT** /portfolios/{portfolioID} | Update a portfolio
+*Propertyware::ProspectsApi* | [**create_contacts_using_post2**](docs/ProspectsApi.md#create_contacts_using_post2) | **POST** /prospects/bulk | Create prospects in bulk
+*Propertyware::ProspectsApi* | [**create_prospect**](docs/ProspectsApi.md#create_prospect) | **POST** /prospects | Create a prospect
+*Propertyware::ProspectsApi* | [**create_prospect_conversation**](docs/ProspectsApi.md#create_prospect_conversation) | **POST** /prospects/{prospectID}/conversations | Create a prospect conversation
 *Propertyware::ProspectsApi* | [**delete_prospect_conversation**](docs/ProspectsApi.md#delete_prospect_conversation) | **DELETE** /prospects/{prospectID}/conversations/{conversationID} | Delete a prospect conversation (BETA)
 *Propertyware::ProspectsApi* | [**get_prospect**](docs/ProspectsApi.md#get_prospect) | **GET** /prospects/{prospectID} | Retrieve a prospect
 *Propertyware::ProspectsApi* | [**get_prospect_campaign**](docs/ProspectsApi.md#get_prospect_campaign) | **GET** /prospects/{prospectID}/campaign | Retrieve prospect campaign
 *Propertyware::ProspectsApi* | [**get_prospect_conversation**](docs/ProspectsApi.md#get_prospect_conversation) | **GET** /prospects/{prospectID}/conversations/{conversationID} | Retrieve a prospect conversation
 *Propertyware::ProspectsApi* | [**get_prospect_conversations**](docs/ProspectsApi.md#get_prospect_conversations) | **GET** /prospects/{prospectID}/conversations | Retrieve all prospect conversations
-*Propertyware::ProspectsApi* | [**get_prospect_statuses**](docs/ProspectsApi.md#get_prospect_statuses) | **GET** /prospects/statuses | Retrieve all prospect statuses (BETA)
+*Propertyware::ProspectsApi* | [**get_prospect_statuses**](docs/ProspectsApi.md#get_prospect_statuses) | **GET** /prospects/statuses | Retrieve all prospect statuses
 *Propertyware::ProspectsApi* | [**get_prospects**](docs/ProspectsApi.md#get_prospects) | **GET** /prospects | Retrieve all prospects
-*Propertyware::UnitsApi* | [**create_contacts_using_post4**](docs/UnitsApi.md#create_contacts_using_post4) | **POST** /units/bulk | Create units in bulk (BETA)
-*Propertyware::UnitsApi* | [**create_unit**](docs/UnitsApi.md#create_unit) | **POST** /units | Create a unit (BETA)
+*Propertyware::ProspectsApi* | [**update_lease_using_put2**](docs/ProspectsApi.md#update_lease_using_put2) | **PUT** /prospects/customfields | Update a prospect custom fields (BETA)
+*Propertyware::UnitsApi* | [**create_unit**](docs/UnitsApi.md#create_unit) | **POST** /units | Create a unit
+*Propertyware::UnitsApi* | [**create_units**](docs/UnitsApi.md#create_units) | **POST** /units/bulk | Create units in bulk
 *Propertyware::UnitsApi* | [**delete_unit**](docs/UnitsApi.md#delete_unit) | **DELETE** /units/{unitID} | Delete a unit (BETA)
 *Propertyware::UnitsApi* | [**delete_unit_conversation**](docs/UnitsApi.md#delete_unit_conversation) | **DELETE** /units/{unitID}/conversations/{conversationID} | Delete a unit conversation (BETA)
 *Propertyware::UnitsApi* | [**get_lease_custom_fields_using_get1**](docs/UnitsApi.md#get_lease_custom_fields_using_get1) | **GET** /units/{unitID}/customFields | Retrieve all unit custom fields
@@ -530,24 +704,29 @@ Class | Method | HTTP request | Description
 *Propertyware::UnitsApi* | [**get_unit_conversation**](docs/UnitsApi.md#get_unit_conversation) | **GET** /units/{unitID}/conversations/{conversationID} | Retrieve a unit conversation
 *Propertyware::UnitsApi* | [**get_unit_conversations**](docs/UnitsApi.md#get_unit_conversations) | **GET** /units/{unitID}/conversations | Retrieve all unit conversations
 *Propertyware::UnitsApi* | [**get_units**](docs/UnitsApi.md#get_units) | **GET** /units | Retrieve all units
-*Propertyware::UnitsApi* | [**update_unit**](docs/UnitsApi.md#update_unit) | **PUT** /units/{unitID} | Update a unit (BETA)
-*Propertyware::VendorsApi* | [**create_vendor**](docs/VendorsApi.md#create_vendor) | **POST** /vendors | Create a vendor (BETA)
-*Propertyware::VendorsApi* | [**create_vendors**](docs/VendorsApi.md#create_vendors) | **POST** /vendors/bulk | Create Vendors in bulk (BETA)
+*Propertyware::UnitsApi* | [**update_unit**](docs/UnitsApi.md#update_unit) | **PUT** /units/customfields | Update a unit custom fields (BETA)
+*Propertyware::UnitsApi* | [**update_unit_using_put1**](docs/UnitsApi.md#update_unit_using_put1) | **PUT** /units/{unitID} | Update a unit
+*Propertyware::VendorsApi* | [**create_vendor**](docs/VendorsApi.md#create_vendor) | **POST** /vendors | Create a vendor
+*Propertyware::VendorsApi* | [**create_vendors**](docs/VendorsApi.md#create_vendors) | **POST** /vendors/bulk | Create Vendors in bulk
 *Propertyware::VendorsApi* | [**get_vendor**](docs/VendorsApi.md#get_vendor) | **GET** /vendors/{vendorID} | Retrieve a vendor
-*Propertyware::VendorsApi* | [**get_vendor_account**](docs/VendorsApi.md#get_vendor_account) | **GET** /vendors/{vendorID}/account | Retrieve vendor GL account (BETA)
+*Propertyware::VendorsApi* | [**get_vendor_account**](docs/VendorsApi.md#get_vendor_account) | **GET** /vendors/{vendorID}/account | Retrieve vendor GL account
 *Propertyware::VendorsApi* | [**get_vendor_conversation**](docs/VendorsApi.md#get_vendor_conversation) | **GET** /vendors/{vendorID}/conversations/{conversationID} | Retrieve a vendor conversation
 *Propertyware::VendorsApi* | [**get_vendor_conversations**](docs/VendorsApi.md#get_vendor_conversations) | **GET** /vendors/{vendorID}/conversations | Retrieve all vendor conversations
 *Propertyware::VendorsApi* | [**get_vendors**](docs/VendorsApi.md#get_vendors) | **GET** /vendors | Retrieve all vendors
-*Propertyware::WorkOrdersApi* | [**create_work_order**](docs/WorkOrdersApi.md#create_work_order) | **POST** /workorders | Create a work order (BETA)
-*Propertyware::WorkOrdersApi* | [**create_work_order_task**](docs/WorkOrdersApi.md#create_work_order_task) | **POST** /workorders/{workOrderId}/tasks | Create a task to workOrder (BETA)
-*Propertyware::WorkOrdersApi* | [**create_work_orders**](docs/WorkOrdersApi.md#create_work_orders) | **POST** /workorders/bulk | Create work orders in bulk (BETA)
+*Propertyware::VendorsApi* | [**update_vendor**](docs/VendorsApi.md#update_vendor) | **PUT** /vendors/customfields | Update a vendor custom fields (BETA)
+*Propertyware::WorkOrdersApi* | [**add_work_order_task_comments**](docs/WorkOrdersApi.md#add_work_order_task_comments) | **POST** /workorders/{workOrderId}/tasks/{taskId}/comments | Add Comments to task for a workOrder
+*Propertyware::WorkOrdersApi* | [**close_work_order**](docs/WorkOrdersApi.md#close_work_order) | **PUT** /workorders/closeworkorder/{workOrderID} | Close a Workorder  (BETA)
+*Propertyware::WorkOrdersApi* | [**create_work_order**](docs/WorkOrdersApi.md#create_work_order) | **POST** /workorders | Create a work order
+*Propertyware::WorkOrdersApi* | [**create_work_order_task**](docs/WorkOrdersApi.md#create_work_order_task) | **POST** /workorders/{workOrderId}/tasks | Create a task to workOrder
+*Propertyware::WorkOrdersApi* | [**create_work_orders**](docs/WorkOrdersApi.md#create_work_orders) | **POST** /workorders/bulk | Create work orders in bulk
 *Propertyware::WorkOrdersApi* | [**delete_work_order**](docs/WorkOrdersApi.md#delete_work_order) | **DELETE** /workorders/{workOrderID} | Delete a Work Order (BETA)
 *Propertyware::WorkOrdersApi* | [**delete_work_order_task**](docs/WorkOrdersApi.md#delete_work_order_task) | **DELETE** /workorders/{workOrderID}/tasks/{taskID} | Delete a work order task (BETA)
 *Propertyware::WorkOrdersApi* | [**get_work_order**](docs/WorkOrdersApi.md#get_work_order) | **GET** /workorders/{workOrderId} | Retrieve a work order
 *Propertyware::WorkOrdersApi* | [**get_work_order_task**](docs/WorkOrdersApi.md#get_work_order_task) | **GET** /workorders/{workOrderID}/tasks/{taskID} | Retrieve a work order task
 *Propertyware::WorkOrdersApi* | [**get_work_order_tasks**](docs/WorkOrdersApi.md#get_work_order_tasks) | **GET** /workorders/{workOrderId}/tasks | Retrieve all work order tasks
 *Propertyware::WorkOrdersApi* | [**get_work_orders**](docs/WorkOrdersApi.md#get_work_orders) | **GET** /workorders | Retrieve all work orders
-*Propertyware::WorkOrdersApi* | [**update_work_order_task**](docs/WorkOrdersApi.md#update_work_order_task) | **PUT** /workorders/{workOrderId}/tasks/{taskId} | Update a task in workOrder (BETA)
+*Propertyware::WorkOrdersApi* | [**update_work_order**](docs/WorkOrdersApi.md#update_work_order) | **PUT** /workorders/customfields | Update a workorder custom fields (BETA)
+*Propertyware::WorkOrdersApi* | [**update_work_order_task**](docs/WorkOrdersApi.md#update_work_order_task) | **PUT** /workorders/{workOrderId}/tasks/{taskId} | Update a task in workOrder
 
 
 ## Documentation for Models
@@ -556,6 +735,7 @@ Class | Method | HTTP request | Description
  - [Propertyware::Address](docs/Address.md)
  - [Propertyware::Adjustment](docs/Adjustment.md)
  - [Propertyware::Amenity](docs/Amenity.md)
+ - [Propertyware::AutoCharge](docs/AutoCharge.md)
  - [Propertyware::AutoJournalEntry](docs/AutoJournalEntry.md)
  - [Propertyware::AutoPayment](docs/AutoPayment.md)
  - [Propertyware::Bank](docs/Bank.md)
@@ -573,9 +753,11 @@ Class | Method | HTTP request | Description
  - [Propertyware::ChargeTx](docs/ChargeTx.md)
  - [Propertyware::Check](docs/Check.md)
  - [Propertyware::CheckSplit](docs/CheckSplit.md)
+ - [Propertyware::CloseWorkOrder](docs/CloseWorkOrder.md)
  - [Propertyware::Comment](docs/Comment.md)
  - [Propertyware::Contact](docs/Contact.md)
  - [Propertyware::ContactCategory](docs/ContactCategory.md)
+ - [Propertyware::ContactExtension](docs/ContactExtension.md)
  - [Propertyware::Conversation](docs/Conversation.md)
  - [Propertyware::CreditCardAccount](docs/CreditCardAccount.md)
  - [Propertyware::CreditMemo](docs/CreditMemo.md)
@@ -583,12 +765,14 @@ Class | Method | HTTP request | Description
  - [Propertyware::CurrentLiability](docs/CurrentLiability.md)
  - [Propertyware::CustomField](docs/CustomField.md)
  - [Propertyware::CustomFieldDefinition](docs/CustomFieldDefinition.md)
+ - [Propertyware::CustomFieldSet](docs/CustomFieldSet.md)
  - [Propertyware::Discount](docs/Discount.md)
  - [Propertyware::Document](docs/Document.md)
  - [Propertyware::Entry](docs/Entry.md)
  - [Propertyware::Equity](docs/Equity.md)
  - [Propertyware::ErrorResponse](docs/ErrorResponse.md)
  - [Propertyware::Expense](docs/Expense.md)
+ - [Propertyware::ExpenseRecoveryCharge](docs/ExpenseRecoveryCharge.md)
  - [Propertyware::GLItem](docs/GLItem.md)
  - [Propertyware::Income](docs/Income.md)
  - [Propertyware::Inspection](docs/Inspection.md)
@@ -602,6 +786,7 @@ Class | Method | HTTP request | Description
  - [Propertyware::LeaseClause](docs/LeaseClause.md)
  - [Propertyware::LeaseContact](docs/LeaseContact.md)
  - [Propertyware::LeaseStatus](docs/LeaseStatus.md)
+ - [Propertyware::LineItem](docs/LineItem.md)
  - [Propertyware::ManagementFee](docs/ManagementFee.md)
  - [Propertyware::ManagementSettings](docs/ManagementSettings.md)
  - [Propertyware::Marketing](docs/Marketing.md)
@@ -641,6 +826,7 @@ Class | Method | HTTP request | Description
  - [Propertyware::SaveContact](docs/SaveContact.md)
  - [Propertyware::SaveConversation](docs/SaveConversation.md)
  - [Propertyware::SaveCredit](docs/SaveCredit.md)
+ - [Propertyware::SaveCustomField](docs/SaveCustomField.md)
  - [Propertyware::SaveDiscount](docs/SaveDiscount.md)
  - [Propertyware::SaveJournalEntrySplit](docs/SaveJournalEntrySplit.md)
  - [Propertyware::SaveLease](docs/SaveLease.md)
@@ -660,7 +846,9 @@ Class | Method | HTTP request | Description
  - [Propertyware::SplitPaid](docs/SplitPaid.md)
  - [Propertyware::SplitPay](docs/SplitPay.md)
  - [Propertyware::Task](docs/Task.md)
+ - [Propertyware::TimeCardEntry](docs/TimeCardEntry.md)
  - [Propertyware::Unit](docs/Unit.md)
+ - [Propertyware::UpdateBuilding](docs/UpdateBuilding.md)
  - [Propertyware::UpdateDocument](docs/UpdateDocument.md)
  - [Propertyware::UpdateLeaseJournalEntry](docs/UpdateLeaseJournalEntry.md)
  - [Propertyware::Vendor](docs/Vendor.md)

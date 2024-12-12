@@ -4,25 +4,196 @@ All URIs are relative to *https://api.propertyware.com/pw/api/rest/v1*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**create_work_order**](WorkOrdersApi.md#create_work_order) | **POST** /workorders | Create a work order (BETA) |
-| [**create_work_order_task**](WorkOrdersApi.md#create_work_order_task) | **POST** /workorders/{workOrderId}/tasks | Create a task to workOrder (BETA) |
-| [**create_work_orders**](WorkOrdersApi.md#create_work_orders) | **POST** /workorders/bulk | Create work orders in bulk (BETA) |
+| [**add_work_order_task_comments**](WorkOrdersApi.md#add_work_order_task_comments) | **POST** /workorders/{workOrderId}/tasks/{taskId}/comments | Add Comments to task for a workOrder |
+| [**close_work_order**](WorkOrdersApi.md#close_work_order) | **PUT** /workorders/closeworkorder/{workOrderID} | Close a Workorder  (BETA) |
+| [**create_work_order**](WorkOrdersApi.md#create_work_order) | **POST** /workorders | Create a work order |
+| [**create_work_order_task**](WorkOrdersApi.md#create_work_order_task) | **POST** /workorders/{workOrderId}/tasks | Create a task to workOrder |
+| [**create_work_orders**](WorkOrdersApi.md#create_work_orders) | **POST** /workorders/bulk | Create work orders in bulk |
 | [**delete_work_order**](WorkOrdersApi.md#delete_work_order) | **DELETE** /workorders/{workOrderID} | Delete a Work Order (BETA) |
 | [**delete_work_order_task**](WorkOrdersApi.md#delete_work_order_task) | **DELETE** /workorders/{workOrderID}/tasks/{taskID} | Delete a work order task (BETA) |
 | [**get_work_order**](WorkOrdersApi.md#get_work_order) | **GET** /workorders/{workOrderId} | Retrieve a work order |
 | [**get_work_order_task**](WorkOrdersApi.md#get_work_order_task) | **GET** /workorders/{workOrderID}/tasks/{taskID} | Retrieve a work order task |
 | [**get_work_order_tasks**](WorkOrdersApi.md#get_work_order_tasks) | **GET** /workorders/{workOrderId}/tasks | Retrieve all work order tasks |
 | [**get_work_orders**](WorkOrdersApi.md#get_work_orders) | **GET** /workorders | Retrieve all work orders |
-| [**update_work_order_task**](WorkOrdersApi.md#update_work_order_task) | **PUT** /workorders/{workOrderId}/tasks/{taskId} | Update a task in workOrder (BETA) |
+| [**update_work_order**](WorkOrdersApi.md#update_work_order) | **PUT** /workorders/customfields | Update a workorder custom fields (BETA) |
+| [**update_work_order_task**](WorkOrdersApi.md#update_work_order_task) | **PUT** /workorders/{workOrderId}/tasks/{taskId} | Update a task in workOrder |
+
+
+## add_work_order_task_comments
+
+> <Task> add_work_order_task_comments(work_order_id, task_id, save_comment)
+
+Add Comments to task for a workOrder
+
+Add Comments to task for WorkOrder.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">WORK ORDERS</span> - <code>Write</code> 
+
+### Examples
+
+```ruby
+require 'time'
+require 'propertyware'
+# setup authorization
+Propertyware.configure do |config|
+  # Configure API key authorization: organizationId
+  config.api_key['organizationId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['organizationId'] = 'Bearer'
+
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Propertyware::WorkOrdersApi.new
+work_order_id = 789 # Integer | Work Order ID
+task_id = 789 # Integer | Task ID
+save_comment = Propertyware::SaveComment.new({text: 'text_example'}) # SaveComment | saveComment
+
+begin
+  # Add Comments to task for a workOrder
+  result = api_instance.add_work_order_task_comments(work_order_id, task_id, save_comment)
+  p result
+rescue Propertyware::ApiError => e
+  puts "Error when calling WorkOrdersApi->add_work_order_task_comments: #{e}"
+end
+```
+
+#### Using the add_work_order_task_comments_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Task>, Integer, Hash)> add_work_order_task_comments_with_http_info(work_order_id, task_id, save_comment)
+
+```ruby
+begin
+  # Add Comments to task for a workOrder
+  data, status_code, headers = api_instance.add_work_order_task_comments_with_http_info(work_order_id, task_id, save_comment)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Task>
+rescue Propertyware::ApiError => e
+  puts "Error when calling WorkOrdersApi->add_work_order_task_comments_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **work_order_id** | **Integer** | Work Order ID |  |
+| **task_id** | **Integer** | Task ID |  |
+| **save_comment** | [**SaveComment**](SaveComment.md) | saveComment |  |
+
+### Return type
+
+[**Task**](Task.md)
+
+### Authorization
+
+[organizationId](../README.md#organizationId), [clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## close_work_order
+
+> <ResponseEntity> close_work_order(work_order_id, close_work_order)
+
+Close a Workorder  (BETA)
+
+<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Close an existing Workorder<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">WORK ORDERS</span> - <code>Write</code> 
+
+### Examples
+
+```ruby
+require 'time'
+require 'propertyware'
+# setup authorization
+Propertyware.configure do |config|
+  # Configure API key authorization: organizationId
+  config.api_key['organizationId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['organizationId'] = 'Bearer'
+
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Propertyware::WorkOrdersApi.new
+work_order_id = 789 # Integer | WorkOrder ID
+close_work_order = Propertyware::CloseWorkOrder.new({time_card_entry: [Propertyware::TimeCardEntry.new({vendor_id: 3.56})]}) # CloseWorkOrder | closeWorkOrder
+
+begin
+  # Close a Workorder  (BETA)
+  result = api_instance.close_work_order(work_order_id, close_work_order)
+  p result
+rescue Propertyware::ApiError => e
+  puts "Error when calling WorkOrdersApi->close_work_order: #{e}"
+end
+```
+
+#### Using the close_work_order_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ResponseEntity>, Integer, Hash)> close_work_order_with_http_info(work_order_id, close_work_order)
+
+```ruby
+begin
+  # Close a Workorder  (BETA)
+  data, status_code, headers = api_instance.close_work_order_with_http_info(work_order_id, close_work_order)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ResponseEntity>
+rescue Propertyware::ApiError => e
+  puts "Error when calling WorkOrdersApi->close_work_order_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **work_order_id** | **Integer** | WorkOrder ID |  |
+| **close_work_order** | [**CloseWorkOrder**](CloseWorkOrder.md) | closeWorkOrder |  |
+
+### Return type
+
+[**ResponseEntity**](ResponseEntity.md)
+
+### Authorization
+
+[organizationId](../README.md#organizationId), [clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ## create_work_order
 
 > <WorkOrder> create_work_order(save_work_order)
 
-Create a work order (BETA)
+Create a work order
 
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Creates a work order.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">WORK ORDERS</span> - <code>Write</code> 
+Creates a work order.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">WORK ORDERS</span> - <code>Write</code> 
 
 ### Examples
 
@@ -51,7 +222,7 @@ api_instance = Propertyware::WorkOrdersApi.new
 save_work_order = Propertyware::SaveWorkOrder.new({building_id: 3.56}) # SaveWorkOrder | saveWorkOrder
 
 begin
-  # Create a work order (BETA)
+  # Create a work order
   result = api_instance.create_work_order(save_work_order)
   p result
 rescue Propertyware::ApiError => e
@@ -67,7 +238,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create a work order (BETA)
+  # Create a work order
   data, status_code, headers = api_instance.create_work_order_with_http_info(save_work_order)
   p status_code # => 2xx
   p headers # => { ... }
@@ -101,9 +272,9 @@ end
 
 > <Task> create_work_order_task(work_order_id, save_work_order_task)
 
-Create a task to workOrder (BETA)
+Create a task to workOrder
 
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Create a task to an workOrder.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">WORK ORDERS</span> - <code>Write</code> 
+Create a task to an workOrder.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">WORK ORDERS</span> - <code>Write</code> 
 
 ### Examples
 
@@ -133,7 +304,7 @@ work_order_id = 789 # Integer | Work Order ID
 save_work_order_task = Propertyware::SaveWorkOrderTask.new({description: 'description_example'}) # SaveWorkOrderTask | saveWorkOrderTask
 
 begin
-  # Create a task to workOrder (BETA)
+  # Create a task to workOrder
   result = api_instance.create_work_order_task(work_order_id, save_work_order_task)
   p result
 rescue Propertyware::ApiError => e
@@ -149,7 +320,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create a task to workOrder (BETA)
+  # Create a task to workOrder
   data, status_code, headers = api_instance.create_work_order_task_with_http_info(work_order_id, save_work_order_task)
   p status_code # => 2xx
   p headers # => { ... }
@@ -184,9 +355,9 @@ end
 
 > <Array<RESTAPIBulkSuccessResponse>> create_work_orders(save_work_order)
 
-Create work orders in bulk (BETA)
+Create work orders in bulk
 
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Creates word orders in bulk.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">WORK ORDERS</span> - <code>Write</code> 
+Creates word orders in bulk.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">WORK ORDERS</span> - <code>Write</code> 
 
 ### Examples
 
@@ -215,7 +386,7 @@ api_instance = Propertyware::WorkOrdersApi.new
 save_work_order = [Propertyware::SaveWorkOrder.new({building_id: 3.56})] # Array<SaveWorkOrder> | saveWorkOrder
 
 begin
-  # Create work orders in bulk (BETA)
+  # Create work orders in bulk
   result = api_instance.create_work_orders(save_work_order)
   p result
 rescue Propertyware::ApiError => e
@@ -231,7 +402,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create work orders in bulk (BETA)
+  # Create work orders in bulk
   data, status_code, headers = api_instance.create_work_orders_with_http_info(save_work_order)
   p status_code # => 2xx
   p headers # => { ... }
@@ -797,13 +968,94 @@ end
 - **Accept**: application/json
 
 
+## update_work_order
+
+> <ResponseEntity> update_work_order(save_custom_field)
+
+Update a workorder custom fields (BETA)
+
+<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Updates an existing workorder custom fields<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">WORK ORDERS</span> - <code>Write</code> 
+
+### Examples
+
+```ruby
+require 'time'
+require 'propertyware'
+# setup authorization
+Propertyware.configure do |config|
+  # Configure API key authorization: organizationId
+  config.api_key['organizationId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['organizationId'] = 'Bearer'
+
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Propertyware::WorkOrdersApi.new
+save_custom_field = Propertyware::SaveCustomField.new({entity_id: 3.56, field_set: [Propertyware::CustomFieldSet.new({name: 'name_example', value: 'value_example'})]}) # SaveCustomField | saveCustomField
+
+begin
+  # Update a workorder custom fields (BETA)
+  result = api_instance.update_work_order(save_custom_field)
+  p result
+rescue Propertyware::ApiError => e
+  puts "Error when calling WorkOrdersApi->update_work_order: #{e}"
+end
+```
+
+#### Using the update_work_order_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ResponseEntity>, Integer, Hash)> update_work_order_with_http_info(save_custom_field)
+
+```ruby
+begin
+  # Update a workorder custom fields (BETA)
+  data, status_code, headers = api_instance.update_work_order_with_http_info(save_custom_field)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ResponseEntity>
+rescue Propertyware::ApiError => e
+  puts "Error when calling WorkOrdersApi->update_work_order_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **save_custom_field** | [**SaveCustomField**](SaveCustomField.md) | saveCustomField |  |
+
+### Return type
+
+[**ResponseEntity**](ResponseEntity.md)
+
+### Authorization
+
+[organizationId](../README.md#organizationId), [clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## update_work_order_task
 
 > <Task> update_work_order_task(work_order_id, task_id, save_work_order_task)
 
-Update a task in workOrder (BETA)
+Update a task in workOrder
 
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Update an existing workOrder task.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">WORK ORDERS</span> - <code>Write</code> 
+Update an existing workOrder task.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">WORK ORDERS</span> - <code>Write</code> 
 
 ### Examples
 
@@ -834,7 +1086,7 @@ task_id = 789 # Integer | Task ID
 save_work_order_task = Propertyware::SaveWorkOrderTask.new({description: 'description_example'}) # SaveWorkOrderTask | saveWorkOrderTask
 
 begin
-  # Update a task in workOrder (BETA)
+  # Update a task in workOrder
   result = api_instance.update_work_order_task(work_order_id, task_id, save_work_order_task)
   p result
 rescue Propertyware::ApiError => e
@@ -850,7 +1102,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Update a task in workOrder (BETA)
+  # Update a task in workOrder
   data, status_code, headers = api_instance.update_work_order_task_with_http_info(work_order_id, task_id, save_work_order_task)
   p status_code # => 2xx
   p headers # => { ... }

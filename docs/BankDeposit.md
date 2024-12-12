@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **created_by** | **String** | User who created the record. | [optional] |
 | **created_date_time** | **Time** | Date and time the record was created. (Timezone: UTC) | [optional] |
+| **date_opened** | **String** | Date opened. | [optional] |
 | **description** | **String** | Description. | [optional] |
 | **id** | **Integer** | Unique identifier. | [optional] |
 | **last_modified_by** | **String** | User who last modified the record. | [optional] |
@@ -21,6 +22,7 @@ require 'propertyware'
 instance = Propertyware::BankDeposit.new(
   created_by: null,
   created_date_time: null,
+  date_opened: null,
   description: null,
   id: null,
   last_modified_by: null,

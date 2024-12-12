@@ -8,8 +8,8 @@ All URIs are relative to *https://api.propertyware.com/pw/api/rest/v1*
 | [**download_document**](DocumentsApi.md#download_document) | **GET** /docs/{documentId}/download | Download a document |
 | [**retrieve_all_documents**](DocumentsApi.md#retrieve_all_documents) | **GET** /docs | Retrieve all documents |
 | [**retrieve_document**](DocumentsApi.md#retrieve_document) | **GET** /docs/{documentId} | Retrieve a document |
-| [**update_document**](DocumentsApi.md#update_document) | **PUT** /docs/{documentId} | Update a document (BETA) |
-| [**upload_document**](DocumentsApi.md#upload_document) | **POST** /docs | Upload a document (BETA) |
+| [**update_document**](DocumentsApi.md#update_document) | **PUT** /docs/{documentId} | Update a document |
+| [**upload_document**](DocumentsApi.md#upload_document) | **POST** /docs | Upload a document |
 
 
 ## delete_document
@@ -213,7 +213,7 @@ opts = {
   last_modified_date_time_start: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Filters results to any item modified on or after the date time specified. 
   last_modified_date_time_end: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Filters results to any item modified on or prior to the date time specified. 
   orderby: 'orderby_example', # String | Indicates the field(s) and direction to sort the results in the response.
-  entity_id: 789 # Integer | Filters results to documents associated with a specific entity id. entity ID is not required for DESKTOP and OTHER. Remaining entities need entity ID.
+  entity_id: 789 # Integer | Filters results to documents associated with a specific entity id. entity ID is not required for “DESKTOP” and “OTHER”. Remaining entities need “entity ID”.
 }
 
 begin
@@ -253,7 +253,7 @@ end
 | **last_modified_date_time_start** | **Time** | Filters results to any item modified on or after the date time specified.  | [optional] |
 | **last_modified_date_time_end** | **Time** | Filters results to any item modified on or prior to the date time specified.  | [optional] |
 | **orderby** | **String** | Indicates the field(s) and direction to sort the results in the response. | [optional] |
-| **entity_id** | **Integer** | Filters results to documents associated with a specific entity id. entity ID is not required for DESKTOP and OTHER. Remaining entities need entity ID. | [optional] |
+| **entity_id** | **Integer** | Filters results to documents associated with a specific entity id. entity ID is not required for “DESKTOP” and “OTHER”. Remaining entities need “entity ID”. | [optional] |
 
 ### Return type
 
@@ -354,9 +354,9 @@ end
 
 > <Document> update_document(document_id, update_document)
 
-Update a document (BETA)
+Update a document
 
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Updates the metadata of a specific document.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">DOCUMENTS</span> - <code>Write</code> 
+Updates the metadata of a specific document.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">DOCUMENTS</span> - <code>Write</code> 
 
 ### Examples
 
@@ -386,7 +386,7 @@ document_id = 789 # Integer | ID of the document to be updated
 update_document = Propertyware::UpdateDocument.new({file_name: 'file_name_example'}) # UpdateDocument | updateDocument
 
 begin
-  # Update a document (BETA)
+  # Update a document
   result = api_instance.update_document(document_id, update_document)
   p result
 rescue Propertyware::ApiError => e
@@ -402,7 +402,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Update a document (BETA)
+  # Update a document
   data, status_code, headers = api_instance.update_document_with_http_info(document_id, update_document)
   p status_code # => 2xx
   p headers # => { ... }
@@ -435,11 +435,11 @@ end
 
 ## upload_document
 
-> <Document> upload_document(entity_id, entity_type, body, opts)
+> <Document> upload_document(entity_id, entity_type, file, opts)
 
-Upload a document (BETA)
+Upload a document
 
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Upload a document<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">DOCUMENTS</span> - <code>Write</code> 
+Upload a document<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">DOCUMENTS</span> - <code>Write</code> 
 
 ### Examples
 
@@ -467,15 +467,15 @@ end
 api_instance = Propertyware::DocumentsApi.new
 entity_id = 789 # Integer | Unique identifier of an entity document is attached to.
 entity_type = 'entity_type_example' # String | Entity type Document is attached to (Asset, Bill, Bank Deposit, Building, Desktop, Lease, Owner, Portfolio, Prospect, Prospect Contact, Tenant, Unit, Vendor, Check, Credit, Service Agreement, Journal Entry, Work Order)
-body = File.new('/path/to/some/file') # File | 
+file = File.new('/path/to/some/file') # File | file
 opts = {
   publish_to_tenant_portal: true, # Boolean | Indicates if the document is published to the tenant portal.
   publish_to_owner_portal: true # Boolean | Indicates if the document is published to the owner portal.
 }
 
 begin
-  # Upload a document (BETA)
-  result = api_instance.upload_document(entity_id, entity_type, body, opts)
+  # Upload a document
+  result = api_instance.upload_document(entity_id, entity_type, file, opts)
   p result
 rescue Propertyware::ApiError => e
   puts "Error when calling DocumentsApi->upload_document: #{e}"
@@ -486,12 +486,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Document>, Integer, Hash)> upload_document_with_http_info(entity_id, entity_type, body, opts)
+> <Array(<Document>, Integer, Hash)> upload_document_with_http_info(entity_id, entity_type, file, opts)
 
 ```ruby
 begin
-  # Upload a document (BETA)
-  data, status_code, headers = api_instance.upload_document_with_http_info(entity_id, entity_type, body, opts)
+  # Upload a document
+  data, status_code, headers = api_instance.upload_document_with_http_info(entity_id, entity_type, file, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Document>
@@ -506,7 +506,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **entity_id** | **Integer** | Unique identifier of an entity document is attached to. |  |
 | **entity_type** | **String** | Entity type Document is attached to (Asset, Bill, Bank Deposit, Building, Desktop, Lease, Owner, Portfolio, Prospect, Prospect Contact, Tenant, Unit, Vendor, Check, Credit, Service Agreement, Journal Entry, Work Order) |  |
-| **body** | **File** |  |  |
+| **file** | **File** | file |  |
 | **publish_to_tenant_portal** | **Boolean** | Indicates if the document is published to the tenant portal. | [optional] |
 | **publish_to_owner_portal** | **Boolean** | Indicates if the document is published to the owner portal. | [optional] |
 
@@ -520,6 +520,6 @@ end
 
 ### HTTP request headers
 
-- **Content-Type**: application/octet-stream
+- **Content-Type**: multipart/form-data
 - **Accept**: application/json
 

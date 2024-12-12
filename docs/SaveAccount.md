@@ -19,7 +19,7 @@
 | **non_current_asset** | [**NonCurrentAsset**](NonCurrentAsset.md) |  | [optional] |
 | **non_current_liability** | [**NonCurrentLiability**](NonCurrentLiability.md) |  | [optional] |
 | **non_operating_expense** | [**NonOperatingExpense**](NonOperatingExpense.md) |  | [optional] |
-| **non_operating_inome** | [**NonOperatingInome**](NonOperatingInome.md) |  | [optional] |
+| **non_operating_income** | [**NonOperatingInome**](NonOperatingInome.md) |  | [optional] |
 | **parent_gl_account_id** | **Integer** | Parent account ID. | [optional] |
 | **taxable** | **Boolean** | Indicates if the account is taxable. | [optional] |
 
@@ -44,7 +44,7 @@ instance = Propertyware::SaveAccount.new(
   non_current_asset: null,
   non_current_liability: null,
   non_operating_expense: null,
-  non_operating_inome: null,
+  non_operating_income: null,
   parent_gl_account_id: null,
   taxable: false
 )

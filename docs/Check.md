@@ -10,11 +10,11 @@
 | **created_by** | **String** | User who created the record. | [optional] |
 | **created_date_time** | **Time** | Date and time the record was created. (Timezone: UTC) | [optional] |
 | **date** | **Date** | Post date. |  |
-| **destination_account_id** | **Integer** | Destination general ledger account ID associated with this check. |  |
+| **destination_account_id** | **Integer** | ID of the bank general ledger account where the payment will be made from. | [optional] |
 | **id** | **Integer** | Unique identifier. | [optional] |
 | **last_modified_by** | **String** | User who last modified the record. | [optional] |
 | **last_modified_date_time** | **Time** | Date and time the record was last modified. (Timezone: UTC) | [optional] |
-| **payee_payer** | **String** | Name of the payee or payer. |  |
+| **payee_payer** | **String** | Name of the payee or payer. | [optional] |
 | **payment_type** | **String** | Type of payment. | [optional] |
 | **portfolio_id** | **Integer** | Id of the portfolio associated with this transaction. | [optional] |
 | **ref_no** | **String** | Reference number. | [optional] |

@@ -10,6 +10,7 @@
 | **id** | **Integer** | Unique identifier. | [optional] |
 | **last_name** | **String** | Last name. | [optional] |
 | **mobile_phone** | **String** | Mobile phone. | [optional] |
+| **role** | **String** | Role. | [optional] |
 | **work_phone** | **String** | Work phone. | [optional] |
 
 ## Example
@@ -24,6 +25,7 @@ instance = Propertyware::ProspectContact.new(
   id: null,
   last_name: null,
   mobile_phone: null,
+  role: null,
   work_phone: null
 )
 ```

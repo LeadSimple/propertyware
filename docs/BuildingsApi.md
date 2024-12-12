@@ -4,27 +4,28 @@ All URIs are relative to *https://api.propertyware.com/pw/api/rest/v1*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**create_building**](BuildingsApi.md#create_building) | **POST** /buildings | Create a building (BETA) |
-| [**create_contacts**](BuildingsApi.md#create_contacts) | **POST** /buildings/bulk | Create buildings in bulk (BETA) |
+| [**create_building**](BuildingsApi.md#create_building) | **POST** /buildings | Create a building |
+| [**create_contacts**](BuildingsApi.md#create_contacts) | **POST** /buildings/bulk | Create buildings in bulk |
 | [**delete_building**](BuildingsApi.md#delete_building) | **DELETE** /buildings/{buildingID} | Delete a building (BETA) |
 | [**delete_building_conversation**](BuildingsApi.md#delete_building_conversation) | **DELETE** /buildings/{buildingID}/conversations/{conversationID} | Delete a building conversation (BETA) |
 | [**get_building**](BuildingsApi.md#get_building) | **GET** /buildings/{buildingID} | Retrieve a building |
 | [**get_building_conversation**](BuildingsApi.md#get_building_conversation) | **GET** /buildings/{buildingID}/conversations/{conversationID} | Retrieve a building conversation |
 | [**get_building_conversations**](BuildingsApi.md#get_building_conversations) | **GET** /buildings/{buildingID}/conversations | Retrieve all building conversations |
-| [**get_building_management_fee**](BuildingsApi.md#get_building_management_fee) | **GET** /buildings/{buildingID}/managementfees | Retrieve all building management fees (BETA) |
-| [**get_building_managers**](BuildingsApi.md#get_building_managers) | **GET** /buildings/{buildingID}/managers | Retrieve all building property managers |
-| [**get_building_notes**](BuildingsApi.md#get_building_notes) | **GET** /buildings/{buildingID}/notes | Retrieve all building notes |
+| [**get_building_management_fee**](BuildingsApi.md#get_building_management_fee) | **GET** /buildings/{buildingID}/managementfees | Retrieves all the management fee rules of a building. (BETA) |
+| [**get_building_managers**](BuildingsApi.md#get_building_managers) | **GET** /buildings/{buildingID}/managers | Retrieves all the property managers of a building |
+| [**get_building_notes**](BuildingsApi.md#get_building_notes) | **GET** /buildings/{buildingID}/notes | Retrieves all the notes of a building. |
 | [**get_buildings**](BuildingsApi.md#get_buildings) | **GET** /buildings | Retrieve all buildings |
-| [**update_building**](BuildingsApi.md#update_building) | **PUT** /buildings/{buildingID} | Update a building (BETA) |
+| [**update_building**](BuildingsApi.md#update_building) | **PUT** /buildings/customfields | Update a building custom fields (BETA) |
+| [**update_building_using_put1**](BuildingsApi.md#update_building_using_put1) | **PUT** /buildings/{buildingID} | Update a building |
 
 
 ## create_building
 
 > <Building> create_building(save_building)
 
-Create a building (BETA)
+Create a building
 
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Creates a building.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">BUILDINGS</span> - <code>Write</code> 
+Creates a building.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">BUILDINGS</span> - <code>Write</code> 
 
 ### Examples
 
@@ -50,10 +51,10 @@ Propertyware.configure do |config|
 end
 
 api_instance = Propertyware::BuildingsApi.new
-save_building = Propertyware::SaveBuilding.new({abbreviation: 'abbreviation_example', category: 'RESIDENTIAL', count_unit: 37, name: 'name_example', portfolio_id: 3.56, property_type: 'NONE', type: 'type_example'}) # SaveBuilding | saveBuilding
+save_building = Propertyware::SaveBuilding.new({abbreviation: 'abbreviation_example', category: 'RESIDENTIAL', count_unit: 37, name: 'name_example', portfolio_id: 3.56, property_type: 'NONE', rentable: false, type: 'type_example'}) # SaveBuilding | saveBuilding
 
 begin
-  # Create a building (BETA)
+  # Create a building
   result = api_instance.create_building(save_building)
   p result
 rescue Propertyware::ApiError => e
@@ -69,7 +70,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create a building (BETA)
+  # Create a building
   data, status_code, headers = api_instance.create_building_with_http_info(save_building)
   p status_code # => 2xx
   p headers # => { ... }
@@ -103,9 +104,9 @@ end
 
 > <Array<RESTAPIBulkSuccessResponse>> create_contacts(save_building)
 
-Create buildings in bulk (BETA)
+Create buildings in bulk
 
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Creates buildings in bulk.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">BUILDINGS</span> - <code>Write</code> 
+Creates buildings in bulk.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">BUILDINGS</span> - <code>Write</code> 
 
 ### Examples
 
@@ -131,10 +132,10 @@ Propertyware.configure do |config|
 end
 
 api_instance = Propertyware::BuildingsApi.new
-save_building = [Propertyware::SaveBuilding.new({abbreviation: 'abbreviation_example', category: 'RESIDENTIAL', count_unit: 37, name: 'name_example', portfolio_id: 3.56, property_type: 'NONE', type: 'type_example'})] # Array<SaveBuilding> | saveBuilding
+save_building = [Propertyware::SaveBuilding.new({abbreviation: 'abbreviation_example', category: 'RESIDENTIAL', count_unit: 37, name: 'name_example', portfolio_id: 3.56, property_type: 'NONE', rentable: false, type: 'type_example'})] # Array<SaveBuilding> | saveBuilding
 
 begin
-  # Create buildings in bulk (BETA)
+  # Create buildings in bulk
   result = api_instance.create_contacts(save_building)
   p result
 rescue Propertyware::ApiError => e
@@ -150,7 +151,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create buildings in bulk (BETA)
+  # Create buildings in bulk
   data, status_code, headers = api_instance.create_contacts_with_http_info(save_building)
   p status_code # => 2xx
   p headers # => { ... }
@@ -611,7 +612,7 @@ end
 
 > <Array<ManagementFee>> get_building_management_fee(building_id)
 
-Retrieve all building management fees (BETA)
+Retrieves all the management fee rules of a building. (BETA)
 
 <p class=\"betaWarning\"><b>Note: </b>This operation is still in beta and might be subject to breaking changes. Production integrations should be avoided at this stage.</p> Retrieves all the management fee rules of a building.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">BUILDINGS</span> - <code>Read</code> 
 
@@ -642,7 +643,7 @@ api_instance = Propertyware::BuildingsApi.new
 building_id = 789 # Integer | Building ID
 
 begin
-  # Retrieve all building management fees (BETA)
+  # Retrieves all the management fee rules of a building. (BETA)
   result = api_instance.get_building_management_fee(building_id)
   p result
 rescue Propertyware::ApiError => e
@@ -658,7 +659,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Retrieve all building management fees (BETA)
+  # Retrieves all the management fee rules of a building. (BETA)
   data, status_code, headers = api_instance.get_building_management_fee_with_http_info(building_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -692,7 +693,7 @@ end
 
 > <Array<PropertyManager>> get_building_managers(building_id)
 
-Retrieve all building property managers
+Retrieves all the property managers of a building
 
 Retrieves all the property managers of a building.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">BUILDINGS</span> - <code>Read</code> 
 
@@ -723,7 +724,7 @@ api_instance = Propertyware::BuildingsApi.new
 building_id = 789 # Integer | Building ID
 
 begin
-  # Retrieve all building property managers
+  # Retrieves all the property managers of a building
   result = api_instance.get_building_managers(building_id)
   p result
 rescue Propertyware::ApiError => e
@@ -739,7 +740,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Retrieve all building property managers
+  # Retrieves all the property managers of a building
   data, status_code, headers = api_instance.get_building_managers_with_http_info(building_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -773,7 +774,7 @@ end
 
 > <Array<Note>> get_building_notes(building_id)
 
-Retrieve all building notes
+Retrieves all the notes of a building.
 
 Retrieves all the notes of a building.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">BUILDINGS</span> - <code>Read</code> 
 
@@ -804,7 +805,7 @@ api_instance = Propertyware::BuildingsApi.new
 building_id = 789 # Integer | Building ID
 
 begin
-  # Retrieve all building notes
+  # Retrieves all the notes of a building.
   result = api_instance.get_building_notes(building_id)
   p result
 rescue Propertyware::ApiError => e
@@ -820,7 +821,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Retrieve all building notes
+  # Retrieves all the notes of a building.
   data, status_code, headers = api_instance.get_building_notes_with_http_info(building_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -955,11 +956,92 @@ end
 
 ## update_building
 
-> <Building> update_building(building_id, save_building)
+> <ResponseEntity> update_building(save_custom_field)
 
-Update a building (BETA)
+Update a building custom fields (BETA)
 
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Updates a building.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">BUILDINGS</span> - <code>Write</code> 
+<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Updates an existing building custom fields<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">BUILDINGS</span> - <code>Write</code> 
+
+### Examples
+
+```ruby
+require 'time'
+require 'propertyware'
+# setup authorization
+Propertyware.configure do |config|
+  # Configure API key authorization: organizationId
+  config.api_key['organizationId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['organizationId'] = 'Bearer'
+
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Propertyware::BuildingsApi.new
+save_custom_field = Propertyware::SaveCustomField.new({entity_id: 3.56, field_set: [Propertyware::CustomFieldSet.new({name: 'name_example', value: 'value_example'})]}) # SaveCustomField | saveCustomField
+
+begin
+  # Update a building custom fields (BETA)
+  result = api_instance.update_building(save_custom_field)
+  p result
+rescue Propertyware::ApiError => e
+  puts "Error when calling BuildingsApi->update_building: #{e}"
+end
+```
+
+#### Using the update_building_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ResponseEntity>, Integer, Hash)> update_building_with_http_info(save_custom_field)
+
+```ruby
+begin
+  # Update a building custom fields (BETA)
+  data, status_code, headers = api_instance.update_building_with_http_info(save_custom_field)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ResponseEntity>
+rescue Propertyware::ApiError => e
+  puts "Error when calling BuildingsApi->update_building_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **save_custom_field** | [**SaveCustomField**](SaveCustomField.md) | saveCustomField |  |
+
+### Return type
+
+[**ResponseEntity**](ResponseEntity.md)
+
+### Authorization
+
+[organizationId](../README.md#organizationId), [clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_building_using_put1
+
+> <Building> update_building_using_put1(building_id, update_building)
+
+Update a building
+
+Updates a building.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">BUILDINGS</span> - <code>Write</code> 
 
 ### Examples
 
@@ -986,32 +1068,32 @@ end
 
 api_instance = Propertyware::BuildingsApi.new
 building_id = 789 # Integer | Building ID
-save_building = Propertyware::SaveBuilding.new({abbreviation: 'abbreviation_example', category: 'RESIDENTIAL', count_unit: 37, name: 'name_example', portfolio_id: 3.56, property_type: 'NONE', type: 'type_example'}) # SaveBuilding | saveBuilding
+update_building = Propertyware::UpdateBuilding.new({abbreviation: 'abbreviation_example', count_unit: 37, name: 'name_example', property_type: 'NONE', rentable: false, type: 'type_example'}) # UpdateBuilding | updateBuilding
 
 begin
-  # Update a building (BETA)
-  result = api_instance.update_building(building_id, save_building)
+  # Update a building
+  result = api_instance.update_building_using_put1(building_id, update_building)
   p result
 rescue Propertyware::ApiError => e
-  puts "Error when calling BuildingsApi->update_building: #{e}"
+  puts "Error when calling BuildingsApi->update_building_using_put1: #{e}"
 end
 ```
 
-#### Using the update_building_with_http_info variant
+#### Using the update_building_using_put1_with_http_info variant
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Building>, Integer, Hash)> update_building_with_http_info(building_id, save_building)
+> <Array(<Building>, Integer, Hash)> update_building_using_put1_with_http_info(building_id, update_building)
 
 ```ruby
 begin
-  # Update a building (BETA)
-  data, status_code, headers = api_instance.update_building_with_http_info(building_id, save_building)
+  # Update a building
+  data, status_code, headers = api_instance.update_building_using_put1_with_http_info(building_id, update_building)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Building>
 rescue Propertyware::ApiError => e
-  puts "Error when calling BuildingsApi->update_building_with_http_info: #{e}"
+  puts "Error when calling BuildingsApi->update_building_using_put1_with_http_info: #{e}"
 end
 ```
 
@@ -1020,7 +1102,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **building_id** | **Integer** | Building ID |  |
-| **save_building** | [**SaveBuilding**](SaveBuilding.md) | saveBuilding |  |
+| **update_building** | [**UpdateBuilding**](UpdateBuilding.md) | updateBuilding |  |
 
 ### Return type
 

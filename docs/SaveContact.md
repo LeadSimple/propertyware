@@ -8,7 +8,7 @@
 | **allow_e_signature** | **Boolean** | Indicate if the contact can receive eSignature request e-mail messages sent through Propertyware. | [optional] |
 | **alt_email** | **String** | Alternate Email Address. | [optional] |
 | **birth_date** | **Date** | Date of Birth. | [optional] |
-| **category** | **String** | Indicate contact category. Send empty \&quot;\&quot; value if contact is Uncategorized | [optional] |
+| **category** | **String** | Indicate contact category. Send empty \&quot;\&quot; value if contact is Uncategorized. Applicable only for CREATE Contact. | [optional] |
 | **comments** | **String** | Description. | [optional] |
 | **company** | **String** | Company where the contact is employed. | [optional] |
 | **email** | **String** | E-mail Address. | [optional] |
@@ -23,9 +23,9 @@
 | **name_on_check** | **String** | Name On Check. | [optional] |
 | **named_on_lease** | **Boolean** | Is Named On Lease. | [optional] |
 | **other_phone** | **String** | Other Phone. | [optional] |
-| **salutation** | **String** | Salutation. | [optional] |
+| **salutation** | **String** | Salutation. Allowed values are : &#39;&#39;, &#39;Mr.&#39;, &#39;Mrs.&#39;, &#39;Ms.&#39;, &#39;Dr.&#39;, &#39;Prof.&#39; | [optional] |
 | **search_tag** | **String** | SearchTag. | [optional] |
-| **suffix** | **String** | Suffix. | [optional] |
+| **suffix** | **String** | Suffix. Allowed values are : &#39;&#39;, &#39;Jr.&#39;, &#39;Sr.&#39;, &#39;I&#39;, &#39;II&#39;, &#39;III&#39;, &#39;IV&#39; | [optional] |
 | **work_phone** | **String** | Work Phone. | [optional] |
 
 ## Example

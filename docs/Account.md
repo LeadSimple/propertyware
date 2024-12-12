@@ -21,6 +21,7 @@
 | **cam_recovery_account** | **Boolean** | Indicates if account is a CAM recovery account. | [optional] |
 | **created_by** | **String** | User who created the record. | [optional] |
 | **created_date_time** | **Time** | Date and time the record was created. (Timezone: UTC) | [optional] |
+| **description** | **String** | Description of the account. | [optional] |
 | **discount_account** | **Boolean** | Indicates if account is a discount account. | [optional] |
 | **escrow_account** | **Boolean** | Indicates if account is a escrow account. | [optional] |
 | **exclude_from1099** | **Boolean** | Indicates if account is excluded from Form1099. | [optional] |
@@ -36,6 +37,7 @@
 | **payment_priority** | **Integer** | Account payment priority. | [optional] |
 | **rent_account** | **Boolean** | Indicates if account is a rent account. | [optional] |
 | **section8** | **Boolean** | Indicates if account is a section8 account. | [optional] |
+| **security_deposit_account** | **Boolean** | Indicates if the account is security deposit account | [optional] |
 | **tax_account** | **Boolean** | Indicates if account is a tax account. | [optional] |
 | **transfer_balance_to_retained_earnings** | **Boolean** | Indicates if the account balance should be transferred to retained earnings. | [optional] |
 
@@ -62,6 +64,7 @@ instance = Propertyware::Account.new(
   cam_recovery_account: false,
   created_by: null,
   created_date_time: null,
+  description: null,
   discount_account: false,
   escrow_account: false,
   exclude_from1099: false,
@@ -77,6 +80,7 @@ instance = Propertyware::Account.new(
   payment_priority: null,
   rent_account: false,
   section8: false,
+  security_deposit_account: false,
   tax_account: false,
   transfer_balance_to_retained_earnings: false
 )

@@ -11,6 +11,7 @@ docs/AccountingApi.md
 docs/Address.md
 docs/Adjustment.md
 docs/Amenity.md
+docs/AutoCharge.md
 docs/AutoJournalEntry.md
 docs/AutoPayment.md
 docs/Bank.md
@@ -30,9 +31,11 @@ docs/Charge.md
 docs/ChargeTx.md
 docs/Check.md
 docs/CheckSplit.md
+docs/CloseWorkOrder.md
 docs/Comment.md
 docs/Contact.md
 docs/ContactCategory.md
+docs/ContactExtension.md
 docs/ContactsApi.md
 docs/Conversation.md
 docs/CreditCardAccount.md
@@ -41,7 +44,8 @@ docs/CurrentAsset.md
 docs/CurrentLiability.md
 docs/CustomField.md
 docs/CustomFieldDefinition.md
-docs/CustomFieldFieldsApi.md
+docs/CustomFieldDefinitionsApi.md
+docs/CustomFieldSet.md
 docs/Discount.md
 docs/Document.md
 docs/DocumentsApi.md
@@ -49,6 +53,7 @@ docs/Entry.md
 docs/Equity.md
 docs/ErrorResponse.md
 docs/Expense.md
+docs/ExpenseRecoveryCharge.md
 docs/GLItem.md
 docs/HealthCheckApi.md
 docs/Income.md
@@ -65,6 +70,7 @@ docs/LeaseClause.md
 docs/LeaseContact.md
 docs/LeaseStatus.md
 docs/LeasesApi.md
+docs/LineItem.md
 docs/ManagementFee.md
 docs/ManagementSettings.md
 docs/Marketing.md
@@ -106,6 +112,7 @@ docs/SaveComment.md
 docs/SaveContact.md
 docs/SaveConversation.md
 docs/SaveCredit.md
+docs/SaveCustomField.md
 docs/SaveDiscount.md
 docs/SaveJournalEntrySplit.md
 docs/SaveLease.md
@@ -125,8 +132,10 @@ docs/SaveWorkOrderTask.md
 docs/SplitPaid.md
 docs/SplitPay.md
 docs/Task.md
+docs/TimeCardEntry.md
 docs/Unit.md
 docs/UnitsApi.md
+docs/UpdateBuilding.md
 docs/UpdateDocument.md
 docs/UpdateLeaseJournalEntry.md
 docs/Vendor.md
@@ -139,7 +148,7 @@ lib/propertyware/api/accounting_api.rb
 lib/propertyware/api/bills_api.rb
 lib/propertyware/api/buildings_api.rb
 lib/propertyware/api/contacts_api.rb
-lib/propertyware/api/custom_field_fields_api.rb
+lib/propertyware/api/custom_field_definitions_api.rb
 lib/propertyware/api/documents_api.rb
 lib/propertyware/api/health_check_api.rb
 lib/propertyware/api/inspections_api.rb
@@ -156,6 +165,7 @@ lib/propertyware/models/account.rb
 lib/propertyware/models/address.rb
 lib/propertyware/models/adjustment.rb
 lib/propertyware/models/amenity.rb
+lib/propertyware/models/auto_charge.rb
 lib/propertyware/models/auto_journal_entry.rb
 lib/propertyware/models/auto_payment.rb
 lib/propertyware/models/bank.rb
@@ -173,9 +183,11 @@ lib/propertyware/models/charge.rb
 lib/propertyware/models/charge_tx.rb
 lib/propertyware/models/check.rb
 lib/propertyware/models/check_split.rb
+lib/propertyware/models/close_work_order.rb
 lib/propertyware/models/comment.rb
 lib/propertyware/models/contact.rb
 lib/propertyware/models/contact_category.rb
+lib/propertyware/models/contact_extension.rb
 lib/propertyware/models/conversation.rb
 lib/propertyware/models/credit_card_account.rb
 lib/propertyware/models/credit_memo.rb
@@ -183,12 +195,14 @@ lib/propertyware/models/current_asset.rb
 lib/propertyware/models/current_liability.rb
 lib/propertyware/models/custom_field.rb
 lib/propertyware/models/custom_field_definition.rb
+lib/propertyware/models/custom_field_set.rb
 lib/propertyware/models/discount.rb
 lib/propertyware/models/document.rb
 lib/propertyware/models/entry.rb
 lib/propertyware/models/equity.rb
 lib/propertyware/models/error_response.rb
 lib/propertyware/models/expense.rb
+lib/propertyware/models/expense_recovery_charge.rb
 lib/propertyware/models/gl_item.rb
 lib/propertyware/models/income.rb
 lib/propertyware/models/inspection.rb
@@ -202,6 +216,7 @@ lib/propertyware/models/lease.rb
 lib/propertyware/models/lease_clause.rb
 lib/propertyware/models/lease_contact.rb
 lib/propertyware/models/lease_status.rb
+lib/propertyware/models/line_item.rb
 lib/propertyware/models/management_fee.rb
 lib/propertyware/models/management_settings.rb
 lib/propertyware/models/marketing.rb
@@ -241,6 +256,7 @@ lib/propertyware/models/save_comment.rb
 lib/propertyware/models/save_contact.rb
 lib/propertyware/models/save_conversation.rb
 lib/propertyware/models/save_credit.rb
+lib/propertyware/models/save_custom_field.rb
 lib/propertyware/models/save_discount.rb
 lib/propertyware/models/save_journal_entry_split.rb
 lib/propertyware/models/save_lease.rb
@@ -260,7 +276,9 @@ lib/propertyware/models/save_work_order_task.rb
 lib/propertyware/models/split_paid.rb
 lib/propertyware/models/split_pay.rb
 lib/propertyware/models/task.rb
+lib/propertyware/models/time_card_entry.rb
 lib/propertyware/models/unit.rb
+lib/propertyware/models/update_building.rb
 lib/propertyware/models/update_document.rb
 lib/propertyware/models/update_lease_journal_entry.rb
 lib/propertyware/models/vendor.rb
@@ -271,7 +289,7 @@ spec/api/accounting_api_spec.rb
 spec/api/bills_api_spec.rb
 spec/api/buildings_api_spec.rb
 spec/api/contacts_api_spec.rb
-spec/api/custom_field_fields_api_spec.rb
+spec/api/custom_field_definitions_api_spec.rb
 spec/api/documents_api_spec.rb
 spec/api/health_check_api_spec.rb
 spec/api/inspections_api_spec.rb
@@ -287,6 +305,7 @@ spec/models/account_spec.rb
 spec/models/address_spec.rb
 spec/models/adjustment_spec.rb
 spec/models/amenity_spec.rb
+spec/models/auto_charge_spec.rb
 spec/models/auto_journal_entry_spec.rb
 spec/models/auto_payment_spec.rb
 spec/models/bank_deposit_spec.rb
@@ -304,8 +323,10 @@ spec/models/charge_spec.rb
 spec/models/charge_tx_spec.rb
 spec/models/check_spec.rb
 spec/models/check_split_spec.rb
+spec/models/close_work_order_spec.rb
 spec/models/comment_spec.rb
 spec/models/contact_category_spec.rb
+spec/models/contact_extension_spec.rb
 spec/models/contact_spec.rb
 spec/models/conversation_spec.rb
 spec/models/credit_card_account_spec.rb
@@ -313,12 +334,14 @@ spec/models/credit_memo_spec.rb
 spec/models/current_asset_spec.rb
 spec/models/current_liability_spec.rb
 spec/models/custom_field_definition_spec.rb
+spec/models/custom_field_set_spec.rb
 spec/models/custom_field_spec.rb
 spec/models/discount_spec.rb
 spec/models/document_spec.rb
 spec/models/entry_spec.rb
 spec/models/equity_spec.rb
 spec/models/error_response_spec.rb
+spec/models/expense_recovery_charge_spec.rb
 spec/models/expense_spec.rb
 spec/models/gl_item_spec.rb
 spec/models/income_spec.rb
@@ -333,6 +356,7 @@ spec/models/lease_clause_spec.rb
 spec/models/lease_contact_spec.rb
 spec/models/lease_spec.rb
 spec/models/lease_status_spec.rb
+spec/models/line_item_spec.rb
 spec/models/management_fee_spec.rb
 spec/models/management_settings_spec.rb
 spec/models/marketing_spec.rb
@@ -372,6 +396,7 @@ spec/models/save_comment_spec.rb
 spec/models/save_contact_spec.rb
 spec/models/save_conversation_spec.rb
 spec/models/save_credit_spec.rb
+spec/models/save_custom_field_spec.rb
 spec/models/save_discount_spec.rb
 spec/models/save_journal_entry_split_spec.rb
 spec/models/save_lease_journal_entry_spec.rb
@@ -391,7 +416,9 @@ spec/models/save_work_order_task_spec.rb
 spec/models/split_paid_spec.rb
 spec/models/split_pay_spec.rb
 spec/models/task_spec.rb
+spec/models/time_card_entry_spec.rb
 spec/models/unit_spec.rb
+spec/models/update_building_spec.rb
 spec/models/update_document_spec.rb
 spec/models/update_lease_journal_entry_spec.rb
 spec/models/vendor_spec.rb

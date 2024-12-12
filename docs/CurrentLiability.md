@@ -10,6 +10,7 @@
 | **exclude_from_pay_in_full** | **Boolean** | Indicates if the account is excluded from paying in full. | [optional] |
 | **exclude_late_fee** | **Boolean** | Indicates if the account is excluded from late fees. | [optional] |
 | **rent_account** | **Boolean** | Indicates if the account is a rent account. | [optional] |
+| **security_deposit_account** | **Boolean** | Indicates if the account is security deposit account | [optional] |
 | **tax_account** | **Boolean** | Indicates if the account is a tax account. | [optional] |
 
 ## Example
@@ -24,6 +25,7 @@ instance = Propertyware::CurrentLiability.new(
   exclude_from_pay_in_full: false,
   exclude_late_fee: false,
   rent_account: false,
+  security_deposit_account: false,
   tax_account: false
 )
 ```

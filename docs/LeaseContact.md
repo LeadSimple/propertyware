@@ -13,6 +13,7 @@
 | **mobile_phone** | **String** | Mobile phone. | [optional] |
 | **named_on_lease** | **Boolean** | Indicates if contact is named on lease. | [optional] |
 | **primary** | **Boolean** | Indicates if contact is primary contact of the lease. | [optional] |
+| **role** | **String** | Role. | [optional] |
 | **work_phone** | **String** | Work phone. | [optional] |
 
 ## Example
@@ -30,6 +31,7 @@ instance = Propertyware::LeaseContact.new(
   mobile_phone: null,
   named_on_lease: false,
   primary: false,
+  role: null,
   work_phone: null
 )
 ```
