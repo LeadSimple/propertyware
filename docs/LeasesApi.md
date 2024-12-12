@@ -4,22 +4,25 @@ All URIs are relative to *https://api.propertyware.com/pw/api/rest/v1*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**add_comment_to_lease_conversation**](LeasesApi.md#add_comment_to_lease_conversation) | **POST** /leases/{leaseID}/conversations/{conversationID}/comments | Add comment to a lease conversation (BETA) |
+| [**add_comment_to_lease_conversation**](LeasesApi.md#add_comment_to_lease_conversation) | **POST** /leases/{leaseID}/conversations/{conversationID}/comments | Add comment to a lease conversation |
 | [**create_journal_entry**](LeasesApi.md#create_journal_entry) | **POST** /leases/journalentries | Create a lease journal entry (BETA) |
-| [**create_lease**](LeasesApi.md#create_lease) | **POST** /leases | Create a lease (BETA) |
+| [**create_lease**](LeasesApi.md#create_lease) | **POST** /leases | Create a lease |
 | [**create_lease_adjustment**](LeasesApi.md#create_lease_adjustment) | **POST** /leases/adjustments | Create a lease adjustment (BETA) |
+| [**create_lease_auto_charges**](LeasesApi.md#create_lease_auto_charges) | **POST** /leases/autocharges | Create lease auto charges (BETA) |
 | [**create_lease_charge**](LeasesApi.md#create_lease_charge) | **POST** /leases/charges | Create a lease charge (BETA) |
 | [**create_lease_charges**](LeasesApi.md#create_lease_charges) | **POST** /leases/charges/bulk | Create lease charges in bulk (BETA) |
-| [**create_lease_conversation**](LeasesApi.md#create_lease_conversation) | **POST** /leases/{leaseID}/conversations | Create a lease conversation (BETA) |
+| [**create_lease_conversation**](LeasesApi.md#create_lease_conversation) | **POST** /leases/{leaseID}/conversations | Create a lease conversation |
 | [**create_lease_discount**](LeasesApi.md#create_lease_discount) | **POST** /leases/discounts | Create a lease discount (BETA) |
 | [**create_lease_payment**](LeasesApi.md#create_lease_payment) | **POST** /leases/payments | Create a lease payment (BETA) |
 | [**create_lease_refund**](LeasesApi.md#create_lease_refund) | **POST** /leases/refunds | Create a lease refund (BETA) |
 | [**delete_lease**](LeasesApi.md#delete_lease) | **DELETE** /leases/{leaseID} | Delete a lease (BETA) |
+| [**delete_lease_charge**](LeasesApi.md#delete_lease_charge) | **DELETE** /leases/charges/{chargeID} | Delete a lease charge (BETA) |
 | [**delete_lease_conversation**](LeasesApi.md#delete_lease_conversation) | **DELETE** /leases/{leaseID}/conversations/{conversationID} | Delete a lease conversation (BETA) |
 | [**get_all_lease_statuses**](LeasesApi.md#get_all_lease_statuses) | **GET** /leases/statuses | Retrieve all lease statuses (BETA) |
 | [**get_lease**](LeasesApi.md#get_lease) | **GET** /leases/{leaseId} | Retrieve a lease |
 | [**get_lease_adjustments**](LeasesApi.md#get_lease_adjustments) | **GET** /leases/adjustments | Retrieve all the adjustments |
-| [**get_lease_auto_charges**](LeasesApi.md#get_lease_auto_charges) | **GET** /leases/{leaseId}/autocharges | Retrieve all lease auto charges |
+| [**get_lease_auto_charges**](LeasesApi.md#get_lease_auto_charges) | **GET** /leases/autocharges | Retrieve all lease auto charges (New) |
+| [**get_lease_auto_charges_using_get1**](LeasesApi.md#get_lease_auto_charges_using_get1) | **GET** /leases/{leaseId}/autocharges | Retrieve all lease auto charges |
 | [**get_lease_auto_e_payments**](LeasesApi.md#get_lease_auto_e_payments) | **GET** /leases/{leaseId}/autoepayments | Retrieve all lease auto ePayments (BETA) |
 | [**get_lease_auto_journal_entries**](LeasesApi.md#get_lease_auto_journal_entries) | **GET** /leases/{leaseId}/autojournalentries | Retrieve all lease auto journal entries (BETA) |
 | [**get_lease_charges**](LeasesApi.md#get_lease_charges) | **GET** /leases/charges | Retrieve all the lease charges |
@@ -31,28 +34,30 @@ All URIs are relative to *https://api.propertyware.com/pw/api/rest/v1*
 | [**get_lease_discounts**](LeasesApi.md#get_lease_discounts) | **GET** /leases/discounts | Retrieve all the lease discounts |
 | [**get_lease_documents**](LeasesApi.md#get_lease_documents) | **GET** /leases/{leaseId}/document | Retrieve all lease documents |
 | [**get_lease_journal_entry**](LeasesApi.md#get_lease_journal_entry) | **GET** /leases/journalentries/{leaseID} | Retrieve all lease journal entries  |
+| [**get_lease_journal_entry_using_get1**](LeasesApi.md#get_lease_journal_entry_using_get1) | **GET** /leases/journalentries | Retrieve all lease journal entries (New) |
 | [**get_lease_late_fee**](LeasesApi.md#get_lease_late_fee) | **GET** /leases/{leaseId}/latefeerule | Retrieve the lease late fee rule |
 | [**get_lease_notes**](LeasesApi.md#get_lease_notes) | **GET** /leases/{leaseId}/notes | Retrieve all lease notes |
 | [**get_lease_payments**](LeasesApi.md#get_lease_payments) | **GET** /leases/payments | Retrieve all the lease payments |
 | [**get_lease_refunds**](LeasesApi.md#get_lease_refunds) | **GET** /leases/refunds | Retrieve all the tenant refunds |
 | [**get_lease_work_orders**](LeasesApi.md#get_lease_work_orders) | **GET** /leases/{leaseId}/workorders | Retrieve all lease work orders |
 | [**get_leases**](LeasesApi.md#get_leases) | **GET** /leases | Retrieve all leases |
-| [**update_lease**](LeasesApi.md#update_lease) | **PUT** /leases/{leaseId} | Update a lease (BETA) |
+| [**update_lease**](LeasesApi.md#update_lease) | **PUT** /leases/customfields | Update a lease custom fields (BETA) |
 | [**update_lease_adjustment**](LeasesApi.md#update_lease_adjustment) | **PUT** /leases/adjustments/{adjustmentID} | Update a lease adjustment (BETA) |
 | [**update_lease_charge**](LeasesApi.md#update_lease_charge) | **PUT** /leases/charges/{chargeID} | Update a lease charge (BETA) |
 | [**update_lease_discount**](LeasesApi.md#update_lease_discount) | **PUT** /leases/discounts/{discountID} | Updates a lease Discount (BETA) |
 | [**update_lease_journal_entry**](LeasesApi.md#update_lease_journal_entry) | **PUT** /leases/journalentries/{journalentryID} | Update a lease journal entry (BETA) |
 | [**update_lease_payment**](LeasesApi.md#update_lease_payment) | **PUT** /leases/payments/{entityID} | Update a lease payment (BETA) |
 | [**update_lease_refund**](LeasesApi.md#update_lease_refund) | **PUT** /leases/refunds/{refundID} | Update a lease refund (BETA) |
+| [**update_lease_using_put1**](LeasesApi.md#update_lease_using_put1) | **PUT** /leases/{leaseId} | Update a lease |
 
 
 ## add_comment_to_lease_conversation
 
 > <Comment> add_comment_to_lease_conversation(lease_id, conversation_id, save_comment)
 
-Add comment to a lease conversation (BETA)
+Add comment to a lease conversation
 
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Adds comment to a lease conversation.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">LEASES</span> - <code>Write</code> 
+Adds comment to a lease conversation.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">LEASES</span> - <code>Write</code> 
 
 ### Examples
 
@@ -83,7 +88,7 @@ conversation_id = 789 # Integer | Conversation ID
 save_comment = Propertyware::SaveComment.new({text: 'text_example'}) # SaveComment | saveComment
 
 begin
-  # Add comment to a lease conversation (BETA)
+  # Add comment to a lease conversation
   result = api_instance.add_comment_to_lease_conversation(lease_id, conversation_id, save_comment)
   p result
 rescue Propertyware::ApiError => e
@@ -99,7 +104,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Add comment to a lease conversation (BETA)
+  # Add comment to a lease conversation
   data, status_code, headers = api_instance.add_comment_to_lease_conversation_with_http_info(lease_id, conversation_id, save_comment)
   p status_code # => 2xx
   p headers # => { ... }
@@ -216,9 +221,9 @@ end
 
 > <Lease> create_lease(save_lease)
 
-Create a lease (BETA)
+Create a lease
 
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Creates a new lease.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">LEASES</span> - <code>Write</code> 
+Creates a new lease.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">LEASES</span> - <code>Write</code> 
 
 ### Examples
 
@@ -247,7 +252,7 @@ api_instance = Propertyware::LeasesApi.new
 save_lease = Propertyware::SaveLease.new({end_date: Date.today, move_in_date: Date.today, primary_contact_id: 3.56, start_date: Date.today, tenant_ids: [3.56], unit_id: 3.56}) # SaveLease | saveLease
 
 begin
-  # Create a lease (BETA)
+  # Create a lease
   result = api_instance.create_lease(save_lease)
   p result
 rescue Propertyware::ApiError => e
@@ -263,7 +268,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create a lease (BETA)
+  # Create a lease
   data, status_code, headers = api_instance.create_lease_with_http_info(save_lease)
   p status_code # => 2xx
   p headers # => { ... }
@@ -363,6 +368,87 @@ end
 ### Return type
 
 [**Adjustment**](Adjustment.md)
+
+### Authorization
+
+[organizationId](../README.md#organizationId), [clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_lease_auto_charges
+
+> <Array<Charge>> create_lease_auto_charges(auto_charge)
+
+Create lease auto charges (BETA)
+
+<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Creates lease auto charges.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">LEASES</span> - <code>Write</code> 
+
+### Examples
+
+```ruby
+require 'time'
+require 'propertyware'
+# setup authorization
+Propertyware.configure do |config|
+  # Configure API key authorization: organizationId
+  config.api_key['organizationId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['organizationId'] = 'Bearer'
+
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Propertyware::LeasesApi.new
+auto_charge = Propertyware::AutoCharge.new({charges: [Propertyware::SaveAutoCharge.new({amount: 3.56, due_day: 37, frequency: 'WEEKLY', gl_account_id: 3.56, start_date: Date.today})], lease_id: 3.56}) # AutoCharge | autoCharge
+
+begin
+  # Create lease auto charges (BETA)
+  result = api_instance.create_lease_auto_charges(auto_charge)
+  p result
+rescue Propertyware::ApiError => e
+  puts "Error when calling LeasesApi->create_lease_auto_charges: #{e}"
+end
+```
+
+#### Using the create_lease_auto_charges_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<Charge>>, Integer, Hash)> create_lease_auto_charges_with_http_info(auto_charge)
+
+```ruby
+begin
+  # Create lease auto charges (BETA)
+  data, status_code, headers = api_instance.create_lease_auto_charges_with_http_info(auto_charge)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<Charge>>
+rescue Propertyware::ApiError => e
+  puts "Error when calling LeasesApi->create_lease_auto_charges_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **auto_charge** | [**AutoCharge**](AutoCharge.md) | autoCharge |  |
+
+### Return type
+
+[**Array&lt;Charge&gt;**](Charge.md)
 
 ### Authorization
 
@@ -540,9 +626,9 @@ end
 
 > <Conversation> create_lease_conversation(lease_id, save_conversation)
 
-Create a lease conversation (BETA)
+Create a lease conversation
 
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Creates a specific lease conversation.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">LEASES</span> - <code>Write</code> 
+Creates a specific lease conversation.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">LEASES</span> - <code>Write</code> 
 
 ### Examples
 
@@ -572,7 +658,7 @@ lease_id = 789 # Integer | Lease ID
 save_conversation = Propertyware::SaveConversation.new({text: 'text_example', type: 'MANAGEMENT_TEAM'}) # SaveConversation | saveConversation
 
 begin
-  # Create a lease conversation (BETA)
+  # Create a lease conversation
   result = api_instance.create_lease_conversation(lease_id, save_conversation)
   p result
 rescue Propertyware::ApiError => e
@@ -588,7 +674,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create a lease conversation (BETA)
+  # Create a lease conversation
   data, status_code, headers = api_instance.create_lease_conversation_with_http_info(lease_id, save_conversation)
   p status_code # => 2xx
   p headers # => { ... }
@@ -943,6 +1029,87 @@ end
 - **Accept**: */*
 
 
+## delete_lease_charge
+
+> <ResponseEntity> delete_lease_charge(charge_id)
+
+Delete a lease charge (BETA)
+
+<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Deletes a specific lease charge.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">LEASES</span> - <code>Delete</code> 
+
+### Examples
+
+```ruby
+require 'time'
+require 'propertyware'
+# setup authorization
+Propertyware.configure do |config|
+  # Configure API key authorization: organizationId
+  config.api_key['organizationId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['organizationId'] = 'Bearer'
+
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Propertyware::LeasesApi.new
+charge_id = 789 # Integer | Charge ID
+
+begin
+  # Delete a lease charge (BETA)
+  result = api_instance.delete_lease_charge(charge_id)
+  p result
+rescue Propertyware::ApiError => e
+  puts "Error when calling LeasesApi->delete_lease_charge: #{e}"
+end
+```
+
+#### Using the delete_lease_charge_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ResponseEntity>, Integer, Hash)> delete_lease_charge_with_http_info(charge_id)
+
+```ruby
+begin
+  # Delete a lease charge (BETA)
+  data, status_code, headers = api_instance.delete_lease_charge_with_http_info(charge_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ResponseEntity>
+rescue Propertyware::ApiError => e
+  puts "Error when calling LeasesApi->delete_lease_charge_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **charge_id** | **Integer** | Charge ID |  |
+
+### Return type
+
+[**ResponseEntity**](ResponseEntity.md)
+
+### Authorization
+
+[organizationId](../README.md#organizationId), [clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## delete_lease_conversation
 
 > <ResponseEntity> delete_lease_conversation(lease_id, conversation_id)
@@ -1138,7 +1305,8 @@ end
 api_instance = Propertyware::LeasesApi.new
 lease_id = 789 # Integer | Lease ID
 opts = {
-  include_custom_fields: true # Boolean | includeCustomFields
+  include_custom_fields: true, # Boolean | includeCustomFields
+  include_other_balances: true # Boolean | includeOtherBalances
 }
 
 begin
@@ -1174,6 +1342,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **lease_id** | **Integer** | Lease ID |  |
 | **include_custom_fields** | **Boolean** | includeCustomFields | [optional][default to true] |
+| **include_other_balances** | **Boolean** | includeOtherBalances | [optional][default to false] |
 
 ### Return type
 
@@ -1231,7 +1400,8 @@ opts = {
   post_date_end: Date.parse('2013-10-20'), # Date | Filters results to any transaction with a start date on or prior to the date specified.
   portfolio_id: 789, # Integer | Filters results associated with a specific portfolio.
   lease_id: 789, # Integer | Filters results with Lease ID.
-  status: 'status_example' # String | Filters results to with Lease Status.
+  status: 'status_example', # String | Filters results to with Lease Status.
+  gl_account_id: 789 # Integer | Filters results with GLAccount ID.
 }
 
 begin
@@ -1275,6 +1445,7 @@ end
 | **portfolio_id** | **Integer** | Filters results associated with a specific portfolio. | [optional] |
 | **lease_id** | **Integer** | Filters results with Lease ID. | [optional] |
 | **status** | **String** | Filters results to with Lease Status. | [optional] |
+| **gl_account_id** | **Integer** | Filters results with GLAccount ID. | [optional] |
 
 ### Return type
 
@@ -1292,7 +1463,100 @@ end
 
 ## get_lease_auto_charges
 
-> <Array<Charge>> get_lease_auto_charges(lease_id)
+> <Array<Charge>> get_lease_auto_charges(opts)
+
+Retrieve all lease auto charges (New)
+
+Retrieves all the auto charges of a lease.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">LEASES</span> - <code>Read</code> <br/><br/><b>Sortable by:</b> <code>createddate</code>, <code>lastmodifieddatetime</code>, <code>id</code>
+
+### Examples
+
+```ruby
+require 'time'
+require 'propertyware'
+# setup authorization
+Propertyware.configure do |config|
+  # Configure API key authorization: organizationId
+  config.api_key['organizationId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['organizationId'] = 'Bearer'
+
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Propertyware::LeasesApi.new
+opts = {
+  offset: 56, # Integer | `offset` indicates the position of the first record to return. The offset is zero-based and the default is 0.
+  limit: 56, # Integer | `limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 500 and the default is 100.
+  last_modified_date_time_start: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Filters results to any item modified on or after the date time specified. 
+  last_modified_date_time_end: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Filters results to any item modified on or prior to the date time specified. 
+  orderby: 'orderby_example', # String | Indicates the field(s) and direction to sort the results in the response.
+  lease_id: 789 # Integer | Filters results with Lease ID.
+}
+
+begin
+  # Retrieve all lease auto charges (New)
+  result = api_instance.get_lease_auto_charges(opts)
+  p result
+rescue Propertyware::ApiError => e
+  puts "Error when calling LeasesApi->get_lease_auto_charges: #{e}"
+end
+```
+
+#### Using the get_lease_auto_charges_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<Charge>>, Integer, Hash)> get_lease_auto_charges_with_http_info(opts)
+
+```ruby
+begin
+  # Retrieve all lease auto charges (New)
+  data, status_code, headers = api_instance.get_lease_auto_charges_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<Charge>>
+rescue Propertyware::ApiError => e
+  puts "Error when calling LeasesApi->get_lease_auto_charges_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **offset** | **Integer** | &#x60;offset&#x60; indicates the position of the first record to return. The offset is zero-based and the default is 0. | [optional] |
+| **limit** | **Integer** | &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 500 and the default is 100. | [optional][default to 100] |
+| **last_modified_date_time_start** | **Time** | Filters results to any item modified on or after the date time specified.  | [optional] |
+| **last_modified_date_time_end** | **Time** | Filters results to any item modified on or prior to the date time specified.  | [optional] |
+| **orderby** | **String** | Indicates the field(s) and direction to sort the results in the response. | [optional] |
+| **lease_id** | **Integer** | Filters results with Lease ID. | [optional] |
+
+### Return type
+
+[**Array&lt;Charge&gt;**](Charge.md)
+
+### Authorization
+
+[organizationId](../README.md#organizationId), [clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_lease_auto_charges_using_get1
+
+> <Array<Charge>> get_lease_auto_charges_using_get1(lease_id)
 
 Retrieve all lease auto charges
 
@@ -1326,28 +1590,28 @@ lease_id = 789 # Integer | Lease ID
 
 begin
   # Retrieve all lease auto charges
-  result = api_instance.get_lease_auto_charges(lease_id)
+  result = api_instance.get_lease_auto_charges_using_get1(lease_id)
   p result
 rescue Propertyware::ApiError => e
-  puts "Error when calling LeasesApi->get_lease_auto_charges: #{e}"
+  puts "Error when calling LeasesApi->get_lease_auto_charges_using_get1: #{e}"
 end
 ```
 
-#### Using the get_lease_auto_charges_with_http_info variant
+#### Using the get_lease_auto_charges_using_get1_with_http_info variant
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Array<Charge>>, Integer, Hash)> get_lease_auto_charges_with_http_info(lease_id)
+> <Array(<Array<Charge>>, Integer, Hash)> get_lease_auto_charges_using_get1_with_http_info(lease_id)
 
 ```ruby
 begin
   # Retrieve all lease auto charges
-  data, status_code, headers = api_instance.get_lease_auto_charges_with_http_info(lease_id)
+  data, status_code, headers = api_instance.get_lease_auto_charges_using_get1_with_http_info(lease_id)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Array<Charge>>
 rescue Propertyware::ApiError => e
-  puts "Error when calling LeasesApi->get_lease_auto_charges_with_http_info: #{e}"
+  puts "Error when calling LeasesApi->get_lease_auto_charges_using_get1_with_http_info: #{e}"
 end
 ```
 
@@ -1575,7 +1839,8 @@ opts = {
   post_date_end: Date.parse('2013-10-20'), # Date | Filters results to any transaction with a start date on or prior to the date specified.
   portfolio_id: 789, # Integer | Filters results associated with a specific portfolio.
   lease_id: 789, # Integer | Filters results with Lease ID.
-  status: 'status_example' # String | Filters results to with Lease Status.
+  status: 'status_example', # String | Filters results to with Lease Status.
+  gl_account_id: 789 # Integer | Filters results with GLAccount ID.
 }
 
 begin
@@ -1619,6 +1884,7 @@ end
 | **portfolio_id** | **Integer** | Filters results associated with a specific portfolio. | [optional] |
 | **lease_id** | **Integer** | Filters results with Lease ID. | [optional] |
 | **status** | **String** | Filters results to with Lease Status. | [optional] |
+| **gl_account_id** | **Integer** | Filters results with GLAccount ID. | [optional] |
 
 ### Return type
 
@@ -1636,7 +1902,7 @@ end
 
 ## get_lease_contacts
 
-> <Array<Contact>> get_lease_contacts(lease_id, opts)
+> <Array<ContactExtension>> get_lease_contacts(lease_id, opts)
 
 Retrieve all lease contacts
 
@@ -1668,7 +1934,7 @@ end
 api_instance = Propertyware::LeasesApi.new
 lease_id = 789 # Integer | Lease ID
 opts = {
-  include_contact_custom_fields_in_the_response_: true # Boolean | Include contact custom fields in the response.
+  include_custom_fields: true # Boolean | includeCustomFields
 }
 
 begin
@@ -1684,7 +1950,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Array<Contact>>, Integer, Hash)> get_lease_contacts_with_http_info(lease_id, opts)
+> <Array(<Array<ContactExtension>>, Integer, Hash)> get_lease_contacts_with_http_info(lease_id, opts)
 
 ```ruby
 begin
@@ -1692,7 +1958,7 @@ begin
   data, status_code, headers = api_instance.get_lease_contacts_with_http_info(lease_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Array<Contact>>
+  p data # => <Array<ContactExtension>>
 rescue Propertyware::ApiError => e
   puts "Error when calling LeasesApi->get_lease_contacts_with_http_info: #{e}"
 end
@@ -1703,11 +1969,11 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **lease_id** | **Integer** | Lease ID |  |
-| **include_contact_custom_fields_in_the_response_** | **Boolean** | Include contact custom fields in the response. | [optional] |
+| **include_custom_fields** | **Boolean** | includeCustomFields | [optional][default to false] |
 
 ### Return type
 
-[**Array&lt;Contact&gt;**](Contact.md)
+[**Array&lt;ContactExtension&gt;**](ContactExtension.md)
 
 ### Authorization
 
@@ -1939,7 +2205,8 @@ opts = {
   post_date_end: Date.parse('2013-10-20'), # Date | Filters results to any transaction with a start date on or prior to the date specified.
   portfolio_id: 789, # Integer | Filters results associated with a specific portfolio.
   lease_id: 789, # Integer | Filters results with Lease ID.
-  status: 'status_example' # String | Filters results to with Lease Status.
+  status: 'status_example', # String | Filters results to with Lease Status.
+  gl_account_id: 789 # Integer | Filters results with GLAccount ID.
 }
 
 begin
@@ -1983,6 +2250,7 @@ end
 | **portfolio_id** | **Integer** | Filters results associated with a specific portfolio. | [optional] |
 | **lease_id** | **Integer** | Filters results with Lease ID. | [optional] |
 | **status** | **String** | Filters results to with Lease Status. | [optional] |
+| **gl_account_id** | **Integer** | Filters results with GLAccount ID. | [optional] |
 
 ### Return type
 
@@ -2263,7 +2531,7 @@ end
 
 Retrieve all lease journal entries 
 
-Retrieves a specific lease journal entries.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">LEASES</span> - <code>Read</code> 
+Retrieves a specific lease journal entries.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">LEASES</span> - <code>Read</code> <br/><br/><b>Sortable by:</b> <code>postdate</code>, <code>createddate</code>, <code>lastmodifieddatetime</code>, <code>id</code>
 
 ### Examples
 
@@ -2339,6 +2607,103 @@ end
 | **last_modified_date_time_end** | **Time** | Filters results to any item modified on or prior to the date time specified.  | [optional] |
 | **orderby** | **String** | Indicates the field(s) and direction to sort the results in the response. | [optional] |
 | **lease_id2** | **Integer** | Filters results to transactions associated with a specific lease. | [optional] |
+| **post_date_start** | **Date** | Filters results to any transaction with post date on or after to the date specified. | [optional] |
+| **post_date_end** | **Date** | Filters results to any transaction with post date on or prior to the date specified. | [optional] |
+
+### Return type
+
+[**JournalEntry**](JournalEntry.md)
+
+### Authorization
+
+[organizationId](../README.md#organizationId), [clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_lease_journal_entry_using_get1
+
+> <JournalEntry> get_lease_journal_entry_using_get1(opts)
+
+Retrieve all lease journal entries (New)
+
+Retrieves a list of lease journal entries.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">LEASES</span> - <code>Read</code> <br/><br/><b>Sortable by:</b> <code>postdate</code>, <code>createddate</code>, <code>lastmodifieddatetime</code>, <code>id</code>
+
+### Examples
+
+```ruby
+require 'time'
+require 'propertyware'
+# setup authorization
+Propertyware.configure do |config|
+  # Configure API key authorization: organizationId
+  config.api_key['organizationId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['organizationId'] = 'Bearer'
+
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Propertyware::LeasesApi.new
+opts = {
+  offset: 56, # Integer | `offset` indicates the position of the first record to return. The offset is zero-based and the default is 0.
+  limit: 56, # Integer | `limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 500 and the default is 100.
+  last_modified_date_time_start: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Filters results to any item modified on or after the date time specified. 
+  last_modified_date_time_end: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Filters results to any item modified on or prior to the date time specified. 
+  orderby: 'orderby_example', # String | Indicates the field(s) and direction to sort the results in the response.
+  lease_id: 789, # Integer | Filters results to transactions associated with a specific lease.
+  post_date_start: Date.parse('2013-10-20'), # Date | Filters results to any transaction with post date on or after to the date specified.
+  post_date_end: Date.parse('2013-10-20') # Date | Filters results to any transaction with post date on or prior to the date specified.
+}
+
+begin
+  # Retrieve all lease journal entries (New)
+  result = api_instance.get_lease_journal_entry_using_get1(opts)
+  p result
+rescue Propertyware::ApiError => e
+  puts "Error when calling LeasesApi->get_lease_journal_entry_using_get1: #{e}"
+end
+```
+
+#### Using the get_lease_journal_entry_using_get1_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<JournalEntry>, Integer, Hash)> get_lease_journal_entry_using_get1_with_http_info(opts)
+
+```ruby
+begin
+  # Retrieve all lease journal entries (New)
+  data, status_code, headers = api_instance.get_lease_journal_entry_using_get1_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <JournalEntry>
+rescue Propertyware::ApiError => e
+  puts "Error when calling LeasesApi->get_lease_journal_entry_using_get1_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **offset** | **Integer** | &#x60;offset&#x60; indicates the position of the first record to return. The offset is zero-based and the default is 0. | [optional] |
+| **limit** | **Integer** | &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 500 and the default is 100. | [optional][default to 100] |
+| **last_modified_date_time_start** | **Time** | Filters results to any item modified on or after the date time specified.  | [optional] |
+| **last_modified_date_time_end** | **Time** | Filters results to any item modified on or prior to the date time specified.  | [optional] |
+| **orderby** | **String** | Indicates the field(s) and direction to sort the results in the response. | [optional] |
+| **lease_id** | **Integer** | Filters results to transactions associated with a specific lease. | [optional] |
 | **post_date_start** | **Date** | Filters results to any transaction with post date on or after to the date specified. | [optional] |
 | **post_date_end** | **Date** | Filters results to any transaction with post date on or prior to the date specified. | [optional] |
 
@@ -2560,7 +2925,8 @@ opts = {
   post_date_end: Date.parse('2013-10-20'), # Date | Filters results to any transaction with a start date on or prior to the date specified.
   portfolio_id: 789, # Integer | Filters results associated with a specific portfolio.
   lease_id: 789, # Integer | Filters results with Lease ID.
-  status: 'status_example' # String | Filters results to with Lease Status.
+  status: 'status_example', # String | Filters results to with Lease Status.
+  gl_account_id: 789 # Integer | Filters results with GLAccount ID.
 }
 
 begin
@@ -2604,6 +2970,7 @@ end
 | **portfolio_id** | **Integer** | Filters results associated with a specific portfolio. | [optional] |
 | **lease_id** | **Integer** | Filters results with Lease ID. | [optional] |
 | **status** | **String** | Filters results to with Lease Status. | [optional] |
+| **gl_account_id** | **Integer** | Filters results with GLAccount ID. | [optional] |
 
 ### Return type
 
@@ -2661,7 +3028,8 @@ opts = {
   post_date_end: Date.parse('2013-10-20'), # Date | Filters results to any transaction with a start date on or prior to the date specified.
   portfolio_id: 789, # Integer | Filters results associated with a specific portfolio.
   lease_id: 789, # Integer | Filters results with Lease ID.
-  status: 'status_example' # String | Filters results to with Lease Status.
+  status: 'status_example', # String | Filters results to with Lease Status.
+  gl_account_id: 789 # Integer | Filters results with GLAccount ID.
 }
 
 begin
@@ -2705,6 +3073,7 @@ end
 | **portfolio_id** | **Integer** | Filters results associated with a specific portfolio. | [optional] |
 | **lease_id** | **Integer** | Filters results with Lease ID. | [optional] |
 | **status** | **String** | Filters results to with Lease Status. | [optional] |
+| **gl_account_id** | **Integer** | Filters results with GLAccount ID. | [optional] |
 
 ### Return type
 
@@ -2851,7 +3220,8 @@ opts = {
   building_id: 789, # Integer | Filters results to leases associated with a specific building.
   unit_id: 789, # Integer | Filters results to leases associated with a specific unit.
   status: 'status_example', # String | Filters results to inspections with a specific status.
-  include_custom_fields: true # Boolean | includeCustomFields
+  include_custom_fields: true, # Boolean | includeCustomFields
+  include_other_balances: true # Boolean | includeOtherBalances
 }
 
 begin
@@ -2903,6 +3273,7 @@ end
 | **unit_id** | **Integer** | Filters results to leases associated with a specific unit. | [optional] |
 | **status** | **String** | Filters results to inspections with a specific status. | [optional] |
 | **include_custom_fields** | **Boolean** | includeCustomFields | [optional][default to false] |
+| **include_other_balances** | **Boolean** | includeOtherBalances | [optional][default to false] |
 
 ### Return type
 
@@ -2920,11 +3291,11 @@ end
 
 ## update_lease
 
-> <Lease> update_lease(lease_id, save_lease)
+> <ResponseEntity> update_lease(save_custom_field)
 
-Update a lease (BETA)
+Update a lease custom fields (BETA)
 
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Updates an existing lease.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">LEASES</span> - <code>Write</code> 
+<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Updates an existing lease custom fields<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">LEASES</span> - <code>Write</code> 
 
 ### Examples
 
@@ -2950,12 +3321,11 @@ Propertyware.configure do |config|
 end
 
 api_instance = Propertyware::LeasesApi.new
-lease_id = 789 # Integer | Lease ID
-save_lease = Propertyware::SaveLease.new({end_date: Date.today, move_in_date: Date.today, primary_contact_id: 3.56, start_date: Date.today, tenant_ids: [3.56], unit_id: 3.56}) # SaveLease | lease
+save_custom_field = Propertyware::SaveCustomField.new({entity_id: 3.56, field_set: [Propertyware::CustomFieldSet.new({name: 'name_example', value: 'value_example'})]}) # SaveCustomField | saveCustomField
 
 begin
-  # Update a lease (BETA)
-  result = api_instance.update_lease(lease_id, save_lease)
+  # Update a lease custom fields (BETA)
+  result = api_instance.update_lease(save_custom_field)
   p result
 rescue Propertyware::ApiError => e
   puts "Error when calling LeasesApi->update_lease: #{e}"
@@ -2966,15 +3336,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Lease>, Integer, Hash)> update_lease_with_http_info(lease_id, save_lease)
+> <Array(<ResponseEntity>, Integer, Hash)> update_lease_with_http_info(save_custom_field)
 
 ```ruby
 begin
-  # Update a lease (BETA)
-  data, status_code, headers = api_instance.update_lease_with_http_info(lease_id, save_lease)
+  # Update a lease custom fields (BETA)
+  data, status_code, headers = api_instance.update_lease_with_http_info(save_custom_field)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Lease>
+  p data # => <ResponseEntity>
 rescue Propertyware::ApiError => e
   puts "Error when calling LeasesApi->update_lease_with_http_info: #{e}"
 end
@@ -2984,12 +3354,11 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **lease_id** | **Integer** | Lease ID |  |
-| **save_lease** | [**SaveLease**](SaveLease.md) | lease |  |
+| **save_custom_field** | [**SaveCustomField**](SaveCustomField.md) | saveCustomField |  |
 
 ### Return type
 
-[**Lease**](Lease.md)
+[**ResponseEntity**](ResponseEntity.md)
 
 ### Authorization
 
@@ -3256,7 +3625,7 @@ end
 
 Update a lease journal entry (BETA)
 
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Updates a lease journal entry.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">LEASES</span> - <code>Write</code> <br/><br/><b>Sortable by:</b> <code>postdate</code>, <code>createddate</code>, <code>lastmodifieddatetime</code>, <code>id</code>
+<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Updates a lease journal entry.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">LEASES</span> - <code>Write</code> 
 
 ### Examples
 
@@ -3488,6 +3857,89 @@ end
 ### Return type
 
 [**Refund**](Refund.md)
+
+### Authorization
+
+[organizationId](../README.md#organizationId), [clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_lease_using_put1
+
+> <Lease> update_lease_using_put1(lease_id, save_lease)
+
+Update a lease
+
+Updates an existing lease.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">LEASES</span> - <code>Write</code> 
+
+### Examples
+
+```ruby
+require 'time'
+require 'propertyware'
+# setup authorization
+Propertyware.configure do |config|
+  # Configure API key authorization: organizationId
+  config.api_key['organizationId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['organizationId'] = 'Bearer'
+
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Propertyware::LeasesApi.new
+lease_id = 789 # Integer | Lease ID
+save_lease = Propertyware::SaveLease.new({end_date: Date.today, move_in_date: Date.today, primary_contact_id: 3.56, start_date: Date.today, tenant_ids: [3.56], unit_id: 3.56}) # SaveLease | lease
+
+begin
+  # Update a lease
+  result = api_instance.update_lease_using_put1(lease_id, save_lease)
+  p result
+rescue Propertyware::ApiError => e
+  puts "Error when calling LeasesApi->update_lease_using_put1: #{e}"
+end
+```
+
+#### Using the update_lease_using_put1_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Lease>, Integer, Hash)> update_lease_using_put1_with_http_info(lease_id, save_lease)
+
+```ruby
+begin
+  # Update a lease
+  data, status_code, headers = api_instance.update_lease_using_put1_with_http_info(lease_id, save_lease)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Lease>
+rescue Propertyware::ApiError => e
+  puts "Error when calling LeasesApi->update_lease_using_put1_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **lease_id** | **Integer** | Lease ID |  |
+| **save_lease** | [**SaveLease**](SaveLease.md) | lease |  |
+
+### Return type
+
+[**Lease**](Lease.md)
 
 ### Authorization
 

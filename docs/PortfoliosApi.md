@@ -4,104 +4,24 @@ All URIs are relative to *https://api.propertyware.com/pw/api/rest/v1*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**create_contacts_using_post2**](PortfoliosApi.md#create_contacts_using_post2) | **POST** /portfolios/bulk | Create Portfolios in bulk (BETA) |
-| [**create_portfolio**](PortfoliosApi.md#create_portfolio) | **POST** /portfolios | Create a portfolio (BETA) |
+| [**create_portfolio**](PortfoliosApi.md#create_portfolio) | **POST** /portfolios | Create a portfolio |
+| [**create_portfolios**](PortfoliosApi.md#create_portfolios) | **POST** /portfolios/bulk | Create Portfolios in bulk |
 | [**delete_portfolio_conversation**](PortfoliosApi.md#delete_portfolio_conversation) | **DELETE** /portfolios/{portfolioID}/conversations/{conversationID} | Delete a portfolio conversation (BETA) |
 | [**get_portfolio**](PortfoliosApi.md#get_portfolio) | **GET** /portfolios/{portfolioID} | Retrieve a portfolio |
 | [**get_portfolio_conversation**](PortfoliosApi.md#get_portfolio_conversation) | **GET** /portfolios/{portfolioID}/conversations/{conversationID} | Retrieve a portfolio conversation |
 | [**get_portfolio_conversations**](PortfoliosApi.md#get_portfolio_conversations) | **GET** /portfolios/{portfolioID}/conversations | Retrieve all portfolio conversations |
 | [**get_portfolios**](PortfoliosApi.md#get_portfolios) | **GET** /portfolios | Retrieve all portfolios |
-| [**update_portfolio**](PortfoliosApi.md#update_portfolio) | **PUT** /portfolios/{portfolioID} | Update a portfolio (BETA) |
-
-
-## create_contacts_using_post2
-
-> <Array<RESTAPIBulkSuccessResponse>> create_contacts_using_post2(save_portfolio)
-
-Create Portfolios in bulk (BETA)
-
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Creates Portfolios in bulk.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">PORTFOLIOS</span> - <code>Write</code> 
-
-### Examples
-
-```ruby
-require 'time'
-require 'propertyware'
-# setup authorization
-Propertyware.configure do |config|
-  # Configure API key authorization: organizationId
-  config.api_key['organizationId'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['organizationId'] = 'Bearer'
-
-  # Configure API key authorization: clientId
-  config.api_key['clientId'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['clientId'] = 'Bearer'
-
-  # Configure API key authorization: clientSecret
-  config.api_key['clientSecret'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['clientSecret'] = 'Bearer'
-end
-
-api_instance = Propertyware::PortfoliosApi.new
-save_portfolio = [Propertyware::SavePortfolio.new({abbreviation: 'abbreviation_example', name: 'name_example'})] # Array<SavePortfolio> | savePortfolio
-
-begin
-  # Create Portfolios in bulk (BETA)
-  result = api_instance.create_contacts_using_post2(save_portfolio)
-  p result
-rescue Propertyware::ApiError => e
-  puts "Error when calling PortfoliosApi->create_contacts_using_post2: #{e}"
-end
-```
-
-#### Using the create_contacts_using_post2_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<Array<RESTAPIBulkSuccessResponse>>, Integer, Hash)> create_contacts_using_post2_with_http_info(save_portfolio)
-
-```ruby
-begin
-  # Create Portfolios in bulk (BETA)
-  data, status_code, headers = api_instance.create_contacts_using_post2_with_http_info(save_portfolio)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <Array<RESTAPIBulkSuccessResponse>>
-rescue Propertyware::ApiError => e
-  puts "Error when calling PortfoliosApi->create_contacts_using_post2_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **save_portfolio** | [**Array&lt;SavePortfolio&gt;**](SavePortfolio.md) | savePortfolio |  |
-
-### Return type
-
-[**Array&lt;RESTAPIBulkSuccessResponse&gt;**](RESTAPIBulkSuccessResponse.md)
-
-### Authorization
-
-[organizationId](../README.md#organizationId), [clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
+| [**update_portfolio**](PortfoliosApi.md#update_portfolio) | **PUT** /portfolios/customfields | Update a portfolio custom fields (BETA) |
+| [**update_portfolio_using_put1**](PortfoliosApi.md#update_portfolio_using_put1) | **PUT** /portfolios/{portfolioID} | Update a portfolio |
 
 
 ## create_portfolio
 
 > <Portfolio> create_portfolio(save_portfolio)
 
-Create a portfolio (BETA)
+Create a portfolio
 
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Creates a portfolio.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">PORTFOLIOS</span> - <code>Write</code> 
+Creates a portfolio.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">PORTFOLIOS</span> - <code>Write</code> 
 
 ### Examples
 
@@ -130,7 +50,7 @@ api_instance = Propertyware::PortfoliosApi.new
 save_portfolio = Propertyware::SavePortfolio.new({abbreviation: 'abbreviation_example', name: 'name_example'}) # SavePortfolio | savePortfolio
 
 begin
-  # Create a portfolio (BETA)
+  # Create a portfolio
   result = api_instance.create_portfolio(save_portfolio)
   p result
 rescue Propertyware::ApiError => e
@@ -146,7 +66,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create a portfolio (BETA)
+  # Create a portfolio
   data, status_code, headers = api_instance.create_portfolio_with_http_info(save_portfolio)
   p status_code # => 2xx
   p headers # => { ... }
@@ -165,6 +85,87 @@ end
 ### Return type
 
 [**Portfolio**](Portfolio.md)
+
+### Authorization
+
+[organizationId](../README.md#organizationId), [clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_portfolios
+
+> <Array<RESTAPIBulkSuccessResponse>> create_portfolios(save_portfolio)
+
+Create Portfolios in bulk
+
+Creates Portfolios in bulk.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">PORTFOLIOS</span> - <code>Write</code> 
+
+### Examples
+
+```ruby
+require 'time'
+require 'propertyware'
+# setup authorization
+Propertyware.configure do |config|
+  # Configure API key authorization: organizationId
+  config.api_key['organizationId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['organizationId'] = 'Bearer'
+
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Propertyware::PortfoliosApi.new
+save_portfolio = [Propertyware::SavePortfolio.new({abbreviation: 'abbreviation_example', name: 'name_example'})] # Array<SavePortfolio> | savePortfolio
+
+begin
+  # Create Portfolios in bulk
+  result = api_instance.create_portfolios(save_portfolio)
+  p result
+rescue Propertyware::ApiError => e
+  puts "Error when calling PortfoliosApi->create_portfolios: #{e}"
+end
+```
+
+#### Using the create_portfolios_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<RESTAPIBulkSuccessResponse>>, Integer, Hash)> create_portfolios_with_http_info(save_portfolio)
+
+```ruby
+begin
+  # Create Portfolios in bulk
+  data, status_code, headers = api_instance.create_portfolios_with_http_info(save_portfolio)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<RESTAPIBulkSuccessResponse>>
+rescue Propertyware::ApiError => e
+  puts "Error when calling PortfoliosApi->create_portfolios_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **save_portfolio** | [**Array&lt;SavePortfolio&gt;**](SavePortfolio.md) | savePortfolio |  |
+
+### Return type
+
+[**Array&lt;RESTAPIBulkSuccessResponse&gt;**](RESTAPIBulkSuccessResponse.md)
 
 ### Authorization
 
@@ -619,11 +620,92 @@ end
 
 ## update_portfolio
 
-> <Portfolio> update_portfolio(portfolio_id, save_portfolio)
+> <ResponseEntity> update_portfolio(save_custom_field)
 
-Update a portfolio (BETA)
+Update a portfolio custom fields (BETA)
 
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Updates an existing portfolio.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">PORTFOLIOS</span> - <code>Write</code> 
+<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Updates an existing portfolio custom fields<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">PORTFOLIOS</span> - <code>Write</code> 
+
+### Examples
+
+```ruby
+require 'time'
+require 'propertyware'
+# setup authorization
+Propertyware.configure do |config|
+  # Configure API key authorization: organizationId
+  config.api_key['organizationId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['organizationId'] = 'Bearer'
+
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Propertyware::PortfoliosApi.new
+save_custom_field = Propertyware::SaveCustomField.new({entity_id: 3.56, field_set: [Propertyware::CustomFieldSet.new({name: 'name_example', value: 'value_example'})]}) # SaveCustomField | saveCustomField
+
+begin
+  # Update a portfolio custom fields (BETA)
+  result = api_instance.update_portfolio(save_custom_field)
+  p result
+rescue Propertyware::ApiError => e
+  puts "Error when calling PortfoliosApi->update_portfolio: #{e}"
+end
+```
+
+#### Using the update_portfolio_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ResponseEntity>, Integer, Hash)> update_portfolio_with_http_info(save_custom_field)
+
+```ruby
+begin
+  # Update a portfolio custom fields (BETA)
+  data, status_code, headers = api_instance.update_portfolio_with_http_info(save_custom_field)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ResponseEntity>
+rescue Propertyware::ApiError => e
+  puts "Error when calling PortfoliosApi->update_portfolio_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **save_custom_field** | [**SaveCustomField**](SaveCustomField.md) | saveCustomField |  |
+
+### Return type
+
+[**ResponseEntity**](ResponseEntity.md)
+
+### Authorization
+
+[organizationId](../README.md#organizationId), [clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_portfolio_using_put1
+
+> <Portfolio> update_portfolio_using_put1(portfolio_id, save_portfolio)
+
+Update a portfolio
+
+Updates an existing portfolio.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">PORTFOLIOS</span> - <code>Write</code> 
 
 ### Examples
 
@@ -653,29 +735,29 @@ portfolio_id = 789 # Integer | Portfolio ID
 save_portfolio = Propertyware::SavePortfolio.new({abbreviation: 'abbreviation_example', name: 'name_example'}) # SavePortfolio | savePortfolio
 
 begin
-  # Update a portfolio (BETA)
-  result = api_instance.update_portfolio(portfolio_id, save_portfolio)
+  # Update a portfolio
+  result = api_instance.update_portfolio_using_put1(portfolio_id, save_portfolio)
   p result
 rescue Propertyware::ApiError => e
-  puts "Error when calling PortfoliosApi->update_portfolio: #{e}"
+  puts "Error when calling PortfoliosApi->update_portfolio_using_put1: #{e}"
 end
 ```
 
-#### Using the update_portfolio_with_http_info variant
+#### Using the update_portfolio_using_put1_with_http_info variant
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Portfolio>, Integer, Hash)> update_portfolio_with_http_info(portfolio_id, save_portfolio)
+> <Array(<Portfolio>, Integer, Hash)> update_portfolio_using_put1_with_http_info(portfolio_id, save_portfolio)
 
 ```ruby
 begin
-  # Update a portfolio (BETA)
-  data, status_code, headers = api_instance.update_portfolio_with_http_info(portfolio_id, save_portfolio)
+  # Update a portfolio
+  data, status_code, headers = api_instance.update_portfolio_using_put1_with_http_info(portfolio_id, save_portfolio)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Portfolio>
 rescue Propertyware::ApiError => e
-  puts "Error when calling PortfoliosApi->update_portfolio_with_http_info: #{e}"
+  puts "Error when calling PortfoliosApi->update_portfolio_using_put1_with_http_info: #{e}"
 end
 ```
 

@@ -4,22 +4,23 @@ All URIs are relative to *https://api.propertyware.com/pw/api/rest/v1*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**create_vendor**](VendorsApi.md#create_vendor) | **POST** /vendors | Create a vendor (BETA) |
-| [**create_vendors**](VendorsApi.md#create_vendors) | **POST** /vendors/bulk | Create Vendors in bulk (BETA) |
+| [**create_vendor**](VendorsApi.md#create_vendor) | **POST** /vendors | Create a vendor |
+| [**create_vendors**](VendorsApi.md#create_vendors) | **POST** /vendors/bulk | Create Vendors in bulk |
 | [**get_vendor**](VendorsApi.md#get_vendor) | **GET** /vendors/{vendorID} | Retrieve a vendor |
-| [**get_vendor_account**](VendorsApi.md#get_vendor_account) | **GET** /vendors/{vendorID}/account | Retrieve vendor GL account (BETA) |
+| [**get_vendor_account**](VendorsApi.md#get_vendor_account) | **GET** /vendors/{vendorID}/account | Retrieve vendor GL account |
 | [**get_vendor_conversation**](VendorsApi.md#get_vendor_conversation) | **GET** /vendors/{vendorID}/conversations/{conversationID} | Retrieve a vendor conversation |
 | [**get_vendor_conversations**](VendorsApi.md#get_vendor_conversations) | **GET** /vendors/{vendorID}/conversations | Retrieve all vendor conversations |
 | [**get_vendors**](VendorsApi.md#get_vendors) | **GET** /vendors | Retrieve all vendors |
+| [**update_vendor**](VendorsApi.md#update_vendor) | **PUT** /vendors/customfields | Update a vendor custom fields (BETA) |
 
 
 ## create_vendor
 
 > <Vendor> create_vendor(save_vendor)
 
-Create a vendor (BETA)
+Create a vendor
 
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Creates a vendor.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">VENDORS</span> - <code>Write</code> 
+Creates a vendor.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">VENDORS</span> - <code>Write</code> 
 
 ### Examples
 
@@ -48,7 +49,7 @@ api_instance = Propertyware::VendorsApi.new
 save_vendor = Propertyware::SaveVendor.new({company_name: 'company_name_example', name: 'name_example', name_on_check: 'name_on_check_example', vendor_type: 'vendor_type_example'}) # SaveVendor | saveVendor
 
 begin
-  # Create a vendor (BETA)
+  # Create a vendor
   result = api_instance.create_vendor(save_vendor)
   p result
 rescue Propertyware::ApiError => e
@@ -64,7 +65,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create a vendor (BETA)
+  # Create a vendor
   data, status_code, headers = api_instance.create_vendor_with_http_info(save_vendor)
   p status_code # => 2xx
   p headers # => { ... }
@@ -98,9 +99,9 @@ end
 
 > <Array<RESTAPIBulkSuccessResponse>> create_vendors(save_vendor)
 
-Create Vendors in bulk (BETA)
+Create Vendors in bulk
 
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Creates Vendors in bulk.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">VENDORS</span> - <code>Write</code> 
+Creates Vendors in bulk.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">VENDORS</span> - <code>Write</code> 
 
 ### Examples
 
@@ -129,7 +130,7 @@ api_instance = Propertyware::VendorsApi.new
 save_vendor = [Propertyware::SaveVendor.new({company_name: 'company_name_example', name: 'name_example', name_on_check: 'name_on_check_example', vendor_type: 'vendor_type_example'})] # Array<SaveVendor> | saveVendor
 
 begin
-  # Create Vendors in bulk (BETA)
+  # Create Vendors in bulk
   result = api_instance.create_vendors(save_vendor)
   p result
 rescue Propertyware::ApiError => e
@@ -145,7 +146,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create Vendors in bulk (BETA)
+  # Create Vendors in bulk
   data, status_code, headers = api_instance.create_vendors_with_http_info(save_vendor)
   p status_code # => 2xx
   p headers # => { ... }
@@ -264,9 +265,9 @@ end
 
 > <Account> get_vendor_account(vendor_id)
 
-Retrieve vendor GL account (BETA)
+Retrieve vendor GL account
 
-<p class=\"betaWarning\"><b>Note: </b>This operation is still in beta and might be subject to breaking changes. Production integrations should be avoided at this stage.</p> Retrieves the default general ledger account of a vendor.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">VENDORS</span> - <code>Read</code> 
+Retrieves the default general ledger account of a vendor.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">VENDORS</span> - <code>Read</code> 
 
 ### Examples
 
@@ -295,7 +296,7 @@ api_instance = Propertyware::VendorsApi.new
 vendor_id = 789 # Integer | Vendor ID
 
 begin
-  # Retrieve vendor GL account (BETA)
+  # Retrieve vendor GL account
   result = api_instance.get_vendor_account(vendor_id)
   p result
 rescue Propertyware::ApiError => e
@@ -311,7 +312,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Retrieve vendor GL account (BETA)
+  # Retrieve vendor GL account
   data, status_code, headers = api_instance.get_vendor_account_with_http_info(vendor_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -613,5 +614,86 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## update_vendor
+
+> <ResponseEntity> update_vendor(save_custom_field)
+
+Update a vendor custom fields (BETA)
+
+<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Updates an existing vendor custom fields<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">VENDORS</span> - <code>Write</code> 
+
+### Examples
+
+```ruby
+require 'time'
+require 'propertyware'
+# setup authorization
+Propertyware.configure do |config|
+  # Configure API key authorization: organizationId
+  config.api_key['organizationId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['organizationId'] = 'Bearer'
+
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Propertyware::VendorsApi.new
+save_custom_field = Propertyware::SaveCustomField.new({entity_id: 3.56, field_set: [Propertyware::CustomFieldSet.new({name: 'name_example', value: 'value_example'})]}) # SaveCustomField | saveCustomField
+
+begin
+  # Update a vendor custom fields (BETA)
+  result = api_instance.update_vendor(save_custom_field)
+  p result
+rescue Propertyware::ApiError => e
+  puts "Error when calling VendorsApi->update_vendor: #{e}"
+end
+```
+
+#### Using the update_vendor_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ResponseEntity>, Integer, Hash)> update_vendor_with_http_info(save_custom_field)
+
+```ruby
+begin
+  # Update a vendor custom fields (BETA)
+  data, status_code, headers = api_instance.update_vendor_with_http_info(save_custom_field)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ResponseEntity>
+rescue Propertyware::ApiError => e
+  puts "Error when calling VendorsApi->update_vendor_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **save_custom_field** | [**SaveCustomField**](SaveCustomField.md) | saveCustomField |  |
+
+### Return type
+
+[**ResponseEntity**](ResponseEntity.md)
+
+### Authorization
+
+[organizationId](../README.md#organizationId), [clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 

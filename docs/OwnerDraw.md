@@ -15,6 +15,7 @@
 | **id** | **Integer** | Unique identifier. | [optional] |
 | **last_modified_by** | **String** | User who last modified the record. | [optional] |
 | **last_modified_date_time** | **Time** | Date and time the record was last modified. (Timezone: UTC) | [optional] |
+| **lines** | [**Array&lt;LineItem&gt;**](LineItem.md) | A collection of payment line items. | [optional] |
 | **payment_type** | **String** | Payment type. | [optional] |
 | **portfolio_id** | **Integer** | Id of the portfolio associated with this owner draw. | [optional] |
 | **ref_no** | **String** | Reference number. | [optional] |
@@ -36,6 +37,7 @@ instance = Propertyware::OwnerDraw.new(
   id: null,
   last_modified_by: null,
   last_modified_date_time: null,
+  lines: null,
   payment_type: null,
   portfolio_id: null,
   ref_no: null

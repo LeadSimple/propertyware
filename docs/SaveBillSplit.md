@@ -6,14 +6,14 @@
 | ---- | ---- | ----------- | ----- |
 | **amount** | **Float** | Split amount. |  |
 | **amount_paid** | **Float** | Split amount paid. | [optional] |
-| **building_id** | **Integer** | Location Building ID. | [optional] |
+| **building_id** | **Integer** | Building ID associated to split. | [optional] |
 | **comments** | **String** | Split comments. | [optional] |
-| **gl_account_id** | **Integer** | Split GL Account ID. | [optional] |
+| **gl_account_id** | **Integer** | Split GL Account ID. |  |
 | **id** | **Integer** | Unique identifier. | [optional] |
 | **markup_discount_split** | **Boolean** | Indicates if markup discount split. | [optional] |
 | **paid** | **Boolean** | Indicates if Bill Split is paid. | [optional] |
-| **portfolio_id** | **Integer** | Location Portfolio ID. |  |
-| **unit_id** | **Integer** | Location Unit ID. | [optional] |
+| **portfolio_id** | **Integer** | Portfolio ID associated to split. |  |
+| **unit_id** | **Integer** | Unit ID associated to split. | [optional] |
 
 ## Example
 

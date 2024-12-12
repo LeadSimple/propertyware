@@ -1,10 +1,10 @@
-# Propertyware::CustomFieldFieldsApi
+# Propertyware::CustomFieldDefinitionsApi
 
 All URIs are relative to *https://api.propertyware.com/pw/api/rest/v1*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**retrieve_custom_field_definitions**](CustomFieldFieldsApi.md#retrieve_custom_field_definitions) | **GET** /customfields/{entityType}/definitions | Retrieve list of custom field definitions. |
+| [**retrieve_custom_field_definitions**](CustomFieldDefinitionsApi.md#retrieve_custom_field_definitions) | **GET** /customfields/{entityType}/definitions | Retrieve list of custom field definitions. |
 
 
 ## retrieve_custom_field_definitions
@@ -38,7 +38,7 @@ Propertyware.configure do |config|
   # config.api_key_prefix['clientSecret'] = 'Bearer'
 end
 
-api_instance = Propertyware::CustomFieldFieldsApi.new
+api_instance = Propertyware::CustomFieldDefinitionsApi.new
 entity_type = 'entity_type_example' # String | Entity type, allowed entity types (Asset, Building, Contact, Lease, Portfolio, Prospect, Unit, Vendor, WorkOrder, ServiceAgreement)
 
 begin
@@ -46,7 +46,7 @@ begin
   result = api_instance.retrieve_custom_field_definitions(entity_type)
   p result
 rescue Propertyware::ApiError => e
-  puts "Error when calling CustomFieldFieldsApi->retrieve_custom_field_definitions: #{e}"
+  puts "Error when calling CustomFieldDefinitionsApi->retrieve_custom_field_definitions: #{e}"
 end
 ```
 
@@ -64,7 +64,7 @@ begin
   p headers # => { ... }
   p data # => <Array<CustomFieldDefinition>>
 rescue Propertyware::ApiError => e
-  puts "Error when calling CustomFieldFieldsApi->retrieve_custom_field_definitions_with_http_info: #{e}"
+  puts "Error when calling CustomFieldDefinitionsApi->retrieve_custom_field_definitions_with_http_info: #{e}"
 end
 ```
 

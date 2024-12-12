@@ -4,8 +4,8 @@ All URIs are relative to *https://api.propertyware.com/pw/api/rest/v1*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**create_contact**](ContactsApi.md#create_contact) | **POST** /contacts | Create a contact (BETA) |
-| [**create_contacts_using_post1**](ContactsApi.md#create_contacts_using_post1) | **POST** /contacts/bulk | Create contacts in bulk (BETA) |
+| [**create_contact**](ContactsApi.md#create_contact) | **POST** /contacts | Create a contact |
+| [**create_contacts_using_post1**](ContactsApi.md#create_contacts_using_post1) | **POST** /contacts/bulk | Create contacts in bulk |
 | [**delete_contact**](ContactsApi.md#delete_contact) | **DELETE** /contacts/{contactID} | Delete a contact (BETA) |
 | [**delete_contact_conversation**](ContactsApi.md#delete_contact_conversation) | **DELETE** /contacts/{contactID}/conversations/{conversationID} | Delete a contact conversation (BETA) |
 | [**get_contact**](ContactsApi.md#get_contact) | **GET** /contacts/{contactID} | Retrieve a contact |
@@ -13,16 +13,17 @@ All URIs are relative to *https://api.propertyware.com/pw/api/rest/v1*
 | [**get_contact_conversation**](ContactsApi.md#get_contact_conversation) | **GET** /contacts/{contactID}/conversations/{conversationID} | Retrieve a contact conversation |
 | [**get_contact_conversations**](ContactsApi.md#get_contact_conversations) | **GET** /contacts/{contactID}/conversations | Retrieve all contact conversations |
 | [**get_contacts**](ContactsApi.md#get_contacts) | **GET** /contacts | Retrieve all contacts |
-| [**update_contact**](ContactsApi.md#update_contact) | **PUT** /contacts/{contactID} | Update a contact (BETA) |
+| [**update_contact**](ContactsApi.md#update_contact) | **PUT** /contacts/customfields | Update a contact custom fields (BETA) |
+| [**update_contact_using_put1**](ContactsApi.md#update_contact_using_put1) | **PUT** /contacts/{contactID} | Update a contact |
 
 
 ## create_contact
 
 > <Contact> create_contact(save_contact)
 
-Create a contact (BETA)
+Create a contact
 
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Creates a contact.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">CONTACTS</span> - <code>Write</code> 
+Creates a contact.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">CONTACTS</span> - <code>Write</code> 
 
 ### Examples
 
@@ -51,7 +52,7 @@ api_instance = Propertyware::ContactsApi.new
 save_contact = Propertyware::SaveContact.new({first_name: 'first_name_example', last_name: 'last_name_example'}) # SaveContact | saveContact
 
 begin
-  # Create a contact (BETA)
+  # Create a contact
   result = api_instance.create_contact(save_contact)
   p result
 rescue Propertyware::ApiError => e
@@ -67,7 +68,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create a contact (BETA)
+  # Create a contact
   data, status_code, headers = api_instance.create_contact_with_http_info(save_contact)
   p status_code # => 2xx
   p headers # => { ... }
@@ -101,9 +102,9 @@ end
 
 > <Array<RESTAPIBulkSuccessResponse>> create_contacts_using_post1(save_contact)
 
-Create contacts in bulk (BETA)
+Create contacts in bulk
 
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Creates contacts in bulk.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">CONTACTS</span> - <code>Write</code> 
+Creates contacts in bulk.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">CONTACTS</span> - <code>Write</code> 
 
 ### Examples
 
@@ -132,7 +133,7 @@ api_instance = Propertyware::ContactsApi.new
 save_contact = [Propertyware::SaveContact.new({first_name: 'first_name_example', last_name: 'last_name_example'})] # Array<SaveContact> | saveContact
 
 begin
-  # Create contacts in bulk (BETA)
+  # Create contacts in bulk
   result = api_instance.create_contacts_using_post1(save_contact)
   p result
 rescue Propertyware::ApiError => e
@@ -148,7 +149,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create contacts in bulk (BETA)
+  # Create contacts in bulk
   data, status_code, headers = api_instance.create_contacts_using_post1_with_http_info(save_contact)
   p status_code # => 2xx
   p headers # => { ... }
@@ -780,11 +781,92 @@ end
 
 ## update_contact
 
-> <Contact> update_contact(contact_id, save_contact)
+> <ResponseEntity> update_contact(save_custom_field)
 
-Update a contact (BETA)
+Update a contact custom fields (BETA)
 
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Updates a contact.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">CONTACTS</span> - <code>Write</code> 
+<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Updates an existing contact custom fields<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">CONTACTS</span> - <code>Write</code> 
+
+### Examples
+
+```ruby
+require 'time'
+require 'propertyware'
+# setup authorization
+Propertyware.configure do |config|
+  # Configure API key authorization: organizationId
+  config.api_key['organizationId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['organizationId'] = 'Bearer'
+
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Propertyware::ContactsApi.new
+save_custom_field = Propertyware::SaveCustomField.new({entity_id: 3.56, field_set: [Propertyware::CustomFieldSet.new({name: 'name_example', value: 'value_example'})]}) # SaveCustomField | saveCustomField
+
+begin
+  # Update a contact custom fields (BETA)
+  result = api_instance.update_contact(save_custom_field)
+  p result
+rescue Propertyware::ApiError => e
+  puts "Error when calling ContactsApi->update_contact: #{e}"
+end
+```
+
+#### Using the update_contact_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ResponseEntity>, Integer, Hash)> update_contact_with_http_info(save_custom_field)
+
+```ruby
+begin
+  # Update a contact custom fields (BETA)
+  data, status_code, headers = api_instance.update_contact_with_http_info(save_custom_field)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ResponseEntity>
+rescue Propertyware::ApiError => e
+  puts "Error when calling ContactsApi->update_contact_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **save_custom_field** | [**SaveCustomField**](SaveCustomField.md) | saveCustomField |  |
+
+### Return type
+
+[**ResponseEntity**](ResponseEntity.md)
+
+### Authorization
+
+[organizationId](../README.md#organizationId), [clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_contact_using_put1
+
+> <Contact> update_contact_using_put1(contact_id, save_contact)
+
+Update a contact
+
+Updates a contact.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">CONTACTS</span> - <code>Write</code> 
 
 ### Examples
 
@@ -814,29 +896,29 @@ contact_id = 789 # Integer | Contact ID
 save_contact = Propertyware::SaveContact.new({first_name: 'first_name_example', last_name: 'last_name_example'}) # SaveContact | saveContact
 
 begin
-  # Update a contact (BETA)
-  result = api_instance.update_contact(contact_id, save_contact)
+  # Update a contact
+  result = api_instance.update_contact_using_put1(contact_id, save_contact)
   p result
 rescue Propertyware::ApiError => e
-  puts "Error when calling ContactsApi->update_contact: #{e}"
+  puts "Error when calling ContactsApi->update_contact_using_put1: #{e}"
 end
 ```
 
-#### Using the update_contact_with_http_info variant
+#### Using the update_contact_using_put1_with_http_info variant
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Contact>, Integer, Hash)> update_contact_with_http_info(contact_id, save_contact)
+> <Array(<Contact>, Integer, Hash)> update_contact_using_put1_with_http_info(contact_id, save_contact)
 
 ```ruby
 begin
-  # Update a contact (BETA)
-  data, status_code, headers = api_instance.update_contact_with_http_info(contact_id, save_contact)
+  # Update a contact
+  data, status_code, headers = api_instance.update_contact_using_put1_with_http_info(contact_id, save_contact)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Contact>
 rescue Propertyware::ApiError => e
-  puts "Error when calling ContactsApi->update_contact_with_http_info: #{e}"
+  puts "Error when calling ContactsApi->update_contact_using_put1_with_http_info: #{e}"
 end
 ```
 

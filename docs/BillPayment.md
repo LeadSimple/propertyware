@@ -12,9 +12,10 @@
 | **id** | **Integer** | Unique identifier. | [optional] |
 | **last_modified_by** | **String** | User who last modified the record. | [optional] |
 | **last_modified_date_time** | **Time** | Date and time the record was last modified. (Timezone: UTC) | [optional] |
+| **lines** | [**Array&lt;LineItem&gt;**](LineItem.md) | A collection of payment line items. | [optional] |
 | **memo** | **String** | Memo. | [optional] |
 | **name_on_check** | **String** | Name on check. | [optional] |
-| **payment_account_id** | **Integer** | Id of the payment account. | [optional] |
+| **payment_account_id** | **Integer** | Id of the payment general ledger account. | [optional] |
 | **payment_date** | **Date** | Payment date. | [optional] |
 | **payment_method** | **String** | Payment method. | [optional] |
 | **to_be_printed** | **Boolean** | Indicates if the check should be printed. | [optional] |
@@ -34,6 +35,7 @@ instance = Propertyware::BillPayment.new(
   id: null,
   last_modified_by: null,
   last_modified_date_time: null,
+  lines: null,
   memo: null,
   name_on_check: null,
   payment_account_id: null,

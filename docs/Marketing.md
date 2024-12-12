@@ -21,6 +21,7 @@
 | **parcel_number** | **String** | Parcel number of this building/unit. | [optional] |
 | **pets_allowed** | **Boolean** | Indicates if pets are allowed in a unit/building. | [optional] |
 | **posting_title** | **String** | Posting title name for marketing this building/unit. | [optional] |
+| **published_for_rent** | **Boolean** | Published For Rent | [optional] |
 | **published_for_sale** | **Boolean** | Indicates if the unit/building is published for sale. | [optional] |
 | **sale_price** | **Float** | Sale price of this building/unit. | [optional] |
 | **sale_terms** | **String** | Sale terms of this building/unit. | [optional] |
@@ -51,6 +52,7 @@ instance = Propertyware::Marketing.new(
   parcel_number: null,
   pets_allowed: false,
   posting_title: null,
+  published_for_rent: false,
   published_for_sale: false,
   sale_price: null,
   sale_terms: null,

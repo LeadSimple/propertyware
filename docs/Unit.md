@@ -37,7 +37,7 @@
 | **search_tag** | **String** | Property search tag. | [optional] |
 | **status** | **String** | Property status (occupied/vacant). | [optional] |
 | **syndicate** | **Boolean** | Property syndicate. | [optional] |
-| **target_deposit** | **Float** | Target deposit. | [optional] |
+| **target_deposit** | **String** | Target deposit. | [optional] |
 | **target_rent** | **Float** | Property target rent. | [optional] |
 | **target_rent_units** | **String** | Property target rent units. | [optional] |
 | **total_area** | **Float** | Property total area. | [optional] |

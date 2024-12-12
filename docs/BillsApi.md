@@ -4,31 +4,31 @@ All URIs are relative to *https://api.propertyware.com/pw/api/rest/v1*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**create_bill**](BillsApi.md#create_bill) | **POST** /bills | Create a bill (BETA) |
-| [**create_bill_payment**](BillsApi.md#create_bill_payment) | **POST** /bills/payment | Creates Bill Payment (BETA) |
+| [**create_bill**](BillsApi.md#create_bill) | **POST** /bills | Create a bill |
+| [**create_bill_payment**](BillsApi.md#create_bill_payment) | **POST** /bills/payment | Create a Bill Payment (BETA) |
 | [**create_bill_payments_using_post1**](BillsApi.md#create_bill_payments_using_post1) | **POST** /bills/payments/bulk | Create bill payments in bulk (BETA) |
-| [**create_bills**](BillsApi.md#create_bills) | **POST** /bills/bulk | Create bills in bulk (BETA) |
-| [**create_credit**](BillsApi.md#create_credit) | **POST** /bills/credit | Create a credit (BETA) |
-| [**create_vendor_check**](BillsApi.md#create_vendor_check) | **POST** /bills/vendorChecks | Create a Vendor check (BETA) |
+| [**create_bills**](BillsApi.md#create_bills) | **POST** /bills/bulk | Create bills in bulk |
+| [**create_credit**](BillsApi.md#create_credit) | **POST** /bills/credit | Create a credit |
+| [**create_vendor_check**](BillsApi.md#create_vendor_check) | **POST** /bills/vendorchecks | Create a Vendor check (BETA) |
 | [**delete_bill**](BillsApi.md#delete_bill) | **DELETE** /bills/{billID} | Delete a Bill (BETA) |
-| [**get_bill**](BillsApi.md#get_bill) | **GET** /bills/{billID} | Retrieve a bill (BETA) |
-| [**get_bill_payment**](BillsApi.md#get_bill_payment) | **GET** /bills/payments/{billPaymentID} | Retrieve a bill payment (BETA) |
-| [**get_bill_payments**](BillsApi.md#get_bill_payments) | **GET** /bills/payments | Retrieve all bill payments (BETA) |
-| [**get_bills**](BillsApi.md#get_bills) | **GET** /bills | Retrieve all bills (BETA) |
-| [**get_vendor_checks**](BillsApi.md#get_vendor_checks) | **GET** /bills/vendorChecks | Retrieve all Vendor checks (BETA) |
-| [**update_bill**](BillsApi.md#update_bill) | **PUT** /bills/{billId} | Update a Bill (BETA) |
+| [**get_bill**](BillsApi.md#get_bill) | **GET** /bills/{billID} | Retrieve a bill |
+| [**get_bill_payment**](BillsApi.md#get_bill_payment) | **GET** /bills/payments/{billPaymentID} | Retrieve a bill payment |
+| [**get_bill_payments**](BillsApi.md#get_bill_payments) | **GET** /bills/payments | Retrieve all bill payments |
+| [**get_bills**](BillsApi.md#get_bills) | **GET** /bills | Retrieve all bills |
+| [**get_vendor_checks**](BillsApi.md#get_vendor_checks) | **GET** /bills/vendorchecks | Retrieve all Vendor checks (BETA) |
+| [**update_bill**](BillsApi.md#update_bill) | **PUT** /bills/{billId} | Update a Bill |
 | [**update_bill_payment**](BillsApi.md#update_bill_payment) | **PUT** /bills/payment/{billPaymentID} | Update a Bill Payment (BETA) |
-| [**update_credit**](BillsApi.md#update_credit) | **PUT** /bills/credit/{creditID} | Update a Credit (BETA) |
-| [**update_vendor_check**](BillsApi.md#update_vendor_check) | **PUT** /bills/vendorChecks/{vendorCheckID} | Update a Vendor check (BETA) |
+| [**update_credit**](BillsApi.md#update_credit) | **PUT** /bills/credit/{creditID} | Update a Credit |
+| [**update_vendor_check**](BillsApi.md#update_vendor_check) | **PUT** /bills/vendorchecks/{vendorCheckID} | Update a Vendor check (BETA) |
 
 
 ## create_bill
 
 > <Bill> create_bill(save_bill)
 
-Create a bill (BETA)
+Create a bill
 
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Creates a bill.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">BILLS</span> - <code>Write</code> 
+Creates a bill.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">BILLS</span> - <code>Write</code> 
 
 ### Examples
 
@@ -54,10 +54,10 @@ Propertyware.configure do |config|
 end
 
 api_instance = Propertyware::BillsApi.new
-save_bill = Propertyware::SaveBill.new({bill_date: Date.today, due_date: Date.today, vendor_id: 3.56}) # SaveBill | saveBill
+save_bill = Propertyware::SaveBill.new({bill_date: Date.today, bill_splits: [Propertyware::SaveBillSplit.new({amount: 3.56, gl_account_id: 3.56, portfolio_id: 3.56})], due_date: Date.today, vendor_id: 3.56}) # SaveBill | saveBill
 
 begin
-  # Create a bill (BETA)
+  # Create a bill
   result = api_instance.create_bill(save_bill)
   p result
 rescue Propertyware::ApiError => e
@@ -73,7 +73,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create a bill (BETA)
+  # Create a bill
   data, status_code, headers = api_instance.create_bill_with_http_info(save_bill)
   p status_code # => 2xx
   p headers # => { ... }
@@ -107,9 +107,9 @@ end
 
 > <BillPayment> create_bill_payment(save_bill_payment)
 
-Creates Bill Payment (BETA)
+Create a Bill Payment (BETA)
 
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Creates Bill Payment<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">VENDORS</span> - <code>Write</code> 
+<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Create a Bill Payment<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">VENDORS</span> - <code>Write</code> 
 
 ### Examples
 
@@ -138,7 +138,7 @@ api_instance = Propertyware::BillsApi.new
 save_bill_payment = Propertyware::SaveBillPayment.new # SaveBillPayment | saveBillPayment
 
 begin
-  # Creates Bill Payment (BETA)
+  # Create a Bill Payment (BETA)
   result = api_instance.create_bill_payment(save_bill_payment)
   p result
 rescue Propertyware::ApiError => e
@@ -154,7 +154,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Creates Bill Payment (BETA)
+  # Create a Bill Payment (BETA)
   data, status_code, headers = api_instance.create_bill_payment_with_http_info(save_bill_payment)
   p status_code # => 2xx
   p headers # => { ... }
@@ -269,9 +269,9 @@ end
 
 > <Array<RESTAPIBulkSuccessResponse>> create_bills(save_bill)
 
-Create bills in bulk (BETA)
+Create bills in bulk
 
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Creates bills in bulk.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">BILLS</span> - <code>Write</code> 
+Creates bills in bulk.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">BILLS</span> - <code>Write</code> 
 
 ### Examples
 
@@ -297,10 +297,10 @@ Propertyware.configure do |config|
 end
 
 api_instance = Propertyware::BillsApi.new
-save_bill = [Propertyware::SaveBill.new({bill_date: Date.today, due_date: Date.today, vendor_id: 3.56})] # Array<SaveBill> | saveBill
+save_bill = [Propertyware::SaveBill.new({bill_date: Date.today, bill_splits: [Propertyware::SaveBillSplit.new({amount: 3.56, gl_account_id: 3.56, portfolio_id: 3.56})], due_date: Date.today, vendor_id: 3.56})] # Array<SaveBill> | saveBill
 
 begin
-  # Create bills in bulk (BETA)
+  # Create bills in bulk
   result = api_instance.create_bills(save_bill)
   p result
 rescue Propertyware::ApiError => e
@@ -316,7 +316,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create bills in bulk (BETA)
+  # Create bills in bulk
   data, status_code, headers = api_instance.create_bills_with_http_info(save_bill)
   p status_code # => 2xx
   p headers # => { ... }
@@ -350,9 +350,9 @@ end
 
 > <Bill> create_credit(save_credit)
 
-Create a credit (BETA)
+Create a credit
 
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Creates a credit.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">BILLS</span> - <code>Write</code> 
+Creates a credit.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">BILLS</span> - <code>Write</code> 
 
 ### Examples
 
@@ -378,10 +378,10 @@ Propertyware.configure do |config|
 end
 
 api_instance = Propertyware::BillsApi.new
-save_credit = Propertyware::SaveCredit.new({bill_date: Date.today, vendor_id: 3.56}) # SaveCredit | saveCredit
+save_credit = Propertyware::SaveCredit.new({bill_date: Date.today, bill_splits: [Propertyware::SaveBillSplit.new({amount: 3.56, gl_account_id: 3.56, portfolio_id: 3.56})], vendor_id: 3.56}) # SaveCredit | saveCredit
 
 begin
-  # Create a credit (BETA)
+  # Create a credit
   result = api_instance.create_credit(save_credit)
   p result
 rescue Propertyware::ApiError => e
@@ -397,7 +397,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create a credit (BETA)
+  # Create a credit
   data, status_code, headers = api_instance.create_credit_with_http_info(save_credit)
   p status_code # => 2xx
   p headers # => { ... }
@@ -593,9 +593,9 @@ end
 
 > <Bill> get_bill(bill_id)
 
-Retrieve a bill (BETA)
+Retrieve a bill
 
-<p class=\"betaWarning\"><b>Note: </b>This operation is still in beta and might be subject to breaking changes. Production integrations should be avoided at this stage.</p> Retrieves a specific bill.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">BILLS</span> - <code>Read</code> 
+Retrieves a specific bill.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">BILLS</span> - <code>Read</code> 
 
 ### Examples
 
@@ -624,7 +624,7 @@ api_instance = Propertyware::BillsApi.new
 bill_id = 789 # Integer | Bill ID
 
 begin
-  # Retrieve a bill (BETA)
+  # Retrieve a bill
   result = api_instance.get_bill(bill_id)
   p result
 rescue Propertyware::ApiError => e
@@ -640,7 +640,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Retrieve a bill (BETA)
+  # Retrieve a bill
   data, status_code, headers = api_instance.get_bill_with_http_info(bill_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -674,9 +674,9 @@ end
 
 > <BillPayment> get_bill_payment(bill_payment_id)
 
-Retrieve a bill payment (BETA)
+Retrieve a bill payment
 
-<p class=\"betaWarning\"><b>Note: </b>This operation is still in beta and might be subject to breaking changes. Production integrations should be avoided at this stage.</p> Retrieves a specific bill payment.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">BILLS</span> - <code>Read</code> 
+Retrieves a specific bill payment.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">BILLS</span> - <code>Read</code> 
 
 ### Examples
 
@@ -705,7 +705,7 @@ api_instance = Propertyware::BillsApi.new
 bill_payment_id = 789 # Integer | Bill Payment ID
 
 begin
-  # Retrieve a bill payment (BETA)
+  # Retrieve a bill payment
   result = api_instance.get_bill_payment(bill_payment_id)
   p result
 rescue Propertyware::ApiError => e
@@ -721,7 +721,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Retrieve a bill payment (BETA)
+  # Retrieve a bill payment
   data, status_code, headers = api_instance.get_bill_payment_with_http_info(bill_payment_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -755,9 +755,9 @@ end
 
 > <Array<BillPayment>> get_bill_payments(opts)
 
-Retrieve all bill payments (BETA)
+Retrieve all bill payments
 
-<p class=\"betaWarning\"><b>Note: </b>This operation is still in beta and might be subject to breaking changes. Production integrations should be avoided at this stage.</p> Retrieves a list of bill payments.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">BILLS</span> - <code>Read</code> <br/><br/><b>Sortable by:</b> <code>createddate</code>, <code>vendorid</code>, <code>lastmodifieddatetime</code>, <code>paymentdate</code>, <code>checknumber</code>, <code>id</code>
+Retrieves a list of bill payments.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">BILLS</span> - <code>Read</code> <br/><br/><b>Sortable by:</b> <code>createddate</code>, <code>vendorid</code>, <code>lastmodifieddatetime</code>, <code>paymentdate</code>, <code>checknumber</code>, <code>id</code>
 
 ### Examples
 
@@ -796,7 +796,7 @@ opts = {
 }
 
 begin
-  # Retrieve all bill payments (BETA)
+  # Retrieve all bill payments
   result = api_instance.get_bill_payments(opts)
   p result
 rescue Propertyware::ApiError => e
@@ -812,7 +812,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Retrieve all bill payments (BETA)
+  # Retrieve all bill payments
   data, status_code, headers = api_instance.get_bill_payments_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
@@ -854,9 +854,9 @@ end
 
 > <Array<Bill>> get_bills(opts)
 
-Retrieve all bills (BETA)
+Retrieve all bills
 
-<p class=\"betaWarning\"><b>Note: </b>This operation is still in beta and might be subject to breaking changes. Production integrations should be avoided at this stage.</p> Retrieves a list of bills.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">BILLS</span> - <code>Read</code> <br/><br/><b>Sortable by:</b> <code>createddate</code>, <code>billdate</code>, <code>billnumber</code>, <code>lastmodifieddatetime</code>, <code>duedate</code>, <code>id</code>
+Retrieves a list of bills.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">BILLS</span> - <code>Read</code> <br/><br/><b>Sortable by:</b> <code>createddate</code>, <code>billdate</code>, <code>billnumber</code>, <code>lastmodifieddatetime</code>, <code>duedate</code>, <code>id</code>
 
 ### Examples
 
@@ -900,7 +900,7 @@ opts = {
 }
 
 begin
-  # Retrieve all bills (BETA)
+  # Retrieve all bills
   result = api_instance.get_bills(opts)
   p result
 rescue Propertyware::ApiError => e
@@ -916,7 +916,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Retrieve all bills (BETA)
+  # Retrieve all bills
   data, status_code, headers = api_instance.get_bills_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
@@ -1062,9 +1062,9 @@ end
 
 > <Bill> update_bill(bill_id, save_bill)
 
-Update a Bill (BETA)
+Update a Bill
 
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Update an existing bill.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">BILLS</span> - <code>Write</code> 
+Update an existing bill.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">BILLS</span> - <code>Write</code> 
 
 ### Examples
 
@@ -1091,10 +1091,10 @@ end
 
 api_instance = Propertyware::BillsApi.new
 bill_id = 789 # Integer | Bill ID
-save_bill = Propertyware::SaveBill.new({bill_date: Date.today, due_date: Date.today, vendor_id: 3.56}) # SaveBill | saveBill
+save_bill = Propertyware::SaveBill.new({bill_date: Date.today, bill_splits: [Propertyware::SaveBillSplit.new({amount: 3.56, gl_account_id: 3.56, portfolio_id: 3.56})], due_date: Date.today, vendor_id: 3.56}) # SaveBill | saveBill
 
 begin
-  # Update a Bill (BETA)
+  # Update a Bill
   result = api_instance.update_bill(bill_id, save_bill)
   p result
 rescue Propertyware::ApiError => e
@@ -1110,7 +1110,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Update a Bill (BETA)
+  # Update a Bill
   data, status_code, headers = api_instance.update_bill_with_http_info(bill_id, save_bill)
   p status_code # => 2xx
   p headers # => { ... }
@@ -1228,9 +1228,9 @@ end
 
 > <Bill> update_credit(credit_id, save_credit)
 
-Update a Credit (BETA)
+Update a Credit
 
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Update an existing Credit.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">BILLS</span> - <code>Write</code> 
+Update an existing Credit.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">BILLS</span> - <code>Write</code> 
 
 ### Examples
 
@@ -1257,10 +1257,10 @@ end
 
 api_instance = Propertyware::BillsApi.new
 credit_id = 789 # Integer | Credit ID
-save_credit = Propertyware::SaveCredit.new({bill_date: Date.today, vendor_id: 3.56}) # SaveCredit | saveCredit
+save_credit = Propertyware::SaveCredit.new({bill_date: Date.today, bill_splits: [Propertyware::SaveBillSplit.new({amount: 3.56, gl_account_id: 3.56, portfolio_id: 3.56})], vendor_id: 3.56}) # SaveCredit | saveCredit
 
 begin
-  # Update a Credit (BETA)
+  # Update a Credit
   result = api_instance.update_credit(credit_id, save_credit)
   p result
 rescue Propertyware::ApiError => e
@@ -1276,7 +1276,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Update a Credit (BETA)
+  # Update a Credit
   data, status_code, headers = api_instance.update_credit_with_http_info(credit_id, save_credit)
   p status_code # => 2xx
   p headers # => { ... }

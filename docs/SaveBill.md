@@ -6,17 +6,16 @@
 | ---- | ---- | ----------- | ----- |
 | **bill_date** | **Date** | Bill date. |  |
 | **bill_number** | **Integer** | Bill number. | [optional] |
-| **bill_splits** | [**Array&lt;SaveBillSplit&gt;**](SaveBillSplit.md) | Splits list. | [optional] |
+| **bill_splits** | [**Array&lt;SaveBillSplit&gt;**](SaveBillSplit.md) | Splits list. |  |
 | **comments** | **String** | Description. | [optional] |
 | **due_date** | **Date** | Bill Due date. |  |
-| **markup_account_id** | **Integer** | Markup account ID. | [optional] |
+| **markup_account_id** | **Integer** | Markup general ledger account ID. | [optional] |
 | **markup_percentage** | **Float** | Markup percentage. | [optional] |
-| **owner_draw** | **Boolean** | Indicates if it is a owner draw. | [optional] |
 | **payment_date** | **Date** | Payment Date. | [optional] |
 | **ref_no** | **String** | Reference number. | [optional] |
 | **terms** | **String** | Bill terms. | [optional] |
 | **vendor_id** | **Integer** | Related vendor ID. |  |
-| **work_order_id** | **Integer** | WorkOrder ID. | [optional] |
+| **work_order_id** | **Integer** | WorkOrder ID associated to this Bill. | [optional] |
 
 ## Example
 
@@ -31,7 +30,6 @@ instance = Propertyware::SaveBill.new(
   due_date: null,
   markup_account_id: null,
   markup_percentage: null,
-  owner_draw: false,
   payment_date: null,
   ref_no: null,
   terms: null,

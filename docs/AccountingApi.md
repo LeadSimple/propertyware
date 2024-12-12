@@ -4,29 +4,30 @@ All URIs are relative to *https://api.propertyware.com/pw/api/rest/v1*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**create_bank_deposit**](AccountingApi.md#create_bank_deposit) | **POST** /accounting/bankdeposits | Create a bank deposit (BETA) |
+| [**create_bank_deposit**](AccountingApi.md#create_bank_deposit) | **POST** /accounting/bankdeposits | Create a bank deposit |
 | [**create_bill_payments**](AccountingApi.md#create_bill_payments) | **POST** /accounting/glaccounts/bulk | Create general ledger accounts in bulk (BETA) |
 | [**create_gl_account**](AccountingApi.md#create_gl_account) | **POST** /accounting/glaccounts | Create a general ledger account (BETA) |
-| [**create_owner_contribution**](AccountingApi.md#create_owner_contribution) | **POST** /accounting/ownercontributions | Create an owner contribution (BETA) |
-| [**create_owner_draw**](AccountingApi.md#create_owner_draw) | **POST** /accounting/ownerdraws | Create an owner draw (BETA) |
+| [**create_owner_contribution**](AccountingApi.md#create_owner_contribution) | **POST** /accounting/ownercontributions | Create an owner contribution |
+| [**create_owner_draw**](AccountingApi.md#create_owner_draw) | **POST** /accounting/ownerdraws | Create an owner draw |
 | [**delete_bank_deposit**](AccountingApi.md#delete_bank_deposit) | **DELETE** /accounting/bankdeposits/{bankDepositID} | Delete a Bank Deposit (BETA) |
 | [**delete_gl_account**](AccountingApi.md#delete_gl_account) | **DELETE** /accounting/glaccounts/{glAccount} | Delete a general ledger account (BETA) |
 | [**delete_owner_contribution**](AccountingApi.md#delete_owner_contribution) | **DELETE** /accounting/ownercontributions/{ownerContributionID} | Delete Owner Contribution (BETA) |
-| [**get_accounts**](AccountingApi.md#get_accounts) | **GET** /accounting/glaccounts | Retrieve all the general ledger accounts (BETA) |
+| [**get_account**](AccountingApi.md#get_account) | **GET** /accounting/glaccounts/{glAccountID} | Retrieve a general ledger account |
+| [**get_accounts**](AccountingApi.md#get_accounts) | **GET** /accounting/glaccounts | Retrieve all the general ledger accounts |
 | [**get_general_ledger_transactions**](AccountingApi.md#get_general_ledger_transactions) | **GET** /accounting/generalledger | Retrieve all general ledger transactions (BETA) |
-| [**get_owner_contributions**](AccountingApi.md#get_owner_contributions) | **GET** /accounting/ownercontributions | Retrieve all the owner contributions (BETA) |
-| [**get_owner_draws**](AccountingApi.md#get_owner_draws) | **GET** /accounting/ownerdraws | Retrieve all the owner draws (BETA) |
+| [**get_owner_contributions**](AccountingApi.md#get_owner_contributions) | **GET** /accounting/ownercontributions | Retrieve all the owner contributions |
+| [**get_owner_draws**](AccountingApi.md#get_owner_draws) | **GET** /accounting/ownerdraws | Retrieve all the owner draws |
 | [**update_gl_account**](AccountingApi.md#update_gl_account) | **PUT** /accounting/glaccounts/{glAccountID} | Update a general ledger account (BETA) |
-| [**update_owner_draw**](AccountingApi.md#update_owner_draw) | **PUT** /accounting/ownerdraws/{drawID} | Update an owner draw (BETA) |
+| [**update_owner_draw**](AccountingApi.md#update_owner_draw) | **PUT** /accounting/ownerdraws/{drawID} | Update an owner draw |
 
 
 ## create_bank_deposit
 
 > <BankDeposit> create_bank_deposit(save_bank_deposit)
 
-Create a bank deposit (BETA)
+Create a bank deposit
 
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Creates a bank deposit.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">GENERAL LEDGER</span> - <code>Write</code> 
+Creates a bank deposit.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">GENERAL LEDGER</span> - <code>Write</code> 
 
 ### Examples
 
@@ -52,10 +53,10 @@ Propertyware.configure do |config|
 end
 
 api_instance = Propertyware::AccountingApi.new
-save_bank_deposit = Propertyware::SaveBankDeposit.new({bank_gl_account_id: 3.56, list_of_tx_ids: 'list_of_tx_ids_example'}) # SaveBankDeposit | saveBankDeposit
+save_bank_deposit = Propertyware::SaveBankDeposit.new({bank_gl_account_id: 3.56, date_opened: Date.today, list_of_tx_ids: 'list_of_tx_ids_example'}) # SaveBankDeposit | saveBankDeposit
 
 begin
-  # Create a bank deposit (BETA)
+  # Create a bank deposit
   result = api_instance.create_bank_deposit(save_bank_deposit)
   p result
 rescue Propertyware::ApiError => e
@@ -71,7 +72,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create a bank deposit (BETA)
+  # Create a bank deposit
   data, status_code, headers = api_instance.create_bank_deposit_with_http_info(save_bank_deposit)
   p status_code # => 2xx
   p headers # => { ... }
@@ -267,9 +268,9 @@ end
 
 > <OwnerContribution> create_owner_contribution(save_owner_contribution)
 
-Create an owner contribution (BETA)
+Create an owner contribution
 
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Creates an owner contribution for a specified owner contact.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">PORTFOLIOS</span> - <code>Write</code> 
+Creates an owner contribution for a specified owner contact.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">PORTFOLIOS</span> - <code>Write</code> 
 
 ### Examples
 
@@ -298,7 +299,7 @@ api_instance = Propertyware::AccountingApi.new
 save_owner_contribution = Propertyware::SaveOwnerContribution.new({amount: 3.56, contact_id: 3.56, date: Date.today, destination_account_id: 3.56, gl_account_id: 3.56, payment_type: 'CHECK', portfolio_id: 3.56, ref_no: 'ref_no_example'}) # SaveOwnerContribution | saveOwnerContribution
 
 begin
-  # Create an owner contribution (BETA)
+  # Create an owner contribution
   result = api_instance.create_owner_contribution(save_owner_contribution)
   p result
 rescue Propertyware::ApiError => e
@@ -314,7 +315,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create an owner contribution (BETA)
+  # Create an owner contribution
   data, status_code, headers = api_instance.create_owner_contribution_with_http_info(save_owner_contribution)
   p status_code # => 2xx
   p headers # => { ... }
@@ -348,9 +349,9 @@ end
 
 > <OwnerDraw> create_owner_draw(save_owner_draw)
 
-Create an owner draw (BETA)
+Create an owner draw
 
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Creates an owner draw for a specified owner contact.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">PORTFOLIOS</span> - <code>Write</code> 
+Creates an owner draw for a specified owner contact.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">PORTFOLIOS</span> - <code>Write</code> 
 
 ### Examples
 
@@ -379,7 +380,7 @@ api_instance = Propertyware::AccountingApi.new
 save_owner_draw = Propertyware::SaveOwnerDraw.new({amount: 3.56, contact_id: 3.56, date: Date.today, destination_account_id: 3.56, gl_account_id: 3.56, portfolio_id: 3.56, to_be_printed: false}) # SaveOwnerDraw | saveOwnerDraw
 
 begin
-  # Create an owner draw (BETA)
+  # Create an owner draw
   result = api_instance.create_owner_draw(save_owner_draw)
   p result
 rescue Propertyware::ApiError => e
@@ -395,7 +396,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create an owner draw (BETA)
+  # Create an owner draw
   data, status_code, headers = api_instance.create_owner_draw_with_http_info(save_owner_draw)
   p status_code # => 2xx
   p headers # => { ... }
@@ -668,13 +669,94 @@ end
 - **Accept**: application/json
 
 
+## get_account
+
+> <Account> get_account(gl_account_id)
+
+Retrieve a general ledger account
+
+Retrieves a general ledger account.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">GL ACCOUNTS</span> - <code>Read</code> 
+
+### Examples
+
+```ruby
+require 'time'
+require 'propertyware'
+# setup authorization
+Propertyware.configure do |config|
+  # Configure API key authorization: organizationId
+  config.api_key['organizationId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['organizationId'] = 'Bearer'
+
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Propertyware::AccountingApi.new
+gl_account_id = 789 # Integer | GL Account ID
+
+begin
+  # Retrieve a general ledger account
+  result = api_instance.get_account(gl_account_id)
+  p result
+rescue Propertyware::ApiError => e
+  puts "Error when calling AccountingApi->get_account: #{e}"
+end
+```
+
+#### Using the get_account_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Account>, Integer, Hash)> get_account_with_http_info(gl_account_id)
+
+```ruby
+begin
+  # Retrieve a general ledger account
+  data, status_code, headers = api_instance.get_account_with_http_info(gl_account_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Account>
+rescue Propertyware::ApiError => e
+  puts "Error when calling AccountingApi->get_account_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **gl_account_id** | **Integer** | GL Account ID |  |
+
+### Return type
+
+[**Account**](Account.md)
+
+### Authorization
+
+[organizationId](../README.md#organizationId), [clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_accounts
 
 > <Array<Account>> get_accounts(opts)
 
-Retrieve all the general ledger accounts (BETA)
+Retrieve all the general ledger accounts
 
-<p class=\"betaWarning\"><b>Note: </b>This operation is still in beta and might be subject to breaking changes. Production integrations should be avoided at this stage.</p> Retrieves a list of general ledger accounts.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">GL ACCOUNTS</span> - <code>Read</code> <br/><br/><b>Sortable by:</b> <code>accountcode</code>, <code>id</code>, <code>accountnumber</code>
+Retrieves a list of general ledger accounts.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">GL ACCOUNTS</span> - <code>Read</code> <br/><br/><b>Sortable by:</b> <code>accountcode</code>, <code>id</code>, <code>accountnumber</code>
 
 ### Examples
 
@@ -713,7 +795,7 @@ opts = {
 }
 
 begin
-  # Retrieve all the general ledger accounts (BETA)
+  # Retrieve all the general ledger accounts
   result = api_instance.get_accounts(opts)
   p result
 rescue Propertyware::ApiError => e
@@ -729,7 +811,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Retrieve all the general ledger accounts (BETA)
+  # Retrieve all the general ledger accounts
   data, status_code, headers = api_instance.get_accounts_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
@@ -874,110 +956,9 @@ end
 
 > <Array<OwnerContribution>> get_owner_contributions(opts)
 
-Retrieve all the owner contributions (BETA)
+Retrieve all the owner contributions
 
-<p class=\"betaWarning\"><b>Note: </b>This operation is still in beta and might be subject to breaking changes. Production integrations should be avoided at this stage.</p> Retrieves a list of owner contributions.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">PORTFOLIOS</span> - <code>Read</code> <br/><br/><b>Sortable by:</b> <code>postdate</code>, <code>createddate</code>, <code>lastmodifieddatetime</code>, <code>id</code>
-
-### Examples
-
-```ruby
-require 'time'
-require 'propertyware'
-# setup authorization
-Propertyware.configure do |config|
-  # Configure API key authorization: organizationId
-  config.api_key['organizationId'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['organizationId'] = 'Bearer'
-
-  # Configure API key authorization: clientId
-  config.api_key['clientId'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['clientId'] = 'Bearer'
-
-  # Configure API key authorization: clientSecret
-  config.api_key['clientSecret'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['clientSecret'] = 'Bearer'
-end
-
-api_instance = Propertyware::AccountingApi.new
-opts = {
-  offset: 56, # Integer | `offset` indicates the position of the first record to return. The offset is zero-based and the default is 0.
-  limit: 56, # Integer | `limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 500 and the default is 100.
-  last_modified_date_time_start: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Filters results to any item modified on or after the date time specified. 
-  last_modified_date_time_end: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Filters results to any item modified on or prior to the date time specified. 
-  orderby: 'orderby_example', # String | Indicates the field(s) and direction to sort the results in the response.
-  post_date_start: Date.parse('2013-10-20'), # Date | Filters results to any transaction with a start date on or after the date specified.
-  post_date_end: Date.parse('2013-10-20'), # Date | Filters results to any transaction with a start date on or prior to the date specified.
-  portfolio_id: 789, # Integer | Filters results associated with a specific portfolio.
-  lease_id: 789, # Integer | Filters results with Lease ID.
-  status: 'status_example' # String | Filters results to with Lease Status.
-}
-
-begin
-  # Retrieve all the owner contributions (BETA)
-  result = api_instance.get_owner_contributions(opts)
-  p result
-rescue Propertyware::ApiError => e
-  puts "Error when calling AccountingApi->get_owner_contributions: #{e}"
-end
-```
-
-#### Using the get_owner_contributions_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<Array<OwnerContribution>>, Integer, Hash)> get_owner_contributions_with_http_info(opts)
-
-```ruby
-begin
-  # Retrieve all the owner contributions (BETA)
-  data, status_code, headers = api_instance.get_owner_contributions_with_http_info(opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <Array<OwnerContribution>>
-rescue Propertyware::ApiError => e
-  puts "Error when calling AccountingApi->get_owner_contributions_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **offset** | **Integer** | &#x60;offset&#x60; indicates the position of the first record to return. The offset is zero-based and the default is 0. | [optional] |
-| **limit** | **Integer** | &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 500 and the default is 100. | [optional][default to 100] |
-| **last_modified_date_time_start** | **Time** | Filters results to any item modified on or after the date time specified.  | [optional] |
-| **last_modified_date_time_end** | **Time** | Filters results to any item modified on or prior to the date time specified.  | [optional] |
-| **orderby** | **String** | Indicates the field(s) and direction to sort the results in the response. | [optional] |
-| **post_date_start** | **Date** | Filters results to any transaction with a start date on or after the date specified. | [optional] |
-| **post_date_end** | **Date** | Filters results to any transaction with a start date on or prior to the date specified. | [optional] |
-| **portfolio_id** | **Integer** | Filters results associated with a specific portfolio. | [optional] |
-| **lease_id** | **Integer** | Filters results with Lease ID. | [optional] |
-| **status** | **String** | Filters results to with Lease Status. | [optional] |
-
-### Return type
-
-[**Array&lt;OwnerContribution&gt;**](OwnerContribution.md)
-
-### Authorization
-
-[organizationId](../README.md#organizationId), [clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## get_owner_draws
-
-> <Array<OwnerDraw>> get_owner_draws(opts)
-
-Retrieve all the owner draws (BETA)
-
-<p class=\"betaWarning\"><b>Note: </b>This operation is still in beta and might be subject to breaking changes. Production integrations should be avoided at this stage.</p> Retrieves a list of owner draws.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">PORTFOLIOS</span> - <code>Read</code> <br/><br/><b>Sortable by:</b> <code>postdate</code>, <code>createddate</code>, <code>lastmodifieddatetime</code>, <code>portfolioid</code>, <code>id</code>
+Retrieves a list of owner contributions.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">PORTFOLIOS</span> - <code>Read</code> <br/><br/><b>Sortable by:</b> <code>postdate</code>, <code>createddate</code>, <code>lastmodifieddatetime</code>, <code>id</code>
 
 ### Examples
 
@@ -1015,7 +996,104 @@ opts = {
 }
 
 begin
-  # Retrieve all the owner draws (BETA)
+  # Retrieve all the owner contributions
+  result = api_instance.get_owner_contributions(opts)
+  p result
+rescue Propertyware::ApiError => e
+  puts "Error when calling AccountingApi->get_owner_contributions: #{e}"
+end
+```
+
+#### Using the get_owner_contributions_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<OwnerContribution>>, Integer, Hash)> get_owner_contributions_with_http_info(opts)
+
+```ruby
+begin
+  # Retrieve all the owner contributions
+  data, status_code, headers = api_instance.get_owner_contributions_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<OwnerContribution>>
+rescue Propertyware::ApiError => e
+  puts "Error when calling AccountingApi->get_owner_contributions_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **offset** | **Integer** | &#x60;offset&#x60; indicates the position of the first record to return. The offset is zero-based and the default is 0. | [optional] |
+| **limit** | **Integer** | &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 500 and the default is 100. | [optional][default to 100] |
+| **last_modified_date_time_start** | **Time** | Filters results to any item modified on or after the date time specified.  | [optional] |
+| **last_modified_date_time_end** | **Time** | Filters results to any item modified on or prior to the date time specified.  | [optional] |
+| **orderby** | **String** | Indicates the field(s) and direction to sort the results in the response. | [optional] |
+| **post_date_start** | **Date** | Filters results to any transaction with a start date on or after the date specified. | [optional] |
+| **post_date_end** | **Date** | Filters results to any transaction with a start date on or prior to the date specified. | [optional] |
+| **portfolio_id** | **Integer** | Filters results to with portfolioID. | [optional] |
+
+### Return type
+
+[**Array&lt;OwnerContribution&gt;**](OwnerContribution.md)
+
+### Authorization
+
+[organizationId](../README.md#organizationId), [clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_owner_draws
+
+> <Array<OwnerDraw>> get_owner_draws(opts)
+
+Retrieve all the owner draws
+
+Retrieves a list of owner draws.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">PORTFOLIOS</span> - <code>Read</code> <br/><br/><b>Sortable by:</b> <code>postdate</code>, <code>createddate</code>, <code>lastmodifieddatetime</code>, <code>portfolioid</code>, <code>id</code>
+
+### Examples
+
+```ruby
+require 'time'
+require 'propertyware'
+# setup authorization
+Propertyware.configure do |config|
+  # Configure API key authorization: organizationId
+  config.api_key['organizationId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['organizationId'] = 'Bearer'
+
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Propertyware::AccountingApi.new
+opts = {
+  offset: 56, # Integer | `offset` indicates the position of the first record to return. The offset is zero-based and the default is 0.
+  limit: 56, # Integer | `limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 500 and the default is 100.
+  last_modified_date_time_start: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Filters results to any item modified on or after the date time specified. 
+  last_modified_date_time_end: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Filters results to any item modified on or prior to the date time specified. 
+  orderby: 'orderby_example', # String | Indicates the field(s) and direction to sort the results in the response.
+  post_date_start: Date.parse('2013-10-20'), # Date | Filters results to any transaction with a start date on or after the date specified.
+  post_date_end: Date.parse('2013-10-20'), # Date | Filters results to any transaction with a start date on or prior to the date specified.
+  portfolio_id: 789 # Integer | Filters results to with portfolioID.
+}
+
+begin
+  # Retrieve all the owner draws
   result = api_instance.get_owner_draws(opts)
   p result
 rescue Propertyware::ApiError => e
@@ -1031,7 +1109,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Retrieve all the owner draws (BETA)
+  # Retrieve all the owner draws
   data, status_code, headers = api_instance.get_owner_draws_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
@@ -1155,9 +1233,9 @@ end
 
 > <OwnerDraw> update_owner_draw(draw_id, save_owner_draw)
 
-Update an owner draw (BETA)
+Update an owner draw
 
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Updates an owner draw for a specified owner contact.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">PORTFOLIOS</span> - <code>Write</code> 
+Updates an owner draw for a specified owner contact.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">PORTFOLIOS</span> - <code>Write</code> 
 
 ### Examples
 
@@ -1187,7 +1265,7 @@ draw_id = 789 # Integer | Owner Draw ID
 save_owner_draw = Propertyware::SaveOwnerDraw.new({amount: 3.56, contact_id: 3.56, date: Date.today, destination_account_id: 3.56, gl_account_id: 3.56, portfolio_id: 3.56, to_be_printed: false}) # SaveOwnerDraw | saveOwnerDraw
 
 begin
-  # Update an owner draw (BETA)
+  # Update an owner draw
   result = api_instance.update_owner_draw(draw_id, save_owner_draw)
   p result
 rescue Propertyware::ApiError => e
@@ -1203,7 +1281,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Update an owner draw (BETA)
+  # Update an owner draw
   data, status_code, headers = api_instance.update_owner_draw_with_http_info(draw_id, save_owner_draw)
   p status_code # => 2xx
   p headers # => { ... }

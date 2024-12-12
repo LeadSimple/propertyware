@@ -10,12 +10,17 @@
 | **amenities** | [**Array&lt;Amenity&gt;**](Amenity.md) | Property amenities list. | [optional] |
 | **application_fee_rule** | **String** | Application fee rule | [optional] |
 | **area_units** | **String** | Property total area units. | [optional][default to &#39;Sq Ft&#39;] |
+| **base_year** | **Integer** | Base Year. | [optional] |
+| **base_year_operating_expenses** | **String** | Base Year Operating Expenses. | [optional] |
+| **base_year_property_insurance** | **String** | Base Year Property Insurance. | [optional] |
+| **base_year_property_taxes** | **String** | Base Year Property Taxes. | [optional] |
 | **category** | **String** | Property category. | [optional] |
 | **count_unit** | **Integer** | Number of units in the building. | [optional] |
 | **county** | **String** | Property region of a state. | [optional] |
 | **created_by** | **String** | User who created the record. | [optional] |
 | **created_date_time** | **Time** | Date and time the record was created. (Timezone: UTC) | [optional] |
 | **custom_fields** | [**Array&lt;CustomField&gt;**](CustomField.md) | Custom fields. | [optional] |
+| **featured_for_rent** | **Boolean** | Featured Rental | [optional] |
 | **floor_number** | **Integer** | Floor number. | [optional] |
 | **ftb_deductable** | **Float** | FTB deductible amount | [optional] |
 | **ftb_withholding_percentage** | **Float** | FTB withholding percentage | [optional] |
@@ -32,6 +37,7 @@
 | **maintenance_spending_limit_time** | **String** | Property maintenance spending limit. | [optional] |
 | **management** | [**ManagementSettings**](ManagementSettings.md) |  | [optional] |
 | **marketing** | [**Marketing**](Marketing.md) |  | [optional] |
+| **move_in_days** | **Integer** | Move in Window must be with in these days given here 1 to 30 and 45,60,75,90 | [optional] |
 | **multi_unit** | **String** | Indicates if the building is multi family or single family. | [optional] |
 | **name** | **String** | Name of the property. | [optional] |
 | **neighborhood** | **String** | Property neighborhood. | [optional] |
@@ -46,8 +52,8 @@
 | **rentable** | **Boolean** | Indicates if the property is available for rent. | [optional] |
 | **search_tag** | **String** | Property search tag. | [optional] |
 | **status** | **String** | Property status (occupied/vacant). | [optional] |
-| **syndicate** | **Boolean** | Property syndicate. | [optional] |
-| **target_deposit** | **Float** | Target deposit. | [optional] |
+| **syndicate** | **Boolean** | Syndicate | [optional] |
+| **target_deposit** | **String** | Target deposit. | [optional] |
 | **target_rent** | **Float** | Property target rent. | [optional] |
 | **target_rent_units** | **String** | Property target rent units. | [optional] |
 | **total_area** | **Float** | Property total area. | [optional] |
@@ -67,12 +73,17 @@ instance = Propertyware::Building.new(
   amenities: null,
   application_fee_rule: null,
   area_units: null,
+  base_year: null,
+  base_year_operating_expenses: null,
+  base_year_property_insurance: null,
+  base_year_property_taxes: null,
   category: null,
   count_unit: null,
   county: null,
   created_by: null,
   created_date_time: null,
   custom_fields: null,
+  featured_for_rent: false,
   floor_number: null,
   ftb_deductable: null,
   ftb_withholding_percentage: null,
@@ -89,6 +100,7 @@ instance = Propertyware::Building.new(
   maintenance_spending_limit_time: null,
   management: null,
   marketing: null,
+  move_in_days: null,
   multi_unit: null,
   name: null,
   neighborhood: null,

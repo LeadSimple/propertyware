@@ -4,25 +4,26 @@ All URIs are relative to *https://api.propertyware.com/pw/api/rest/v1*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**create_contacts_using_post3**](ProspectsApi.md#create_contacts_using_post3) | **POST** /prospects/bulk | Create prospects in bulk (BETA) |
-| [**create_prospect**](ProspectsApi.md#create_prospect) | **POST** /prospects | Create a prospect (BETA) |
-| [**create_prospect_conversation**](ProspectsApi.md#create_prospect_conversation) | **POST** /prospects/{prospectID}/conversations | Create a prospect conversation (BETA) |
+| [**create_contacts_using_post2**](ProspectsApi.md#create_contacts_using_post2) | **POST** /prospects/bulk | Create prospects in bulk |
+| [**create_prospect**](ProspectsApi.md#create_prospect) | **POST** /prospects | Create a prospect |
+| [**create_prospect_conversation**](ProspectsApi.md#create_prospect_conversation) | **POST** /prospects/{prospectID}/conversations | Create a prospect conversation |
 | [**delete_prospect_conversation**](ProspectsApi.md#delete_prospect_conversation) | **DELETE** /prospects/{prospectID}/conversations/{conversationID} | Delete a prospect conversation (BETA) |
 | [**get_prospect**](ProspectsApi.md#get_prospect) | **GET** /prospects/{prospectID} | Retrieve a prospect |
 | [**get_prospect_campaign**](ProspectsApi.md#get_prospect_campaign) | **GET** /prospects/{prospectID}/campaign | Retrieve prospect campaign |
 | [**get_prospect_conversation**](ProspectsApi.md#get_prospect_conversation) | **GET** /prospects/{prospectID}/conversations/{conversationID} | Retrieve a prospect conversation |
 | [**get_prospect_conversations**](ProspectsApi.md#get_prospect_conversations) | **GET** /prospects/{prospectID}/conversations | Retrieve all prospect conversations |
-| [**get_prospect_statuses**](ProspectsApi.md#get_prospect_statuses) | **GET** /prospects/statuses | Retrieve all prospect statuses (BETA) |
+| [**get_prospect_statuses**](ProspectsApi.md#get_prospect_statuses) | **GET** /prospects/statuses | Retrieve all prospect statuses |
 | [**get_prospects**](ProspectsApi.md#get_prospects) | **GET** /prospects | Retrieve all prospects |
+| [**update_lease_using_put2**](ProspectsApi.md#update_lease_using_put2) | **PUT** /prospects/customfields | Update a prospect custom fields (BETA) |
 
 
-## create_contacts_using_post3
+## create_contacts_using_post2
 
-> <Array<RESTAPIBulkSuccessResponse>> create_contacts_using_post3(save_prospect)
+> <Array<RESTAPIBulkSuccessResponse>> create_contacts_using_post2(save_prospect)
 
-Create prospects in bulk (BETA)
+Create prospects in bulk
 
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Creates prospects in bulk.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">UNITS</span> - <code>Write</code> 
+Creates prospects in bulk.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">UNITS</span> - <code>Write</code> 
 
 ### Examples
 
@@ -51,29 +52,29 @@ api_instance = Propertyware::ProspectsApi.new
 save_prospect = [Propertyware::SaveProspect.new] # Array<SaveProspect> | saveProspect
 
 begin
-  # Create prospects in bulk (BETA)
-  result = api_instance.create_contacts_using_post3(save_prospect)
+  # Create prospects in bulk
+  result = api_instance.create_contacts_using_post2(save_prospect)
   p result
 rescue Propertyware::ApiError => e
-  puts "Error when calling ProspectsApi->create_contacts_using_post3: #{e}"
+  puts "Error when calling ProspectsApi->create_contacts_using_post2: #{e}"
 end
 ```
 
-#### Using the create_contacts_using_post3_with_http_info variant
+#### Using the create_contacts_using_post2_with_http_info variant
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Array<RESTAPIBulkSuccessResponse>>, Integer, Hash)> create_contacts_using_post3_with_http_info(save_prospect)
+> <Array(<Array<RESTAPIBulkSuccessResponse>>, Integer, Hash)> create_contacts_using_post2_with_http_info(save_prospect)
 
 ```ruby
 begin
-  # Create prospects in bulk (BETA)
-  data, status_code, headers = api_instance.create_contacts_using_post3_with_http_info(save_prospect)
+  # Create prospects in bulk
+  data, status_code, headers = api_instance.create_contacts_using_post2_with_http_info(save_prospect)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Array<RESTAPIBulkSuccessResponse>>
 rescue Propertyware::ApiError => e
-  puts "Error when calling ProspectsApi->create_contacts_using_post3_with_http_info: #{e}"
+  puts "Error when calling ProspectsApi->create_contacts_using_post2_with_http_info: #{e}"
 end
 ```
 
@@ -101,9 +102,9 @@ end
 
 > <Prospect> create_prospect(save_prospect)
 
-Create a prospect (BETA)
+Create a prospect
 
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Creates a specific prospect.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">PROSPECTS</span> - <code>Write</code> 
+Creates a specific prospect.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">PROSPECTS</span> - <code>Write</code> 
 
 ### Examples
 
@@ -132,7 +133,7 @@ api_instance = Propertyware::ProspectsApi.new
 save_prospect = Propertyware::SaveProspect.new # SaveProspect | saveProspect
 
 begin
-  # Create a prospect (BETA)
+  # Create a prospect
   result = api_instance.create_prospect(save_prospect)
   p result
 rescue Propertyware::ApiError => e
@@ -148,7 +149,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create a prospect (BETA)
+  # Create a prospect
   data, status_code, headers = api_instance.create_prospect_with_http_info(save_prospect)
   p status_code # => 2xx
   p headers # => { ... }
@@ -182,9 +183,9 @@ end
 
 > <Conversation> create_prospect_conversation(prospect_id, save_conversation)
 
-Create a prospect conversation (BETA)
+Create a prospect conversation
 
-<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Creates a specific prospect conversation.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">PROSPECTS</span> - <code>Write</code> 
+Creates a specific prospect conversation.<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">PROSPECTS</span> - <code>Write</code> 
 
 ### Examples
 
@@ -214,7 +215,7 @@ prospect_id = 789 # Integer | Prospect ID
 save_conversation = Propertyware::SaveConversation.new({text: 'text_example', type: 'MANAGEMENT_TEAM'}) # SaveConversation | saveConversation
 
 begin
-  # Create a prospect conversation (BETA)
+  # Create a prospect conversation
   result = api_instance.create_prospect_conversation(prospect_id, save_conversation)
   p result
 rescue Propertyware::ApiError => e
@@ -230,7 +231,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create a prospect conversation (BETA)
+  # Create a prospect conversation
   data, status_code, headers = api_instance.create_prospect_conversation_with_http_info(prospect_id, save_conversation)
   p status_code # => 2xx
   p headers # => { ... }
@@ -692,9 +693,9 @@ end
 
 > <Array<ProspectStatus>> get_prospect_statuses
 
-Retrieve all prospect statuses (BETA)
+Retrieve all prospect statuses
 
-<p class=\"betaWarning\"><b>Note: </b>This operation is still in beta and might be subject to breaking changes. Production integrations should be avoided at this stage.</p> Retrieves a list of all prospect statuses<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">PROSPECTS</span> - <code>Read</code> 
+Retrieves a list of all prospect statuses<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">PROSPECTS</span> - <code>Read</code> 
 
 ### Examples
 
@@ -722,7 +723,7 @@ end
 api_instance = Propertyware::ProspectsApi.new
 
 begin
-  # Retrieve all prospect statuses (BETA)
+  # Retrieve all prospect statuses
   result = api_instance.get_prospect_statuses
   p result
 rescue Propertyware::ApiError => e
@@ -738,7 +739,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Retrieve all prospect statuses (BETA)
+  # Retrieve all prospect statuses
   data, status_code, headers = api_instance.get_prospect_statuses_with_http_info
   p status_code # => 2xx
   p headers # => { ... }
@@ -864,5 +865,86 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## update_lease_using_put2
+
+> <ResponseEntity> update_lease_using_put2(save_custom_field)
+
+Update a prospect custom fields (BETA)
+
+<p class=\"betaError\"><b>Note: </b>Write access is only available to customers who have opted in to our beta program. Please reach out to support if you'd like to be included.</p> Updates an existing prospect custom fields<br/><br/><b>Required permission:</b><br/><span class=\"permissionBlock\">PROSPECTS</span> - <code>Write</code> 
+
+### Examples
+
+```ruby
+require 'time'
+require 'propertyware'
+# setup authorization
+Propertyware.configure do |config|
+  # Configure API key authorization: organizationId
+  config.api_key['organizationId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['organizationId'] = 'Bearer'
+
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Propertyware::ProspectsApi.new
+save_custom_field = Propertyware::SaveCustomField.new({entity_id: 3.56, field_set: [Propertyware::CustomFieldSet.new({name: 'name_example', value: 'value_example'})]}) # SaveCustomField | saveCustomField
+
+begin
+  # Update a prospect custom fields (BETA)
+  result = api_instance.update_lease_using_put2(save_custom_field)
+  p result
+rescue Propertyware::ApiError => e
+  puts "Error when calling ProspectsApi->update_lease_using_put2: #{e}"
+end
+```
+
+#### Using the update_lease_using_put2_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ResponseEntity>, Integer, Hash)> update_lease_using_put2_with_http_info(save_custom_field)
+
+```ruby
+begin
+  # Update a prospect custom fields (BETA)
+  data, status_code, headers = api_instance.update_lease_using_put2_with_http_info(save_custom_field)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ResponseEntity>
+rescue Propertyware::ApiError => e
+  puts "Error when calling ProspectsApi->update_lease_using_put2_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **save_custom_field** | [**SaveCustomField**](SaveCustomField.md) | saveCustomField |  |
+
+### Return type
+
+[**ResponseEntity**](ResponseEntity.md)
+
+### Authorization
+
+[organizationId](../README.md#organizationId), [clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
